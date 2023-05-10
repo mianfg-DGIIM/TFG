@@ -14,14 +14,14 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`es_teorema_peano.py`](./es_teorema_peano.py) | Programa 5.2 | Este programa hace _EsTeoremaPeano_ semidecidible | ❌ |
 | [`funcion_con_objeto_codificado.py`](./funcion_con_objeto_codificado.py) | Programa 3.1 | Este programa muestra que los programas SISO no imponen una restricción sobre los programas que podemos escribir: podemos aceptar como entrada y devolver como salida cualquier programa debidamente codificado (en este caso, mediante la librería nativa `pickle`) | ✅ |
 | [`godel.py`](./godel.py) | Programa 6.1 | Programa central de la demostración del Primer Teorema de Incompletitud | ❌ |
-| [`maquina_universal.py`](./maquina_universal.py) |  | Implementa una máquina universal en Python, es decir, una función que acepta como entradas un programa en Python y una entrada, y ejecuta el programa en Python con dicha entrada | ✅ |
+| [`maquina_universal.py`](./maquina_universal.py) | Programa 4.2 | Implementa una máquina universal en Python, es decir, una función que acepta como entradas un programa en Python y una entrada, y ejecuta el programa en Python con dicha entrada | ✅ |
 | [`maquina_universal_parada.py`](./maquina_universal_parada.py) | Programa 4.9 | Programa usado como parte de la reducción de _Universal_ a _Parada_ y de _Universal_ a _ParadaEnVacío_ | ✅ |
 | [`mas_a_que_b.py`](./mas_a_que_b.py) | Programa 4.1 | Este programa decide el problema _MásAQueB_ | ✅ |
 | [`mas_a_que_b_v2.py`](./mas_a_que_b_v2.py) | Programa 4.3 | Este programa decide el problema _MásAQueB_, aceptando cualquier palabra como entrada (tiene todos los caracteres en el alfabeto) | ✅ |
 | `parada_a_peano.py` |  | Este programa traduce una afirmación del tipo _"P para con entrada vacía"_ a una fórmula de ***Peano*** | NO IMPLEMENTADO |
 | [`parada_en_vacio_a_es_verdadero_peano.py`](./parada_en_vacio_a_es_verdadero_peano.py) | Programa 5.1 | Implementa la reducción de _ParadaEnVacío_ a _EsVerdaderoPeano_ | ❌ |
 | [`si.py`](./si.py) | Programa 4.4 | Este programa decide el problema _Sí_ | ✅ |
-| [`simula_turing.py`](./simula_turing.py) | Programa 3.2 | Este programa simula una máquina de Turing. Puedes usarlo con cualquiera de las máquinas codificadas en la carpeta `maquinas_turing` | ✅ |
+| [`simula_turing.py`](./simula_turing.py) | Programa 3.2 | Este programa simula una máquina de Turing. Puedes usarlo con cualquiera de las máquinas codificadas en la carpeta [`maquinas_turing`](./maquinas_turing) | ✅ |
 | [`simula_turing_decision.py`](./simula_turing_decision.py) |  | Este programa es una variación de [`simula_turing.py`](./simula_turing.py) para hacer que el programa sea de decisión (siempre se devuelve 'sí' o 'no'). Este programa no se usa en el trabajo, pero se deja aquí para permitir la experimentación | ✅ |
 | [`suma_binaria.py`](./suma_binaria.py) |  | Este programa decide los problemas _EsTeorema_ y _EsVerdadero_ para todos los sistemas lógicos derivados del sistema formal ***SumaBinaria*** (incluyendo la decidibilidad del problema _EsTeorema_ de este sistema formal) | ✅ |
 | [`turing.py`](./turing.py) |  | Este programa incluye una clase `Turing` que encapsula la simulación de [`simula_turing.py`](./simula_turing.py) | ✅ |
