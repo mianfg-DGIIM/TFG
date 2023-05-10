@@ -30,7 +30,7 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`universal_a_parada_en_vacio.py`](./universal_a_parada_en_vacio.py) | Programa 4.11 | Implementa la reducción de _Universal_ a _ParadaEnVacío_ | ❌ |
 | [`utilidades.py`](./utilidades.py) |  | Este programa implementa funciones que se usan en el resto de programas ("utilidades") | ✅ |
 
-> *Con "¿puede ejecutarse?" nos preguntamos a si podemos ejecutar los programas en el intérprete de Python, no si los programas son o no decidibles/semidecidibles. Tienes más información sobre por qué los programas no pueden decidirse [aquí](#una-advertencia).
+> *Con "¿puede ejecutarse?" nos preguntamos a si podemos ejecutar los programas en el intérprete de Python, no si los programas son o no decidibles/semidecidibles. Tienes más información sobre por qué los programas no pueden ejecutarse [más adelante](#una-advertencia).
 
 ## Cómo usar el código
 
