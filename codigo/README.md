@@ -10,7 +10,7 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`c_diagonal.py`](./c_diagonal.py) | Programa 4.6 | Si _Diagonal_ fuese decidible, este programa decidiría el problema _C-Diagonal_ | ✅ |
 | [`diagonal.py`](./diagonal.py) | Programa 4.5 | Si _Universal_ fuese decidible, este programa decidiría el problema _Diagonal_ | ✅ |
 | [`diagonal_a_universal.py`](./diagonal_a_universal.py) | Programa 4.8 | Implementa la reducción de _Diagonal_ a _Universal_ | ✅ |
-| `es_prueba_peano.py` |  | Este programa es capaz de comprobar si una secuencia de fórmulas es una prueba de otra cierta fórmula en ***Peano*** | NO IMPLEMENTADO |
+| `es_prueba_peano.py` |  | Este programa es capaz de comprobar si una secuencia de fórmulas es una prueba de otra cierta fórmula en ***Peano*** | ⭕️ |
 | [`es_teorema_peano.py`](./es_teorema_peano.py) | Programa 5.2 | Este programa hace _EsTeoremaPeano_ semidecidible | ❌ |
 | [`funcion_con_objeto_codificado.py`](./funcion_con_objeto_codificado.py) | Programa 3.1 | Este programa muestra que los programas SISO no imponen una restricción sobre los programas que podemos escribir: podemos aceptar como entrada y devolver como salida cualquier programa debidamente codificado (en este caso, mediante la librería nativa `pickle`) | ✅ |
 | [`godel.py`](./godel.py) | Programa 6.1 | Programa central de la demostración del Primer Teorema de Incompletitud | ❌ |
@@ -18,7 +18,7 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`maquina_universal_parada.py`](./maquina_universal_parada.py) | Programa 4.9 | Programa usado como parte de la reducción de _Universal_ a _Parada_ y de _Universal_ a _ParadaEnVacío_ | ✅ |
 | [`mas_a_que_b.py`](./mas_a_que_b.py) | Programa 4.1 | Este programa decide el problema _MásAQueB_ | ✅ |
 | [`mas_a_que_b_v2.py`](./mas_a_que_b_v2.py) | Programa 4.3 | Este programa decide el problema _MásAQueB_, aceptando cualquier palabra como entrada (tiene todos los caracteres en el alfabeto) | ✅ |
-| `parada_a_peano.py` |  | Este programa traduce una afirmación del tipo _"P para con entrada vacía"_ a una fórmula de ***Peano*** | NO IMPLEMENTADO |
+| `parada_a_peano.py` |  | Este programa traduce una afirmación del tipo _"P para con entrada vacía"_ a una fórmula de ***Peano*** | ⭕️ |
 | [`parada_en_vacio_a_es_verdadero_peano.py`](./parada_en_vacio_a_es_verdadero_peano.py) | Programa 5.1 | Implementa la reducción de _ParadaEnVacío_ a _EsVerdaderoPeano_ | ❌ |
 | [`si.py`](./si.py) | Programa 4.4 | Este programa decide el problema _Sí_ | ✅ |
 | [`simula_turing.py`](./simula_turing.py) | Programa 3.2 | Este programa simula una máquina de Turing. Puedes usarlo con cualquiera de las máquinas codificadas en la carpeta [`maquinas_turing`](./maquinas_turing) | ✅ |
@@ -30,7 +30,9 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`universal_a_parada_en_vacio.py`](./universal_a_parada_en_vacio.py) | Programa 4.11 | Implementa la reducción de _Universal_ a _ParadaEnVacío_ | ❌ |
 | [`utilidades.py`](./utilidades.py) |  | Este programa implementa funciones que se usan en el resto de programas ("utilidades") | ✅ |
 
-> *Con "¿puede ejecutarse?" nos preguntamos a si podemos ejecutar los programas en el intérprete de Python, no si los programas son o no decidibles/semidecidibles. Tienes más información sobre por qué los programas no pueden ejecutarse [más adelante](#una-advertencia).
+> \* ✅ = "sí", ❌ = "no", ⭕️ = "no implementado"
+
+> Con "¿puede ejecutarse?" nos preguntamos a si podemos ejecutar los programas en el intérprete de Python, no si los programas son o no decidibles/semidecidibles. Tienes más información sobre por qué los programas no pueden ejecutarse [más adelante](#una-advertencia).
 
 ## Cómo usar el código
 
