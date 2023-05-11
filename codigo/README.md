@@ -31,7 +31,7 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 | [`utilidades.py`](./utilidades.py) |  | Este programa implementa funciones que se usan en el resto de programas ("utilidades") | ✅ |
 
 > \* ✅ = "sí", ❌ = "no", ⭕️ = "no implementado"
-
+> 
 > Con "¿puede ejecutarse?" nos preguntamos a si podemos ejecutar los programas en el intérprete de Python, no si los programas son o no decidibles/semidecidibles. Tienes más información sobre por qué los programas no pueden ejecutarse [más adelante](#una-advertencia).
 
 ## Cómo usar el código
