@@ -22,3 +22,9 @@ def simula_turing(entrada):
 
     # si llegamos aquí, la máquina ha parado: devolvemos su configuración
     return str(maquina_turing)
+
+# esta función no se incluye en el trabajo, pero se deja aquí para
+# facilitar el uso de simula_turing (sin tener que usar utilidades.MAU)
+def simula_turing_mult(codificacion, entrada):
+    entrada_simula_turing = utilidades.MAU(codificacion, entrada)
+    return simula_turing(entrada_simula_turing)
