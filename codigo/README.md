@@ -34,7 +34,17 @@ En esta carpeta del repositorio se encuentran los programas que han sido redacta
 
 ## Cómo usar el código
 
-Puedes encontrar más información sobre cómo usar los programas de esta carpeta en la memoria (**apéndice A**).
+Puedes ejecutar los programas de la carpeta codigo importando las funciones que quieras en el intérprete de Python. En la librería `utilidades.py` aparecen múltiples funciones que se usan en varios programas, y que son útiles para poder ejecutar otros. A modo de ejemplo, si queremos ejecutar la función `simula_turing_mult` de `simula_turing.py`, haremos:
+
+```
+TFG/codigo$ python
+>>> from utilidades import leer
+>>> from simula_turing import simula_turing_mult
+>>> codificacion = leer('./maquinas_turing/mas_a_que_b.mt')
+>>> entrada = 'abaaabbb'
+>>> simula_turing_mult(codificacion, entrada)
+'q_0 : X X X X X X X X [_] (rechaza)
+```
 
 ## Una advertencia
 
