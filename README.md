@@ -31,7 +31,7 @@
     2. Sistemas lógicos
     3. Solidez, completitud y decidibilidad
     4. La aritmética de Peano
-    5. Consistencia y ω-consistencia
+    5. Completitud sintáctica y consistencia
 6. El Primer Teorema de Incompletitud
     1. El Primer Teorema de Incompletitud
     2. Diferencias con la demostración de Gödel
