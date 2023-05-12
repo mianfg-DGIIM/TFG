@@ -1,5 +1,7 @@
 # TFG
 
+> Este TFG se encuentra actualmente en desarrollo.
+
 ## Índice de contenidos
 
 ### I. Introducción
@@ -33,16 +35,13 @@
 6. El Primer Teorema de Incompletitud
     1. El Primer Teorema de Incompletitud
     2. Diferencias con la demostración de Gödel
-7. Más allá del Primer Teorema de Incompletitud
-    1. Limitaciones del Primer Teorema de Incompletitud
-    2. El truco de Rosser
 
-### IV. Conclusiones
+### IV. Conclusión
 
-8. Conclusiones
+8. Resumen final
+8. Conclusión
     1. Implicaciones matemáticas
     2. Implicaciones filosóficas
-    3. Resumen final
 
 ### V. Apéndices
 
