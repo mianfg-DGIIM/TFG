@@ -1,50 +1,27 @@
-# TFG
+[⬅ Más asignaturas del DGIIM](https://github.com/mianfg-DGIIM)
 
-> Este TFG se encuentra actualmente en desarrollo.
+![Repo image](https://repository-images.githubusercontent.com/639075801/a17da198-d8b7-4a07-bbd0-2d700b867dff)
 
-## Índice de contenidos
+# `TFG` Trabajo de Fin de Grado
 
-### I. Introducción
+| Nombre                | Trabajo de Fin de Grado                                      |
+| --------------------- | ------------------------------------------------------------ |
+| Abreviatura           | `TFG`                                                        |
+| Facultades            | Facultad de Ciencias<br/>Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación (ETSIIT)  |
+| Universidad           | Universidad de Granada                                       |
+| Tutor                 | Serafín Moral Callejón                                       |
+| Departamento          | Ciencias de la Computación e Inteligencia Artificial         |
+| Curso                 | 2022/2023                                                    |
 
-1. Motivación
-2. Breve reseña histórica
+### Información
 
-### II. Fundamentos
+> ⚠️ Este TFG se encuentra actualmente **en desarrollo**.
 
-3. Programas en Python y máquinas de Turing
-    1. Programas en Python
-    2. Máquinas de Turing
-    3. Equivalencia
-    4. Relación con la tesis de Church-Turing
-4. El problema de parada
-    1. Problemas decidibles
-    2. Universalidad
-    3. Problemas no decidibles
-    4. Problemas semidecidibles
-    5. Reducciones
-    6. El problema de parada
+Este es el repositorio de mi **Trabajo de Fin de Grado** titulado ***"Una perspectiva algorítmica a la incompletitud de las Matemáticas"***.
 
-### III. Incompletitud
+### Contenidos
 
-5. Sistemas lógicos
-    1. Sistemas formales
-    2. Sistemas lógicos
-    3. Solidez, completitud y decidibilidad
-    4. La aritmética de Peano
-    5. Completitud sintáctica y consistencia
-6. El Primer Teorema de Incompletitud
-    1. El Primer Teorema de Incompletitud
-    2. Diferencias con la demostración de Gödel
-
-### IV. Conclusión
-
-8. Resumen final
-8. Conclusión
-    1. Implicaciones matemáticas
-    2. Implicaciones filosóficas
-
-### V. Apéndices
-
-1. Cómo usar el código de este trabajo
-2. Demostraciones adicionales
-3. Descripción de la aritmética de Peano
+| Carpeta | Descripción |
+| --- | --- |
+| [`codigo`](./codigo) | Todo el código del trabajo |
+| [`memoria`](./memoria) | Memoria del trabajo |
