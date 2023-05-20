@@ -57,7 +57,6 @@ def extraer_nombre_main(programa):
 
 def extraer_main(programa, variables_locales):
     nombre_main = extraer_nombre_main(programa)
-    print("WIP nombre main:", nombre_main)
 
     if not nombre_main:
         # no hay una función main definida
