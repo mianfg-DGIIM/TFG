@@ -16,6 +16,6 @@ def maquina_universal_parada(entrada_codificada):
     salida = maquina_universal(programa, entrada)
 
     if salida == 'sí':
-        return 'para'
+        return 'sí'
     else:
         utilidades.ciclar()

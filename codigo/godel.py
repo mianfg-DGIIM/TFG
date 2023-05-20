@@ -1,23 +1,24 @@
 """godel.py
 
-Programa central de la demostración del Primer Teorema de Incompletitud
+Programa central de la demostración de la versión semántica Primer Teorema de
+Incompletitud (en el caso general)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez
-En la memoria: Programa 6.1
+En la memoria: Programa 6.2
 """
 
 import utilidades
 
-from es_teorema_peano import es_teorema_peano # NO es un oráculo
-from parada_a_peano import parada_a_peano # NO es un oráculo
+from es_teorema_en_G import es_teorema_en_G # NO es un oráculo
+from parada_a_G import parada_a_G # NO es un oráculo
 
-def godel(entrada):
-    programa_godel = utilidades.leer('godel.py')
-    para_en_peano = parada_a_peano(programa_godel)
-    no_para_en_peano = 'NOT (' + para_en_peano + ')'
+def incompleto_semantico(entrada):
+    programa = utilidades.leer('incompleto_semantico.py')
+    para_en_G = parada_a_G(programa)
+    no_para_en_G = 'NOT (' + para_en_G + ')'
 
-    if es_teorema_peano(no_para_en_peano) == 'sí':
+    if es_teorema_en_G(no_para_en_G) == 'sí':
         return 'para'
     else:
         utilidades.ciclar()

@@ -17,7 +17,7 @@ def función_con_objeto_codificado(codificado):
     # realizamos las operaciones que queramos con el objeto descodificado
     # el objeto descodificado puede ser de cualquier tipo
 
-# creamos un objeto, or ejemplo, una matriz
+# creamos un objeto, por ejemplo, una matriz
 adyacencias = {1:2, 3:4, 5:3, 4:2}
 
 # serializamos (codificamos) el objeto a un string
