@@ -23,8 +23,13 @@ def leer_archivo(ruta):
         archivo = entrada.read()
     return archivo
 
+def escribir_archivo(ruta, contenidos):
+    with open(ruta, 'w') as f:
+        f.write(contenidos)
+
 # para abreviar
 leer = leer_archivo
+escribir = escribir_archivo
 
 
 def MAU(*entradas, SEP='::'):
