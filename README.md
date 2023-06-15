@@ -6,6 +6,8 @@
 
 | Nombre                | Trabajo de Fin de Grado                                      |
 | --------------------- | ------------------------------------------------------------ |
+| Título                | ***Una perspectiva algorítmica a la incompletitud de las Matemáticas*** |
+| Title                 | ***An algorithmic perspective into the incompleteness of Mathematics*** |
 | Abreviatura           | `TFG`                                                        |
 | Facultades            | Facultad de Ciencias<br/>Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación (ETSIIT)  |
 | Universidad           | Universidad de Granada                                       |
