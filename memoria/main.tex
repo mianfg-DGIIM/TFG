@@ -390,7 +390,7 @@
 % --------------------------------------------------------------------
 \usepackage{xspace} % Para problemas de espaciado al definir comandos
 
-\newcommand{\miBorrador}{BORRADOR 5}
+\newcommand{\miBorrador}{BORRADOR FINAL}
 \newcommand{\miTitulo}{Una perspectiva algorítmica a la incompletitud de las Matemáticas\xspace}
 \newcommand{\miNombre}{Miguel Ángel Fernández Gutiérrez\xspace}
 \newcommand{\miGrado}{Doble Grado en \\ Ingeniería Informática y Matemáticas}
@@ -460,7 +460,7 @@
 
 \usepackage[firstpageonly=true, angle=58]{draftwatermark}
 \SetWatermarkText{\sffamily \miBorrador}
-\SetWatermarkScale{1}
+\SetWatermarkScale{0.7}
 
 
 \hypersetup{
@@ -626,25 +626,15 @@
 \phantomsection 
 \listofproblemas
 
-\markboth{Lista de figuras}{Lista de figuras}
-
-\listoftheorems[ignoreall,show={definicion},title={Índice de definiciones}]
+%\cleardoublepage
+%\phantomsection
+%\listoftheorems[ignoreall,show={definicion},title={Índice de definiciones}]
 %\addcontentsline{toc}{chapter}{Índice de definiciones}
+%\clearpage
 
-\listoftheorems[ignoreall,show={sistemaformal,sistemalogico},title={Índice de sistemas formales y lógicos}]
-%\addcontentsline{toc}{chapter}{Índice de sistemas formales y lógicos}
-
-
-%\listoftheorems
-
-% ÍNDICE TERMINOLÓGICO  (Opcional) 
-%------------------------------------------------------------------- 
-
-% Para incluir el índice terminológico es necesario descomentar los siguientes comandos. Incluir un índice terminológico es opcional
-
-% \cleardoublepage 
-% \begin{footnotesize} % Normalmente el índice se imprime en un tamaño de letra más pequeño.
-% \printindex 
-% \end{footnotesize}
+\cleardoublepage
+\phantomsection
+\listoftheorems[ignoreall,show={sistemaformal,sistemalogico},title={Índice de sistemas formales y lógicos}]\clearpage
+\addcontentsline{toc}{chapter}{Índice de sistemas formales y lógicos}
 
 \end{document}
