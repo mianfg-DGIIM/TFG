@@ -28,7 +28,7 @@ Este es el repositorio de mi **Trabajo de Fin de Grado** titulado ***"Una perspe
 | [`codigo`](./codigo) | Todo el código del trabajo |
 | [`memoria`](./memoria) | Memoria del trabajo |
 
-## Abstract
+## Summary
 
 We begin this Bachelor’s Thesis highlighting the motivation behind this work, as well as the main goals to be achieved. Immediately after, we give a brief historical contextualization of the topics covered in this writing.
 
