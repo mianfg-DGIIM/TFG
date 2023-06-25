@@ -1,0 +1,49 @@
+% !TeX root = ../libro.tex
+% !TeX encoding = utf8
+
+\setchapterpreamble[c][0.75\linewidth]{%
+	\sffamily
+  \emph{El objetivo de la computación es el conocimiento, no los números.}
+ \begin{flushright} — Richard Hamming, \cite{Hamming1986} \end{flushright}
+% \\[8pt]
+	\par\bigskip
+}
+%\vspace{28pt}
+
+\chapter{Motivación}\label{ch:motivacion}
+
+Los teoremas de incompletitud de Gödel son uno de los resultados más populares de las matemáticas y la filosofía, y han sido objeto de fascinación y estudio durante décadas. Estos teoremas revolucionaron los mismos fundamentos de ambas disciplinas. En este trabajo, abordaremos el primero de estos teoremas desde una perspectiva computacional. Esto es así debido a una serie de experiencias y observaciones que despertaron en mí un gran interés y que revelaron una oportunidad para abordar este tema desde una perspectiva computacional pero, sobre todo, matemáticamente rigurosa.
+
+Este interés surge de las clases de Modelos de Computación impartidas por el tutor de este trabajo, en las que mencionó de forma breve este resultado. Tras ello sentí mucha curiosidad por profundizar en el mundo de la incompletitud, hasta llegar a un excepcional libro de Douglas Hofstadter: \emph{``Gödel, Escher, Bach: An Eternal Golden Braid''} \cite{Hofstadter1999}. Esta obra maestra interdisciplinaria combina elementos de matemáticas, música y arte, y me incitó a profundizar más en estos teoremas.
+
+La mayor parte de los libros que tratan este tema lo hacen tal y como lo hizo Gödel: desde una perspectiva aritmética, usando la numeración de Gödel en las demostraciones, o variantes. Sin embargo, en múltiples cursos de teoría de la computación se exponen demostraciones haciendo uso de algoritmos y máquinas de Turing.
+
+Para mi sorpresa, a pesar de que esta perspectiva se estudia extensivamente y hay una gran literatura al respecto, muchas de las referencias que encontraba eran bien poco rigurosas o bien poco consistentes en la nomenclatura y en la forma de probar los teoremas. En concreto, muchas de las fuentes no distinguen de forma precisa entre los conceptos de \emph{demostración} y \emph{verdad}.
+
+Es aquí donde vi la oportunidad de hacer un trabajo que intentase proporcionar una perspectiva computacional a los teoremas de incompletitud de Gödel, sin perder rigor y concreción por el camino. Este enfoque permitirá una comprensión más precisa y estructurada de los resultados más relevantes al respecto, así como su relación con los modelos de computación y la teoría de la computabilidad.
+
+\pagebreak
+
+\section*{Objetivos}
+
+Los objetivos de este trabajo son:
+
+\subsection*{Objetivos teóricos}
+
+\begin{enumerate}[label={[}T\arabic*{]}]
+    \item Probar el Primer Teorema de Incompletitud de Gödel desde una perspectiva computacional.
+    \item Usar para ello programas en Python en lugar de descripciones de máquinas de Turing, probando que esto es posible y riguroso.
+    \item Exponer las consecuencias del teorema de incompletitud en las disciplinas matemática y filosófica.
+    \item Contextualizar el teorema de incompletitud en el ámbito histórico.
+    \item Encontrar la relación entre el teorema de incompletitud con la tesis de Church-Turing.
+    \item Precisar conceptos lógicos relacionados con la teoría de la demostración. En concreto, distinguir entre las nociones de \emph{demostración} y \emph{verdad}, y estudiar las propiedades de los sistemas de demostración.
+\end{enumerate}
+
+\subsection*{Objetivos prácticos}
+
+\begin{enumerate}[label={[}P\arabic*{]}]
+    \item Crear contenido que pueda servir de herramienta de apoyo a la docencia.
+    \item Crear una librería de programas en Python ejecutables por el usuario que permitan guiar las demostraciones que aparecen en este trabajo.
+\end{enumerate}
+
+\endinput

@@ -1,7 +1,7 @@
 """adivina_consistente.py
 
-Usado en la prueba la versión sintáctica del Primer Teorema de Incompletitud: de
-ser el sistema lógico completo, este programa decidiría _AdivinaConsistente_
+Usado en la pruebadel teorema 6.3: de ser el sistema lógico completo, este
+programa decidiría _AdivinaConsistente_
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

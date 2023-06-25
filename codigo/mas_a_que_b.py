@@ -1,6 +1,6 @@
 """mas_a_que_b.py
 
-Este programa decide el problema _MásAQueB_
+Este programa decide el problema _MásAQueB_ (proposición 4.1)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

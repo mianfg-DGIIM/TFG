@@ -1,7 +1,7 @@
 """simula_turing.py
 
 Este programa simula una máquina de Turing. Puedes usarlo con cualquiera de las
-máquinas codificadas en la carpeta `maquinas_turing`
+máquinas de la carpeta `maquinas_turing`
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

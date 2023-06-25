@@ -1,7 +1,6 @@
 """maquina_universal_parada.py
 
-Programa usado como parte de la reducción de _Universal_ a _Parada_ y de
-_Universal_ a _ParadaEnVacío_
+Programa usado para demostrar que _Parada_ no es decidible (proposición 4.6)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

@@ -1,0 +1,53 @@
+% !TeX root = ../libro.tex
+% !TeX encoding = utf8
+
+\setchapterpreamble[c][0.75\linewidth]{%
+	\sffamily
+  \emph{Bien las matemáticas son demasiado grandes para el cerebro humano, o bien la mente del hombre es algo más que una simple máquina.}
+ \begin{flushright} — Kurt Gödel, \cite{Godel1992} \end{flushright}
+% \\[8pt]
+	\par\bigskip
+}
+%\vspace{28pt}
+
+\chapter{Breve reseña histórica}\label{ch:historia}
+
+La historia de este trabajo mezcla dos campos de las matemáticas: la lógica y las ciencias de la computación.
+
+La \emph{lógica} es una de las ramas más antiguas de la filosofía, desarrollada en China, India, Grecia y en el mundo islámico. Las teorías de Aristóteles fueron incluyentes durante milenios, mientras que estoicos como Crisipo de Solos comenzaron el desarrollo de la lógica de predicados. No es hasta la Europa del siglo \textsc{xviii} que se intentan formalizar las operaciones de la lógica mediante los trabajos de Leibniz y Lambert, que permanecen aislados y desconocidos. \cite{Katz2009}
+
+Las \emph{ciencias de la computación} no surgirán hasta más tarde. Aunque una aproximación a la noción de algoritmo ya había sido estudiada por milenios, no fue hasta mediados del siglo \textsc{xix} cuando se diseñaron las primeras formas de dispositivos de computación, con los trabajos de Charles Babbage y Ada Lovelace. \cite {Fuegi2003}
+
+Paralelamente, George Boole y Agusutus De Morgan presentan tratados sistemáticos de lógica, extendiendo la doctrina lógica aristotélica para formar un nuevo campo de estudio de las matemáticas.
+
+Poco más tarde, se descubren fallos en los axiomas de la geometría de Euclides. Además de la independencia del postulado de las paralelas, establecido por Nikolai Lobachevsky en 1826 \cite{Bonola1955}, se descubre que algunos de los teoremas considerados demostrados por Euclides no eran, de hecho, probables a partir de los axiomas. Entre estos teoremas encontramos resultados como que una línea contiene al menos dos puntos, o que dos círculos del mismo radio cuyos centros están a ese radio de distancia deben intersecar. A finales de siglo, Hilbert \cite{Katz2009} publica en \emph{Grundlagen der Geometrie} \textit{(``los fundamentos de la geometría'')} un conjunto de axiomas completos para la geometría, basados en el trabajo previo de Moritz Pasch.
+
+Es en estos momentos cuando Giuseppe Peano publica un conjunto de axiomas para la aritmética (que veremos en el \cref{ch:sistemas-logicos}).\index{aritmética de Peano}
+
+El éxito de Hilbert le lleva motiva a buscar axiomatizaciones completas de otras áreas de las matemáticas, como la teoría de números. Este será el germen de una de las áreas de investigación más populares a principios del siglo \textsc{xx}.
+
+En 1900, este mismo matemático publica su famosa lista de 23 problemas para el nuevo siglo (ahora conocidos como los \emph{problemas de Hilbert}) en el II Congreso Internacional de Matemáticos de París. El segundo de esta lista se pregunta sobre si los axiomas de la aritmética son consistentes. \cite{Hilbert1902}
+
+En el año 1910 Bertrand Russell y Alfred Whitehead publican el primer volumen de \emph{Principia Mathematica} \cite{Whitehead1927}, considerado uno de los trabajos más influyentes del siglo \textsc{xx}.
+
+En 1928, Hilbert reformula su segundo problema en el Congreso Internacional de Bolonia, planteando tres preguntas:
+
+\begin{enumerate}[label=(\arabic*)]
+    \item ¿Son completas las matemáticas? Esto es, ¿puede probarse o no cada sentencia matemática?
+    \item ¿Son consistentes las matemáticas? Esto es, ¿no es posible probar simultáneamente una afirmación y su negación?
+    \item ¿Son decidibles las matemáticas? Esto es, ¿existe un método automático que pueda aplicarse a cualquier afirmación matemática, y que determine si es cierta? Este problema se conoce como \emph{Entscheidungsproblem}.\index{Entscheidungsproblem}
+\end{enumerate}
+
+Exploramos los conceptos de completitud, consistencia y decidibilidad en el \cref{ch:sistemas-logicos}. El objetivo de Hilbert era encontrar un sistema matemático completo y consistente en el que las afirmaciones puedan plantearse con precisión, y donde puedan ser demostradas de forma automática.
+
+En 1931, Kurt Gödel destruye los sueños de Hilbert publicando \emph{Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I} \textit{(``sobre proposiciones formalmente indecidibles de Principia Mathematica y sistemas relacionados'')} \cite{Godel1931}. En este artículo, Gödel prueba la incompletitud de unos ciertos sistemas.\index{teorema de incompletitud} Este resultado establece severas limitaciones en las fundaciones axiomáticas de las matemáticas. Hilbert, sin embargo, no reconoce la importancia de este resultado hasta pasado un tiempo. Poco más tarde, Gödel introduce una de las primeras nociones de definiciones recursivas (las hoy llamadas $\mu$-recursivas).
+
+La primera prueba de la no decidibilidad del \emph{Entscheidungsproblem} la da Alonzo Church en 1936 \cite{Church1936}, usando la noción de función $\lambda$-calculable. En él, Church demuestra la equivalencia con las funciones $\mu$-recursivas de Gödel, y aventura que estas funciones serán las únicas calculables mediante una tesis, que lleva su nombre: la \emph{tesis de Church}.\index{tesis de Church-Turing!tesis de Church}
+
+Un año más tarde, Alan Turing, en su publicación \emph{On Computable Numbers With an Application to the Entscheidungsproblem} \cite{Turing1937} introduce un artefacto matemático que más tarde será conocido como \emph{máquina de Turing},\index{máquina de Turing} introduciendo tres problemas no decidibles: el problema de ``satisfacibilidad'', el problema de ``impresión'' y el \emph{Entscheidungsproblem}. La prueba de Turing difiere de la de Church al introducir la noción de computabilidad mediante una máquina. También aventura que la clase de funciones calculables mediante un algoritmo corresponde a las calculables mediante su máquina, lo que se conoce como \emph{tesis de Turing}.\index{tesis de Church-Turing!tesis de Turing} Aunque esto no se pueda probar, Turing da en su publicación un gran número de argumentos a favor.
+
+Más adelante, Church, Turing y Stephen Kleene \cite{Kleene1971} prueban que los tres modelos de computación introducidos (funciones $\mu$-recursivas, funciones $\lambda$-calculables y máquinas de Turing) son equivalentes, reforzando las tesis ya mencionadas e introduciendo la \emph{tesis de Church-Turing}.\index{tesis de Church-Turing}
+
+El siglo \textsc{xx} vio un desarrollo excepcional de las ciencias de la computación y el nacimiento de la \emph{informática}, llegando a la revolución de los ordenadores personales y de los dispositivos móviles a día de hoy. Todo esto fue posible gracias al trabajo de, entre otros, los matemáticos que mencionamos en esta breve reseña.
+
+\endinput

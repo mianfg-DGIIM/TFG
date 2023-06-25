@@ -1,7 +1,7 @@
 """es_teorema_S.py
 
 Prueba que _EsTeorema_ es decidible para sistemas lógicos sintácticamente
-consistentes
+consistentes (proposición 6.2)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

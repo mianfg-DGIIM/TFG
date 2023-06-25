@@ -1,6 +1,6 @@
 """modifica_adivina_consistente.py
 
-Usado para probar la no decidibilidad de _AdivinaConsistente_
+Usado para probar la no decidibilidad de _AdivinaConsistente_ (proposición 4.8)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

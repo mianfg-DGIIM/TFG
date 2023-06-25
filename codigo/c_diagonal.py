@@ -1,6 +1,7 @@
 """c_diagonal.py
 
 Si _Diagonal_ fuese decidible, este programa decidiría el problema _C-Diagonal_
+(proposición 4.3)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

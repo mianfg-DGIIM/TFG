@@ -1,6 +1,6 @@
 """es_teorema_peano.py
 
-Este programa hace _EsTeoremaPeano_ semidecidible
+Este programa hace _EsTeoremaPeano_ semidecidible (proposición 5.8)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

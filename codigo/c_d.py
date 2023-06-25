@@ -1,6 +1,7 @@
 """c_d.py
 
 Usado para probar que si un programa es decidible, su complementario también
+(proposición 4.4)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

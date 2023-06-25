@@ -1,7 +1,7 @@
 """godel_peano.py
 
 Programa central de la demostración de la versión semántica Primer Teorema de
-Incompletitud (en el caso de ***Peano***)
+Incompletitud para ***Peano*** (teorema 6.1)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

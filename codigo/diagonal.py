@@ -1,6 +1,7 @@
 """diagonal.py
 
 Si _Universal_ fuese decidible, este programa decidiría el problema _Diagonal_
+(proposición 4.3)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

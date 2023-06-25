@@ -1,7 +1,7 @@
 """mas_a_que_b_v2.py
 
-Este programa decide el problema _MásAQueB_, aceptando cualquier palabra
-como entrada (tiene todos los caracteres en el alfabeto)
+Este programa decide el problema _MásAQueB_, aceptando cualquier palabra como
+entrada
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez

@@ -1,7 +1,7 @@
 """godel.py
 
 Programa central de la demostración de la versión semántica Primer Teorema de
-Incompletitud (en el caso general)
+Incompletitud en el caso general (teorema 6.2)
 
 ---
 Autor: Miguel Ángel Fernández Gutiérrez
