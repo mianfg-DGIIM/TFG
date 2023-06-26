@@ -56,3 +56,15 @@ TFG/codigo$ python
 ## Una advertencia
 
 Algunos de los programas no se pueden ejecutar, o no están implementados. Hay más información al respecto en la sección A.2 de la memoria.
+
+## Referencias
+
+* Los programas `c_diagonal.py` y `diagonal.py` son inmediatos de implementar, y son
+prácticamente idénticos a los programas de la figura 3.7 de [1].
+* El programa `es_teorema_peano.py` se basa en el programa de la figura 16.5 de [1].
+* El programa `godel_peano.py` se basa en el programa de la figura 16.8 de [1]. Usamos la nomenclatura en strings de la artimética de Peano que definimos en la tabla 5.2.
+* El programa `ignora_entrada.py` se basa en el programa de la figura 6.9 de [1].
+* El programa `maquina_universal_parada.py` se basa en el primer programa de la figura 7.10 de [1]. Devolvemos el valor `'sí'` para hacer que el programa sea de decisión.
+* El programa `parada_en_vacio_a_es_verdadero_peano.py` se basa en el programa de la figura 16.6 de [1].
+* El programa `suma_binaria.py` usa las expresiones regulares que figuran en el programa `binAd.py` de la librería de código de [1]. Además, se incluye el código correspondiente a las reglas del resto de sistemas lógicos del capítulo, y se reestructura el código para poder evaluar las fórmulas en cualquiera de estos sistemas.
+* El programa `universal_a_parada.py` se basa en el segundo programa de la figura 7.10 de [1]. Reestructuramos el código para hacerlo más legible.
