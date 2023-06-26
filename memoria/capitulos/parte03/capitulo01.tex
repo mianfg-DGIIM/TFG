@@ -12,7 +12,7 @@
 
 \chapter{Sistemas lógicos}\label{ch:sistemas-logicos}
 
-En este capítulo, nos preguntamos por si podemos expresar de forma algorítmica los conceptos de \emph{demostración} y \emph{verdad}. Esto es, nos preguntaremos por si existe una forma automática de resolver teoremas y comprobar afirmaciones. Como explicamos en el \cref{ch:historia}, este fue uno de los ejes centrales de las matemáticas de principios del siglo \textsc{xx}.
+En este capítulo, nos preguntamos por si podemos expresar de forma algorítmica los conceptos de \emph{demostración} y \emph{verdad}. Esto es, preguntamos si existe una forma automática de resolver teoremas y comprobar afirmaciones. Como explicamos en el \cref{ch:historia}, este fue uno de los ejes centrales de las matemáticas de principios del siglo \textsc{xx}.
 
 Las matemáticas consisten en deducir teoremas a partir de una cierta lista de axiomas. Para poder definir precisamente este concepto, recurrimos a los \emph{sistemas formales} (\cref{sec:sistemas-formales}).
 
@@ -20,9 +20,9 @@ Sin embargo, nos interesa especialmente saber si las afirmaciones (o \emph{fórm
 
 Una vez realizada la distinción entre \emph{demostrable} y \emph{verdadero}, nos preguntamos por la relación que estos dos conceptos tienen en un determinado sistema lógico: a partir de esto, comprenderemos en la \cref{sec:solidez-completitud-decidibilidad} los conceptos de \emph{solidez} y \emph{completitud}, y finalmente preguntaremos si podemos comprobar si una fórmula es verdadera de forma algorítmica, pudiendo decir si un sistema lógico es \emph{decidible} o no (véase el \cref{ch:problema-parada}). A lo largo de esta sección introduciremos múltiples ejemplos de sistemas lógicos que reforzarán los conceptos ya mencionados, todos girando en torno a una operación aritmética sencilla.
 
-Finalmente, introduciremos un sistema lógico de especial importancia: la aritmética de Peano (\cref{sec:aritmetica-peano}). Este sistema es capaz de demostrar una gran cantidad de teoremas de la teoría de números, por lo que nos resultará especialmente interesante saber si todas sus afirmaciones verdaderas son demostrables (este es, justamente, el Primer Teorema de Incompletitud, que demostramos en la \cref{sec:primera-aproximacion}). Para ello, encontraremos una forma de traducir el problema de parada (\cref{sec:problema-parada}) en una fórmula de este sistema.
+A continuación, introduciremos un sistema lógico de especial importancia: la aritmética de Peano (\cref{sec:aritmetica-peano}). Este sistema es capaz de demostrar una gran cantidad de teoremas de la teoría de números, por lo que nos resultará especialmente interesante saber si todas sus afirmaciones verdaderas son demostrables (este es, justamente, el Primer Teorema de Incompletitud, que demostramos en el \cref{ch:teorema-incompletitud}). Para ello, encontraremos una forma de traducir el problema de parada (\cref{sec:problema-parada}) en una fórmula de este sistema.
 
-%WIP Finalmente, hablaremos el concepto de \emph{consistencia} en la \cref{sec:consistencia}, que será necesario para poder hablar del Segundo Teorema de Incompletitud en la \cref{sec:teo-incompletitud-2}.
+Finalmente, introduciremos más propiedades de los sistemas introducidos en la \cref{sec:consistencia}.
 
 \section{Sistemas formales}\label{sec:sistemas-formales}
 
@@ -69,7 +69,7 @@ Sea $\textbf{SumaBinaria}=(\mathcal{L}, \mathcal{A}, \mathcal{R})$ el sistema fo
 \end{itemize}
 \end{sistemaformal}
 
-Es importante recalcar la notación usada para describir las reglas de inferencia de \textbf{SumaBinaria}, en concreto, sobre el significado de \textit{compilación maximal}.\index{compilación maximal} Una \textit{compilación maximal}, en este caso, es una subcadena que verifica la expresión regular de $N$ y no puede extenderse en más direcciones. En el caso de la fórmula \texttt{100+11+1001=101}, tenemos cuatro compilaciones maximales de este tipo: \texttt{100}, \texttt{11}, \texttt{1001} y \texttt{101}, en ese orden.
+Es importante recalcar la notación usada para describir las reglas de inferencia de \textbf{SumaBinaria}, en concreto, sobre el significado de \textit{compilación maximal}.\index{compilación maximal} Una compilación maximal, en este caso, es una subcadena que verifica la expresión regular de $N$ y no puede extenderse en más direcciones. En el caso de la fórmula \texttt{100+11+1001=101}, tenemos cuatro compilaciones maximales de este tipo: \texttt{100}, \texttt{11}, \texttt{1001} y \texttt{101}, en ese orden.
 
 Sería posible describir estas reglas mediante expresiones regulares, pero esto haría que la notación fuese menos sencilla e intuitiva.
 
@@ -117,7 +117,7 @@ A continuación, algunos ejemplos de uso de esta función:
 >>> es_teorema('SistemaQueNoExiste', 'lo-que-sea')
 'el sistema no existe'
 \end{lstlisting}
-La prueba de \texttt{1+1+1=111} que realiza \texttt{es\_teorema} es diferente de la del \cref{ej:teorema}. Esto es perfectamente posible: un teorema puede tener diversas demostraciones. De hecho, este hecho se evidencia de la propia \cref{def:teorema-demostracion}: una fórmula es un teorema si ``\textit{existe} una demostración''.
+La prueba de \texttt{1+1+1=111} que realiza \texttt{es\_teorema} es diferente de la del \cref{ej:teorema}. Esto es perfectamente posible: un teorema puede tener diversas demostraciones. Este hecho se evidencia de la propia \cref{def:teorema-demostracion}: una fórmula es un teorema si ``\textit{existe} una demostración''.
 \section{Sistemas lógicos}\label{sec:sistemas-logicos}
 
 Como dice el propio nombre, el sistema \textbf{SumaBinaria} pretende comprobar fórmulas de la suma binaria. De este modo, una palabra como \texttt{11} representa el número $3$, y una fórmula como \texttt{1+1+1=11} representa que $1+1+1=3$. Observa que esto nos permite reconocer si una fórmula de \textbf{SumaBinaria} es verdadera: simplemente la interpretamos como si se tratase de una fórmula aritmética, y la declaramos como cierta si es una fórmula aritmética correcta. De este modo, fórmulas como \texttt{10+1=11} son verdaderas, mientras que otras como \texttt{11+1=10} no lo son.
@@ -144,11 +144,11 @@ La asignación de verdad no debe ser necesariamente computable (\cref{def:decidi
 
 Una vez que incorporamos a un sistema formal una asignación de verdad, podemos decir cuándo una fórmula es verdadera. Precisamos esto en la definición siguiente:
 
-\begin{definicion}[Fórmula verdadera]
-\index{fórmula!verdadera}Dado un sistema lógico $\mathcal{G}=(\mathcal{S}, \mathcal{I})$ con $\mathcal{S}=(\mathcal{L}, \mathcal{A}, \mathcal{R})$, decimos que la fórmula $\phi \in \mathcal{S}$ es \emph{verdadera} si $\mathcal{I}(\phi)$ está bien definido y es $\mathcal{I}(\phi)=\text{verdadero}$.
+\begin{definicion}[Fórmula verdadera y fórmula falsa]
+\index{fórmula!verdadera}Dado un sistema lógico $\mathcal{G}=(\mathcal{S}, \mathcal{I})$ con $\mathcal{S}=(\mathcal{L}, \mathcal{A}, \mathcal{R})$, decimos que la fórmula $\phi \in \mathcal{S}$ es \emph{verdadera} si $\mathcal{I}(\phi)$ está bien definido y es $\mathcal{I}(\phi)=\text{verdadero}$. En caso contrario, decimos que la fórmula es \emph{falsa}.
 \end{definicion}
 
-Veamos ejemplos de fórmulas verdaderas y no verdaderas para \textbf{SumaBinariaLógico}. A las fórmulas no verdaderas las llamamos \emph{falsas}.
+Veamos ejemplos de fórmulas verdaderas y falsas para \textbf{SumaBinariaLógico}.
 
 \begin{ejemplo}\label{ej:suma-binaria-logico}
 Sea \texttt{1+1+1=11} una fórmula de \textbf{SumaBinariaLógico}. Claramente, esta fórmula es verdadera dado que la siguiente operación aritmética es cierta para el sistema de numeración binario:
@@ -210,7 +210,7 @@ La fórmula es verdadera dado que $1+10=11$ es una operación correcta en la sum
 >>> es_verdadero('SumaBinariaLógicoRestringido', '1+10=11')
 True
 \end{lstlisting}
-Es importante notar que la función \texttt{es\_teorema} no puede demostrar que una fórmula no es demostrable debido a la forma en la que lo hemos diseñado. El código anterior no prueba que \texttt{1+10=11} no sea un teorema -- la afirmación de este ejemplo sí.
+Es importante notar que la función \texttt{es\_teorema} no puede demostrar que una fórmula no es demostrable debido a la forma en la que la hemos diseñado. El código anterior no prueba que \texttt{1+10=11} no sea un teorema -- la prueba de este ejemplo sí.
 \end{ejemplo}
 
 \section{Solidez, completitud y decidibilidad}\label{sec:solidez-completitud-decidibilidad}
@@ -229,8 +229,6 @@ Hemos encontrado sistemas lógicos en los que hay fórmulas verdaderas y no demo
 Veamos si los sistemas lógicos que hemos presentado hasta ahora son sólidos y completos. Un resumen de todos los resultados se puede ver en la \cref{tab:sistemas-logicos}.
 
 Probar que \textbf{SumaBinariaLógico} es sólido y completo es tedioso: por eso dejamos las demostraciones en el \cref{ap:demostraciones-adicionales}.
-
-%Un sistema lógico es \emph{consistente} si no puede producir una contradicción, es decir, dada una fórmula $\phi$, no es posible que $\phi$ y $\neg \phi$ sean ambos teoremas. En caso contrario, decimos que es \emph{inconsistente}.
 
 \begin{proposicion}
 El sistema lógico \normalfont{\textbf{SumaBinariaLógico}} es sólido y completo.
@@ -336,7 +334,7 @@ $$\text{\textsc{EsVerdadero}}_\mathcal{G}$$
 
 Para cada sistema lógico $\mathcal{G}$ obtenemos un problema de decisión distinto. Una vez definido este problema, es natural definir la decidibilidad de un sistema lógico mediante la decidibilidad del problema.
 
-\begin{definicion}[Decibilidad de un sistema lógico]\label{def:decidibilidad-sl}
+\begin{definicion}[Decidibilidad de un sistema lógico]\label{def:decidibilidad-sl}
 \index{sistema lógico!decidible}\index{decidibilidad!de un sistema lógico}Decimos que un sistema lógico $\mathcal{G}$ es \emph{decidible} si el problema de decisión $\text{\textsc{EsVerdadero}}_\mathcal{G}$ es decidible.
 \end{definicion}
 
@@ -396,7 +394,7 @@ Las reglas de inferencia incluyen fórmulas lógicas clásicas, tales como el \e
 En este sistema podemos producir fórmulas sobre aritmética muy interesantes. Vemos algunas de ellas a continuación.
 \begin{ejemplo}\label{ej:formulas-peano}
 Algunas fórmulas de \textbf{Peano} (expresadas en lenguaje natural):\footnote{Se pueden traducir sencillamente a aritmética de Peano. Por ejemplo, (F2) es $\forall x : x^2+1>0$, y (F6) es \linebreak $n>3 \wedge \neg \exists x,y,z : x^n+y^n=z^n$. Aunque las operaciones de comparación y exponenciación no estén inicialmente definidas en \textbf{Peano}, podemos definirlas mediante fórmulas del sistema.}
-\begin{enumerate}[label=(PF\arabic*)]
+\begin{enumerate}[label=(PF\arabic*),wide = 0pt,widest={10}, leftmargin =*]
     \item $1+1=2$.
     \item Para todo entero $x$, es $x^2 + 1 > 0$.
     \item $2$ y $5$ son divisores de $30$.
@@ -415,11 +413,11 @@ Para poder trabajar con \textbf{Peano} en programas en Python, deberemos encontr
 \begin{tabular}{@{}ccl@{}}
 \toprule
 Símbolo & Codificación & Descripción \\ \midrule
-$\neg(p)$ & \texttt{NOT (p)} & Negación \\
-$(p) \vee (q)$ & \texttt{(p) OR (q)} & Disyunción \\
-$\forall x : p$ & \texttt{FORALL (x) : (p)} & Cuantificador universal \\
+$\neg(p)$ & \texttt{NO (p)} & Negación \\
+$(p) \vee (q)$ & \texttt{(p) Ó (q)} & Disyunción \\
+$\forall x : p$ & \texttt{PARA TODO (x) : (p)} & Cuantificador universal \\
 $S(a)$ & \texttt{S(a)} & Sucesor \\
-$\exists x : p$ & \texttt{EXISTS (x) : (p)} & Cuantificador existencial \\
+$\exists x : p$ & \texttt{EXISTE (x) : (p)} & Cuantificador existencial \\
 $(p) \Rightarrow (q)$ & \texttt{(p)}\texttt{ }\texttt{=>}\texttt{ }\texttt{(q)} & Implicación \\
 $(p) \iff (q)$ & \texttt{(p)}\texttt{ }\texttt{<=>}\texttt{ }\texttt{(q)} & Coimplicación \\
 $(p)=(q)$ & \texttt{(p) = (q)} & Igualdad \\\bottomrule
@@ -432,7 +430,7 @@ $(p)=(q)$ & \texttt{(p) = (q)} & Igualdad \\\bottomrule
 % ====================
 Por ejemplo, consideremos la afirmación ``no existen enteros $x$ e $y$ de modo que $2x=y$ e $y=3$'', que puede representarse en \textbf{Peano} como $\neg\exists x, y : S(S(0))*x = y \wedge y = S(S(S(0)))$ y que admite la siguiente codificación en \emph{string}:
 \begin{lstlisting}[numbers=none,frame=none]
-NOT EXISTS x,y : S(S(0))*x = y AND y = S(S(S(0)))
+NO EXISTE x,y : S(S(0))*x = y Y y = S(S(S(0)))
 \end{lstlisting}
 Las fórmulas de \textbf{Peano}, por ser de un sistema lógico, pueden ser verdaderas o falsas. En el \cref{ej:formulas-peano}, las primeras seis fórmulas (de (PF1) a (PF6)) son verdaderas,\footnote{El último teorema de Fermat tiene especial relevancia histórica: fue formulado en 1637 y no fue resuelto hasta el año 1995 por Andrew Wiles. \cite{Wiles1995}} mientras que la última (la fórmula (PF7)) es falsa.
 
@@ -440,14 +438,14 @@ Para poder probar si una fórmula de \textbf{Peano} es verdadera, necesitamos qu
 
 \vspace*{8pt}
 
-Una vez que aceptamos que la aritmética de Peano puede expresar afirmaciones matemáticas como las del \cref{ej:formulas-peano}, podemos continuar para expresar las salidas de un programa en \textbf{Peano}. La siguiente proposición muestra cómo hacerlo para un conjunto concreto de fórmulas sobre los programas que necesitaremos más adelante.
+Una vez que aceptamos que la aritmética de Peano puede expresar afirmaciones matemáticas como las del \cref{ej:formulas-peano}, podemos continuar para expresar las salidas de un programa en \textbf{Peano}. La siguiente proposición muestra cómo hacerlo para un conjunto concreto de fórmulas sobre los programas que necesitaremos más adelante. \cite{MacCormick2018}
 
 \begin{proposicion}\label{prop:parada-a-peano}
-Sea $P$ un programa de ordenador (o una máquina de Turing).\footnote{Probamos la equivalencia en el \cref{teo:equivalencia}.} La afirmación $S$ dada por
+Sea $P$ un programa de ordenador (o una máquina de Turing).\footnote{Probamos la equivalencia en el \cref{teo:equivalencia}.} La afirmación $H$ dada por
 \begin{adjustwidth}{30pt}{}
     ``$P$ para con entrada vacía''
 \end{adjustwidth}
-puede ser traducida en una fórmula $\phi_S$ equivalente en \normalfont{\textbf{Peano}}. (En este caso, con ``equivalente'' nos referimos a que $S$ es verdadera si y solo si $\phi_S$ es verdadera.)
+puede ser traducida en una fórmula $\phi_H$ equivalente en \normalfont{\textbf{Peano}}. (En este caso, con ``equivalente'' nos referimos a que $H$ es verdadera si y solo si $\phi_H$ es verdadera.)
 \end{proposicion}
 \begin{proof}
 Haremos un boceto de la prueba, dado que realizarla con un rigor estricto sería largo y tedioso.
@@ -456,7 +454,7 @@ En este caso, es más sencillo probar esto mediante máquinas de Turing. Recuerd
 $$
 q_R\;:\;X\:X\:\fbox{$X$}\:X\:a \;\;\;\; \longrightarrow \;\;\;\; \texttt{q\_R : X X \^{}X X a}
 $$
-Del mismo modo, podemos codificar los \emph{strings} mediante números en un \emph{string} binario (una palabra del alfabeto $\{\texttt{0}, \texttt{1}\}$. Así, es razonable asumir que la configuración de una máquina de Turing puede ser representada por un número en \emph{string} binario. La función de transición de la máquina de Turing toma una de estas configuraciones en binario como \emph{string} de entrada, y tiene como salida la nueva configuración, codificada de la misma forma. Desde este punto de vista, la función de transición es una función de enteros en enteros. Llamaremos a esta función $Paso$, dado que evaluar esta función una sola vez es equivalente a un paso de cálculo en la máquina de Turing. Observa que la función $Paso$ puede escribirse mediante aritmética de Peano: no es más que una función simple que depende en unos pocos bits de entrada.
+Del mismo modo, podemos codificar los \emph{strings} mediante números en un \emph{string} binario (una palabra del alfabeto $\{\texttt{0}, \texttt{1}\}$. Así, es razonable asumir que la configuración de una máquina de Turing puede ser representada por un número en \emph{string} binario. La función de transición de la máquina de Turing toma una de estas configuraciones en binario como \emph{string} de entrada, y tiene como salida la nueva configuración, codificada de la misma forma. Desde este punto de vista, la función de transición es una función de enteros en enteros. Llamaremos a esta función $Paso$, dado que evaluar esta función una sola vez es equivalente a un paso de cálculo en la máquina de Turing. Observa que la función $Paso$ puede escribirse mediante aritmética de Peano: no es más que una función simple que depende de unos pocos bits de entrada.
 
 Supongamos que $c_0$ es el entero que representa la configuración inicial de la máquina. Tras un paso de cálculo, la configuración de la máquina será $Paso(c_0)$, y tras dos pasos, será $Paso(Paso(c_0))$. Podemos abreviar esto como $Paso^2(c_0)$. Tras $n$ pasos, la configuración de la máquina será $Paso^n(c_0)$. Es importante destacar que cada una de las configuraciones puede ser expresada mediante aritmética de Peano.
 
@@ -476,13 +474,13 @@ De este modo, hemos probado que $Parado(Paso^n(c_0))$ es una fórmula de \textbf
 \begin{adjustwidth}{30pt}{}
     ``Existe un natural $n$ de modo que $Parado(Paso^n(c_0))=1$''
 \end{adjustwidth}
-también puede traducirse a una fórmula de \textbf{Peano}. Esta afirmación es equivalente a las anteriores, y es esta fórmula justamente la $\phi_S$ que buscamos.
+también puede traducirse a una fórmula de \textbf{Peano}. Esta afirmación es equivalente a las anteriores, y es esta fórmula justamente la $\phi_H$ que buscamos.
 \end{proof}
 
-De la prueba anterior, es evidente que la construcción de $\phi_S$ a partir de $S$ se realiza de una forma completamente algorítmica, que podría en principio ser implementada por un programa en Python. Sea tal programa \texttt{parada\_a\_peano.py}. En el código de este trabajo no se proporciona un programa que implemente esto, ya que hacerlo es una tarea compleja.\footnote{Existen repositorios de código que realizan esta tarea. Un ejemplo podemos encontrarlo en \cite{Henderson2013}.} Sin embargo, en el resto de este capítulo, importaremos la función \emph{main} \texttt{parada\_a\_peano} cuando sea necesario.
+De la prueba anterior, es evidente que la construcción de $\phi_H$ a partir de $H$ se realiza de una forma completamente algorítmica, que podría en principio ser implementada por un programa en Python. Sea tal programa \texttt{parada\_a\_peano.py}. En el código de este trabajo no se proporciona un programa que implemente esto, ya que hacerlo es una tarea compleja.\footnote{Existen repositorios de código que realizan esta tarea. Un ejemplo podemos encontrarlo en \cite{Henderson2013}.} Sin embargo, en el resto de este capítulo, importaremos la función \emph{main} \texttt{parada\_a\_peano} cuando sea necesario.
 
 Definiremos a continuación dos problemas de decisión importantes: \textsc{EsTeoremaPeano} y \textsc{EsVerdaderoPeano}.\footnote{Observa que $\text{\textsc{EsTeoremaPeano}} = \text{\textsc{EsTeorema}}_\textbf{Peano}$ y $\text{\textsc{EsVerdaderoPeano}} = \text{\textsc{EsVerdadero}}_\textbf{Peano}$ (véanse los \cref{prob:es-teorema,prob:es-verdadero}).}
-
+\vfill
 \vspace{8pt}
 % ====================
 \begin{problema}
@@ -498,6 +496,8 @@ $$\text{\textsc{EsTeoremaPeano}}$$
 \label{prob:es-teorema-peano}
 \end{problema}
 % ====================
+\vfill
+\pagebreak
 % ====================
 \begin{problema}
 \begin{framed}
@@ -513,7 +513,7 @@ $$\text{\textsc{EsVerdaderoPeano}}$$
 \end{problema}
 % ====================
 
-Dada una afirmación $\phi$ en \textbf{Peano}, los problemas anteriores preguntan si $\phi$ es demostrable y/o verdadera. Resulta que ambos problemas son no decidibles. La no decidibilidad de \textsc{EsVerdaderoPeano} nos indica, mediante la \cref{def:decidibilidad-sl}, que \textbf{Peano} no es decidible (como ya adelantamos en la \cref{tab:sistemas-logicos}).
+Dada una afirmación $\phi$ en \textbf{Peano}, los problemas anteriores preguntan si $\phi$ es demostrable y/o verdadera. Resulta que ambos problemas son no decidibles. La no decidibilidad de \textsc{EsVerdaderoPeano} nos indica, mediante la \cref{def:decidibilidad-sl}, que \textbf{Peano} no es decidible (como ya adelantamos en la \cref{tab:sistemas-logicos}). \cite{MacCormick2018}
 
 \begin{proposicion}\label{prop:es-verdadero-peano-no-decidible}
 \normalfont{\textbf{Peano}} es no decidible.
@@ -521,7 +521,7 @@ Dada una afirmación $\phi$ en \textbf{Peano}, los problemas anteriores pregunta
 \begin{proof}
 Procederemos mediante la reducción
 $$\textsc{ParadaEnVacío}\;\text{(\cref{prob:parada-en-vacio})} \:\leq_T \textsc{EsVerdaderoPeano}.$$
-Probaremos que esta reducción se implementa en el \cref{lst:parada-en-vacio-a-es-verdadero-peano}. La función \emph{main} (\cref{line:es-teorema-peano-main}) tiene como entrada un programa $P$. Usando la \cref{prop:parada-a-peano}, convertimos la afirmación $S=\text{``$P$ para con entrada vacía''}$ en una fórmula $\phi_S$ equivalente en la aritmética de Peano (\cref{line:parada-en-vacio-a-es-verdadero-peano-para-en-peano}). Es importante notar que \texttt{parada\_a\_peano} es una función computable, como comentamos anteriormente. Claramente, $P$ para si y solo si $\phi_S$ es verdadero, lo que demuestra la reducción. El resultado se sigue de la \cref{prop:decidible-reduccion}.
+Probaremos que esta reducción se implementa en el \cref{lst:parada-en-vacio-a-es-verdadero-peano}. La función \emph{main} (\cref{line:es-teorema-peano-main}) tiene como entrada un programa $P$. Usando la \cref{prop:parada-a-peano}, convertimos la afirmación $H=\text{``$P$ para con entrada vacía''}$ en una fórmula $\phi_H$ equivalente en la aritmética de Peano (\cref{line:parada-en-vacio-a-es-verdadero-peano-para-en-peano}). Es importante notar que \texttt{parada\_a\_peano} es una función computable, como comentamos anteriormente. Claramente, $P$ para si y solo si $\phi_H$ es verdadero, lo que demuestra la reducción. El resultado se sigue de la \cref{prop:decidible-reduccion}.
 \end{proof}
 
 \begin{lstlisting}[language=Python, caption=\lstinline{parada_en_vacio_a_es_verdadero_peano.py},label={lst:parada-en-vacio-a-es-verdadero-peano}]
@@ -539,14 +539,14 @@ def parada_en_vacio_a_es_verdadero_peano(programa):|\label{line:es-teorema-peano
 \begin{proof}
 De forma similar a la \cref{prop:es-verdadero-peano-no-decidible}, usaremos la reducción \linebreak $\textsc{ParadaEnVacío} \leq_T \textsc{EsVerdaderoPeano}$.
 
-Antes de esto, debemos apreciar una propiedad de las afirmaciones de la forma ``$P$ para con entrada vacía''. Llamemos a tal afirmación $H(P)$,\footnote{Usamos $H$ del inglés \emph{halting}.} y mostraremos que para cualquier programa $P$, si $\phi_{H(P)}$ es verdadera en \textbf{Peano}, entonces es un teorema en \textbf{Peano}. Es importante notar que este no es el caso para todas las fórmulas (si no, \textbf{Peano} sería completo).
+Antes de esto, debemos apreciar una propiedad de las afirmaciones de la forma \emph{``$P$ para con entrada vacía''}. Llamemos a tal afirmación $H(P)$,\footnote{Usamos $H$ del inglés \emph{halting}.} y mostraremos que para cualquier programa $P$, si $\phi_{H(P)}$ es verdadera en \textbf{Peano}, entonces es un teorema en \textbf{Peano}. Es importante notar que este no es el caso para todas las fórmulas (si no, \textbf{Peano} sería completo).
 
 El motivo por el que esto ocurre justamente para las fórmulas $\phi_{H(P)}$ es porque, simplemente, debemos simular $P$ hasta que pare, algo que podemos definir mediante aritmética de Peano: simplemente calculamos $Parado(Paso^n(c_0))$ para cada $n\in\mathbb{N}$ de forma incremental, hasta que el resultado sea $1$.
 
 Ahora podemos realizar la reducción usando el \cref{lst:parada-en-vacio-a-es-verdadero-peano} sustituyendo en la \cref{line:parada-en-vacio-a-es-verdadero-peano-es-verdadero-peano} a \texttt{es\_verdadero\_peano} por \texttt{es\_teorema\_peano}. Como las fórmulas verdaderas del tipo $\phi_{H(P)}$ son teoremas, la reducción es correcta.
 \end{proof}
 
-El caso de \textsc{EsTeoremaPeano} es menos grave, pues el problema es, de hecho, semidecidible (ver \cref{def:semidecidible}). Esto quiere decir que podemos escribir un programa que compruebe si una fórmula es un teorema (en caso de que la fórmula no sea un teorema, el programa no tiene por qué parar).
+El caso de \textsc{EsTeoremaPeano} es menos grave, pues el problema es, de hecho, semidecidible (ver \cref{def:semidecidible}). Esto quiere decir que podemos escribir un programa que compruebe si una fórmula es un teorema (en caso de que la fórmula no sea un teorema, el programa no tiene por qué parar). \cite{MacCormick2018}
 
 \begin{proposicion}\label{prop:es-teorema-peano-semidecidible}
 \textsc{EsTeoremaPeano} es semidecidible.
@@ -616,62 +616,6 @@ De este modo, decimos que un sistema lógico $\mathcal{G}$ es sintácticamente c
 
 Las definiciones que hemos hecho hasta este punto (sin incluir la de decidibilidad) se encuentran resumidas en la \cref{fig:definiciones-logica}.
 
-
-%Cuando Gödel se propuso a demostrar su célebre resultado de incompletitud \cite{Godel1931}, se dio cuenta que no era suficiente que el sistema formal fuese consistente, pues era posible probar combinaciones infinitas de secuencias que son contradictorias \cite{Kleene1971}. Es por ello por lo que introdujo la $\omega$\emph{-consistencia}.
-
-%Un sistema lógico no consistente es de poca utilidad, pues en él podemos demostrar cualquier cosa. Esto es lo que se conoce como \emph{principio de explosión} (también conocido como \emph{ex falso quodlibet}, ``de lo falso se sigue cualquier cosa'').
-
-%\vspace{8pt}
-%\begin{figure}[H]
-%\begin{framed}
-%El \emph{principio de explosión} funciona como sigue: consideremos dos afirmaciones contradictorias: $\phi$ y $\neg\phi$. Supongamos que ambas afirmaciones son verdaderas. Entonces, podemos demostrar cualquier otra afirmación $\psi$ usando el siguiente argumento:
-%\begin{enumerate}
-%    \item Sabemos que $\phi$ es cierto (lo asumimos).
-%    \item Del mismo modo, sabemos que $\neg\phi=$ es cierto.
-%    \item Por tanto, el enunciado $\phi\vee\psi$ debe ser verdadero, pues la primera parte de la disyunción, $\phi$, es verdadera.
-%    \item Sin embargo, como $\neg\phi$ es cierto, la primera parte de la disyunción $\phi$ ha de ser falsa, y por lo tanto la segunda parte $\psi$ debe ser verdadera para que $\phi\vee\psi$ sea verdadera. Es decir, $\psi$ es verdadero.
-%
-%    \vspace*{-8pt}
-%\end{enumerate}
-
-%Formalmente, podemos escribir el principio de explosión como:
-%$$\phi_1 \wedge \neg\phi_1 \vdash \phi_2$$
-%\end{framed}
-%\vspace{-8pt}
-%\caption{El principio de explosión}
-%\label{fig:explosion}
-%\end{figure}
-
-%\begin{definicion}[Interpretar el lenguaje de la aritmética]\label{def:lenguaje-aritmetica}
-%Sea $\mathcal{G}$ un sistema lógico. Decimos que $\mathcal{G}$ \emph{interpreta el lenguaje de la aritmética} si hay una traducción de las fórmulas de la aritmética a $\mathcal{G}$ de modo que $\mathcal{G}$ puede probar los axiomas principales de la teoría de números.
-%\end{definicion}
-
-%\begin{definicion}[$\omega$-consistencia]\label{def:omega-consistencia}
-%Sea $\mathcal{S}$ un sistema formal que interpreta el lenguaje de la aritmética, esto es, en el que hay una traducción de las fórmulas de la aritmética al lenguaje de $\mathcal{S}$ de modo que $\mathcal{S}$ sea capaz de probar los axiomas básicos de la teoría de números.
-
-%Sea $x$ una variable y $A(x)$ una fórmula cerrada de $\mathcal{S}$, entonces decimos que $\mathcal{S}$ es $\omega$\emph{-inconsistente} si $\mathcal{S}$ demuestra
-%$$A(0), A(1), A(2), ...$$
-%pero también existe un cierto número natural $n$ de modo que $A(n)$ no sea un teorema.
-
-%$\mathcal{S}$ es $\omega$\emph{-consistente} si no es $\omega$-inconsistente.
-%\end{definicion}
-
-%La $\omega$\emph{-consistencia} es una propiedad sintáctica. Como podíamos anticipar, esta propiedad es una propiedad más fuerte que la consistencia sintáctica. El siguiente resultado se prueba en \cite{Kleene1971}.
-
-%\begin{proposicion}
-%Todo sistema formal $\omega$-consistente es sintácticamente consistente.
-%\end{proposicion}
-
-%No entraremos en profundidad en el concepto de $\omega$-consistencia, pues queda fuera del alcance de este trabajo. Simplemente, tendremos en cuenta que es una propiedad de los sistemas formales más restrictiva que la consistencia sintáctica.
-
-%Del mismo modo que hemos visto que un sistema $\omega$-consistente es consistente, podemos ver que la solidez es una propiedad más restrictiva que la consistencia semántica.
-
-%\begin{proposicion}
-%Todo sistema lógico sólido es semánticamente consistente.
-%\end{proposicion}
-%\begin{proof}
-%Debemos probar que $\phi\wedge\neg\phi$ es falso.
-%\end{proof}
 \vfill
 % ====================
 \begin{figure}[H]

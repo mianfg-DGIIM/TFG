@@ -69,56 +69,9 @@ Sea $P$ un programa en Python respecto a un sistema informático $C$. Sea $M$ la
 \end{definicion}
 % ====================
 
-% ====================
-%\begin{nota*}\label{nota:multiples-parametros}
-
-%NOT USED
-
-%Para ello, basta definir las funciones $MAU$ y $UAM$.
-
-%En primer lugar, la función $MAU$ (de ``{Múltiple A Uno}''), tiene como entrada $n$ cadenas de caracteres, $I_1, I_2, ..., I_n$, y produce como salida una única cadena de caracteres que surge de unir las cadenas $I_i$ mediante un separador \texttt{SEP}, que es también una cadena de caracteres. Usando $+$ como operador de concatenación, tenemos que:
-%$$
-%    MAU(I_1, I_2, ..., I_n; \texttt{SEP}) = I_1 + \sum_{i=2}^{n}\left(\texttt{SEP} + I_i\right) = I_1 + \texttt{SEP} + I_2 + \texttt{SEP} + ... + \texttt{SEP} + I_n
-%$$
-%Es importante que el separador \texttt{SEP} no se encuentre en ninguna de las entradas $I_i$, para que la ejecución de la función \texttt{UAM} no de lugar a ambigüedad.
-
-%Definimos $UAM$ (de ``{Uno A Múltiple}''), que tiene como entrada una cadena de caracteres $I$ y un separador \texttt{SEP}, y como salida las cadenas de caracteres que surgen de separar $I$ usando el separador \texttt{SEP} como delimitador.
-
-%Las funciones $MAU$ y $UAM$ están implementadas en la librería \texttt{utilidades}.
-
-%Supongamos que tenemos una función \texttt{multiple} con $n$ entradas. Entonces, podemos convertirla en una función \emph{main}, \texttt{multiple\_main}quisiésemos implementar una función \texttt{multiple}, con múltiples entradas, basta definir:
-
-%\begin{lstlisting}[language=Python, caption=\lstinline{una_a_múltiples_entradas.py},label={lst:una-a-múltiples-entradas}]
-%import utilidades
-
-%def multiple(entrada):
-%    multiples_entradas = utilidades.UAM(entrada)
-%    return funcion_multiple(*entrada)
-
-%def funcion_multiple(entrada_1, entrada_2, ..., entrada_n):
-%    # cualquier función
-%\end{lstlisting}
-
-%Y podremos llamar la función con
-%WIP hacerlo con \texttt{mult\_a\_uno} y \texttt{uno\_a\_mult}
-%$$
-%    I_1 + \sum_{i=2}^{n}\left(\texttt{SEP} + I_i\right) = I_1 + \texttt{SEP} + I_2 + \texttt{SEP} + ... + \texttt{SEP} + I_n
-%$$
-
-%\begin{lstlisting}[language=Python, caption=\lstinline{una_a_múltiples_entradas.py},label={lst:una-a-múltiples-entradas}]
-%def una_a_múltiples_entradas(una_entrada):
-%    múltiples_entradas = una_entrada.split(SPLIT_CHAR)
-%    return funcion_múltiples_entradas(*múltiples_entradas)
-
-%def funcion_múltiples_entradas(entrada_1, entrada_2, ..., entrada_n):
-%    # cualquier función
-%\end{lstlisting}
-%\end{nota*}
-% ====================
-
 En otras palabras, la salida de un programa es la cadena de caracteres devuelta por su función \emph{main} en caso de que lo haga, y no estará definida en caso contrario.
 
-Al definir los programas en Python que usaremos en este trabajo, nos centramos en el uso de cadenas de caracteres (también llamadas \emph{strings})\index{string} como entrada y salida, y evitamos el uso de otros objetos de Python que no sean \emph{strings}. Inicialmente, podemos pensar que esto impone una limitación sobre los programas en Python que podemos escribir, pero esto realmente no es así. Para ello, basta observar que que cualquier objeto en Python puede ser codificado debidamente mediante una cadena de caracteres. Existen liberías nativas que permiten hacer esto, como \lstinline{pickle}.\footnote{La librería \lstinline{pickle} puede codificar y descodificar una gran variedad de tipos de datos, incluyendo todos los nativos. Tiene algunas limitaciones para objetos más complejos pero, dado que todos los objetos se pueden reducir estos tipos de datos, podemos afirmar que cualquier objeto puede ser codificado. \cite{Lutz2013}} Un ejemplo de esto se muestra en el \cref{lst:funcion-con-objeto-codificado}. La función \texttt{funcion\_con\_objeto\_codificado} es una función \emph{main}.
+Al definir los programas en Python que usaremos en este trabajo, nos centramos en el uso de cadenas de caracteres (también llamadas \emph{strings})\index{string} como entrada y salida, y evitamos el uso de otros objetos de Python que no sean \emph{strings}. Inicialmente, podemos pensar que esto impone una limitación sobre los programas en Python que podemos escribir, pero esto realmente no es así. Para ello, basta observar que cualquier objeto en Python puede ser codificado debidamente mediante una cadena de caracteres. Existen liberías nativas que permiten hacer esto, como \lstinline{pickle}.\footnote{La librería \lstinline{pickle} puede codificar y descodificar una gran variedad de tipos de datos, incluyendo todos los nativos. Tiene algunas limitaciones para objetos más complejos pero, dado que todos los objetos se pueden reducir estos tipos de datos, podemos afirmar que cualquier objeto puede ser codificado. \cite{Lutz2013}} Un ejemplo de esto se muestra en el \cref{lst:funcion-con-objeto-codificado}. La función \texttt{funcion\_con\_objeto\_codificado} es una función \emph{main}.
 \vspace{8pt}
 % ====================
 \begin{lstlisting}[language=Python, caption=\lstinline{funcion_con_objeto_codificado.py},label={lst:funcion-con-objeto-codificado}]
@@ -148,7 +101,6 @@ En la línea 1 importamos la librería \texttt{pickle}, que incorpora dos funcio
 En resumen, hemos visto cómo la condición de ser SISO para un programa en Python no es realmente una restricción. \label{lab:siso-no-restr} Sin embargo, esta clase de problemas nos resultará muy conveniente, como veremos más adelante.
 
 % ====================
-
 
 \section{Máquinas de Turing}\label{sec:maquinas-turing}
 
@@ -192,7 +144,7 @@ Una \emph{máquina de Turing} es una séptupla \linebreak $M=(Q, A, B, \delta, q
 \end{definicion}
 % ====================
 
-La definición anterior es un tanto abstracta, y podemos visualizarla mejor en la \cref{fig:maquina-turing}. En ella, vemos las tres partes ``físicas'' de la máquina: la \emph{unidad de control},\index{unidad de control} el \emph{cabezal}\index{cabezal} y la \emph{cinta}\index{cinta}. La cinta contiene \emph{casillas}, cada una de las cuales puede almacenar un símbolo. Inicialmente, los símbolos son los del alfabeto de entrada, pero conforme la máquina va ejecutando instrucciones se puede usar el alfabeto de trabajo. Estos símbolos incluyen un símbolo blanco, denotado $\Vtextvisiblespace$, y se encuentran en todas las posiciones de la cinta que no codifican la palabra de entrada. El cabezal puede moverse por la cinta a la izquierda y a la derecha (o quedarse en el sitio), informando a la unidad de control de los símbolos que ve. El símbolo al que apunta el cabezal lo llamaremos \emph{símbolo escaneado}.\index{símbolo!escaneado} El cabezal puede reemplazar el símbolo escaneado por cualquier otro del alfabeto de trabajo, incluyendo el símbolo blanco. La unidad de control manda \emph{transiciones} al cabezal, y cambia entre los diferentes estados en función de los símbolos leídos por el cabezal.
+La definición anterior es un tanto abstracta, y podemos visualizarla mejor en la \cref{fig:maquina-turing}. En ella, vemos las tres partes ``físicas'' de la máquina: la \emph{unidad de control},\index{unidad de control} el \emph{cabezal}\index{cabezal} y la \emph{cinta}\index{cinta}. La cinta contiene \emph{casillas}, cada una de las cuales puede almacenar un símbolo. Inicialmente, los símbolos son los del alfabeto de entrada, pero conforme la máquina va ejecutando instrucciones se puede usar el alfabeto de trabajo. Estos símbolos incluyen un símbolo blanco, denotado $\Vtextvisiblespace\:$, y se encuentran en todas las posiciones de la cinta que no codifican la palabra de entrada. El cabezal puede moverse por la cinta a la izquierda y a la derecha (o quedarse en el sitio), informando a la unidad de control de los símbolos que ve. El símbolo al que apunta el cabezal lo llamaremos \emph{símbolo escaneado}.\index{símbolo!escaneado} El cabezal puede reemplazar el símbolo escaneado por cualquier otro del alfabeto de trabajo, incluyendo el símbolo blanco. La unidad de control manda \emph{transiciones} al cabezal, y cambia entre los diferentes estados en función de los símbolos leídos por el cabezal.
 
 % ====================
 \begin{figure}[H]
@@ -222,7 +174,7 @@ Representaremos una configuración mediante $$q\;:\;w$$ con uno de los símbolos
 \end{definicion}
 % ====================
 
-Lo único que nos queda es precisar la noción de ``transición'' que comentamos anteriormente. En cada paso, aplicamos una transición y cambiamos la configuración de la máquina. Esto es lo que denominamos \emph{proceso de cálculo}, y formalizamos a continuación.
+Lo único que nos queda es precisar la noción de ``paso de cálculo'' que comentamos anteriormente. En cada paso, aplicamos una transición y cambiamos la configuración de la máquina. Esto es lo que denominamos \emph{proceso de cálculo}, y formalizamos a continuación.
 
 % ====================
 \begin{definicion}[Proceso de cálculo de una máquina de Turing]\label{def:proceso-calculo-maquina-turing}
@@ -442,7 +394,7 @@ $abaaab$ & $q_0\;:\;\fbox{$a$}\:b\:a\:a\:a\:b$ & $\rightarrow$ & $q_F\;:\;X\:X\:
 \newpage
 \section{Equivalencia}\label{sec:equivalencia}
 
-Nuestro objetivo ahora es comprender por qué las máquinas de Turing tienen la misma potencia de cálculo que los programas en Python. Esto quiere decir que los problemas que podemos resolver en ambos son los mismos.\footnote{No introduciremos el concepto de ``problema'' con precisión hasta el \cref{ch:problema-parada} -- por ahora, nos quedaremos con la noción intuitiva de problema, sin mayor explicación.}
+Nuestro objetivo ahora es comprender por qué las máquinas de Turing tienen la misma potencia de cálculo que los programas en Python. En otras palabras, queremos demostrar que los problemas que podemos resolver en ambos son los mismos.\footnote{No introduciremos el concepto de ``problema'' con precisión hasta el \cref{ch:problema-parada} -- por ahora, nos quedaremos con la noción intuitiva de problema, sin mayor explicación.}
 
 Para probar la equivalencia entre ambos modelos de cálculo, recurriremos al concepto de \emph{simulación}.\index{simulación} Es normal para diferentes modelos computacionales simularse unos a otros. Un ejemplo de esto es la máquina virtual de Java (JVM), que es un modelo abstracto capaz de ejecutar cualquier programa en Java. \cite{Evans2018} Otro ejemplo es el sistema operativo Linux, que es capaz de ejecutar la JVM. Por lo tanto, un ordenador Linux es capaz de ejecutar cualquier programa en Java. Esto es posible mediante la cadena de simulaciones:
 $$
@@ -550,11 +502,11 @@ $$
 $$
 A continuación, va aplicando los movimientos de $\delta$ cinta a cinta y cabezal a cabezal. Llamaremos a estas cintas y cabezales ``cintas virtuales'' y ``cabezales virtuales'', respectivamente.
 
-Para ello, comienza escaneando toda la cinta desde el delimitador $\#$ izquierdo, y almacena los valores de los cabezales virtuales en estados de $\widetilde{Q}$. El conjunto $\widetilde{Q}$ es ampliado para poder efectuar esta acción de ``memorización''. A continuación, volvemos al principio de la cinta, y vamos efectuando cada una de las acciones de $M$, por cada cinta virtual. Si en algún momento, al desplazar cada cabezal virtual nos lo coloca sobre un delimitador $\#$, reemplazamos la posición de la cinta por el símbolo blanco de $\widetilde{M}$, $[\Vtextvisiblespace^k]$, y desplazamos $\#$ a la izquierda o derecha según sea necesario.
+Para ello, comienza escaneando toda la cinta desde el delimitador $\#$ izquierdo, y almacena los valores de los cabezales virtuales en estados de $\widetilde{Q}$. El conjunto $\widetilde{Q}$ es ampliado para poder efectuar esta acción de ``memorización''. A continuación, volvemos al principio de la cinta, y vamos efectuando cada una de las acciones de $M$ por cada cinta virtual. Si en algún momento al desplazar cada cabezal virtual nos lo coloca sobre un delimitador $\#$, reemplazamos la posición de la cinta por el símbolo blanco de $\widetilde{M}$, $[\Vtextvisiblespace^k]$, y desplazamos todos los símbolos de la cinta virtual a la izquierda o derecha según sea necesario.
 
-Una vez hecho esto, cambiamos el estado inicial por el estado correspondiente según $\delta$ y así sucesivamente. El conjunto $F$ es el mismo dado que vamos pasando por los mismos estados de $Q$ en $\widetilde{Q}$.
+Una vez hecho esto, cambiamos el estado inicial por el estado correspondiente según $\delta$ y así sucesivamente. El conjunto $F$ es el mismo, dado que vamos pasando por los mismos estados de $Q$ en $\widetilde{Q}$.
 
-Es fácil ver que $L(M)=L(\widetilde{M})$, dado que hemos creado una máquina que imita a la perfección el proceso de cálculo de $M$, y en caso de parar, para en un estado de $Q$. Las palabras aceptadas serán aquellas en las que, una vez que la máquina haya parado, el estado esté en $F$.
+Es fácil ver que $L(M)=L(\widetilde{M})$, pues hemos creado una máquina que imita a la perfección el proceso de cálculo de $M$, y en caso de parar, para en un estado de $Q$. Las palabras aceptadas serán aquellas en las que, una vez que la máquina haya parado, el estado esté en $F$.
 \end{proofw}
 
 Pensemos un momento en las consecuencias de que estos dos modelos de cálculo sean equivalentes. En primer lugar, nos da una idea del alcance de la máquina de Turing monocinta: introduciendo más complejidad en su descripción, no podemos aspirar a crear algoritmos más complejos, pues siempre podremos encontrar un algoritmo equivalente en una máquina de una sola cinta. Esto, como comentábamos al comienzo del capítulo, nos da una pista de una de las tesis más relevantes de las ciencias de la computación en la actualidad, y que discutimos en la \cref{sec:church-turing}.
@@ -597,7 +549,7 @@ Probar que una máquina de Turing de acceso aleatorio puede ser simulada mediant
 
 % ===================+
 \begin{proposicion}\label{prop:multicinta-a-aleatorio}
-Toda máquina de Turing de acceso aleatorio de $k$ puede ser simulada por una máquina de Turing multicinta.
+Toda máquina de Turing de acceso aleatorio con $k$ cintas puede ser simulada por una máquina de Turing multicinta.
 \end{proposicion}
 \begin{proof}
 Para probar esto, necesitaremos una máquina de Turing de $k+2$ cintas. Las dos últimas cintas serán la cinta de dirección ($k+1$-ésima cinta) y la RAM ($k+2$-ésima cinta). A continuación, vemos que:
@@ -654,12 +606,12 @@ Veamos cómo podemos simular cada uno de los elementos del ordenador $C$ mediant
     \item Los registros de $C$ que sean usados para guardar direcciones de memoria pueden ser simulados por la cinta de direcciones de $M$.
     \item Otros registros de propósito general de $C$ pueden ser simulados incorporando cintas adicionales a $M$.
     \item La RAM de $C$ puede ser simulada con la RAM de $M$.
-    \item El disco de $C$ puede ser simulado con una cinta en $M$ (que podemos llamar \emph{cinta de entrada/salida}).
+    \item El disco de $C$ puede ser simulado con una cinta en $M$ (que podemos llamar \emph{cinta de entrada/salida}).\vspace*{-0.8cm}
 \end{itemize}
 \end{proof}
 % ===================+
 
-La demostración anterior no es estricta, y hacemos esto a propósito: definir de forma concreta cómo implementar cada uno de los componentes del ordenador queda fuera del objeto de este trabajo, y sería más relevante si hablásemos de arquitectura de computadores.
+La demostración anterior no es estricta, y hacemos esto a propósito: definir de forma concreta cómo implementar cada uno de los componentes del ordenador queda fuera del objeto de este trabajo, y sería más relevante si hablásemos de arquitectura de computadores. Ilustraremos esta simulación mediante un ejemplo.
 
 \begin{ejemplo}
 Vamos a simular una instrucción de un ordenador moderno en una máquina de Turing de acceso aleatorio. Sea \texttt{ADD} la instrucción de suma:
@@ -718,7 +670,7 @@ Otra forma de ver esto es imaginar que configuramos un ordenador para ejecutar u
 Una máquina de Turing de una sola cinta puede ser simulada por un programa en Python.
 \end{proposicion}
 \begin{proof}
-Para probar esto, deberemos de crear un programa en Python que, dada la descripción de una máquina de Turing de una sola cinta $M=$, sea capaz de aplicar todos los pasos de cálculo y devolver la configuración en la que la máquina para.
+Para probar esto, deberemos de crear un programa en Python que, dada la descripción de una máquina de Turing de una sola cinta $M$, sea capaz de aplicar todos los pasos de cálculo y devolver la configuración en la que la máquina para.
 \vspace{8pt}
 % ====================
 \begin{lstlisting}[language=Python, caption=\lstinline{simula_turing.py},label={lst:simula-turing}]
@@ -743,7 +695,7 @@ Podemos ver la simulación en el \cref{lst:simula-turing}. Hay más información
 
 En primer lugar, en la \cref{line:simula-turing-turing}, se importa la clase \lstinline{Turing} del paquete \lstinline{turing}. Puedes encontrar el código de \texttt{turing.py} en la carpeta \texttt{codigo}. Esta clase se encarga de instanciar una máquina de Turing, e incorpora las funciones necesarias para realizar la simulación.
 
-En la \cref{line:simula-turing-main} tenemos nuestra función \emph{main}, que acepta un \emph{string} como entrada. Para poder codificar varias entradas, recurrimos a las funciones \texttt{MAU} y \texttt{UAM} de la librería \texttt{utilidades}. Dado una lista de \emph{strings}, la función \texttt{MAU} (de \emph{Múltiple A Uno}) los convierte en un único \emph{string} usando la cadena \palabra{::} como separador. La función \texttt{UAM} realiza el proceso contrario, y convierte un \emph{string} en una lista de \emph{strings}, separando por la cadena \palabra{::}.
+En la \cref{line:simula-turing-main} tenemos nuestra función \emph{main}, que acepta un \emph{string} como entrada. Para poder codificar varias entradas, recurrimos a las funciones \texttt{MAU} y \texttt{UAM} de la librería \texttt{utilidades}. Dada una lista de \emph{strings}, la función \texttt{MAU} (de \emph{Múltiple A Uno}) los convierte en un único \emph{string} usando la cadena \palabra{::} como separador. La función \texttt{UAM} realiza el proceso contrario, y convierte un \emph{string} en una lista de \emph{strings}, separando por la cadena \palabra{::}.
 
 De este modo, el \emph{string} de entrada tendrá la forma
 $$
@@ -809,7 +761,7 @@ q_R, X : q_R, X, I
 q_R, _ : q_0, _, D
 \end{lstlisting}
 
-Esta codificación se encuentra en el archivo \texttt{codigo/maquinas\_turing/mas\_a\_que\_b.mt}. Para probar \texttt{simula\_turing.py}, basta abrir el intérprete de Python en la carpeta \texttt{codigo} y ejecuta las siguientes sentencias:
+Esta codificación se encuentra en el archivo \texttt{codigo/maquinas\_turing/mas\_a\_que\_b.mt}. Para probar \texttt{simula\_turing.py}, basta abrir el intérprete de Python en la carpeta \texttt{codigo} y ejecutar las siguientes sentencias:
 
 \begin{lstlisting}[numbers=none,frame=none]
 >>> from utilidades import leer, MAU
@@ -817,7 +769,7 @@ Esta codificación se encuentra en el archivo \texttt{codigo/maquinas\_turing/ma
 >>> codificacion = leer('./maquinas_turing/mas_a_que_b.mt')
 >>> entrada = 'aababb'
 \end{lstlisting}
-En este caso hemos puesto $aababb$ como entrada, pero puedes reemplazarla por cualquier entrada de $\{a,b\}^*$. Para ejecutar la función \texttt{simular}, simplemente ejecuta:
+En este caso hemos puesto $aababb$ como entrada, pero se puede reemplazar por cualquier entrada de $\{a,b\}^*$. Para ejecutar la función \texttt{simula\_turing}, simplemente hacemos:
 
 \begin{lstlisting}[numbers=none,frame=none]
 >>> simula_turing(MAU(codificacion, entrada))
@@ -830,7 +782,7 @@ $$
 que no es un estado final ($q_0 \notin F$), y por tanto la entrada $aababb$ es rechazada.
 \end{ejemplo}
 
-Puedes probar con cualquier entrada y con otras máquinas de Turing de la carpeta \linebreak\texttt{codigo/maquinas\_turing}. Algunos de los archivos corresponden a codificaciones incorrectas, para que puedas ver cómo \texttt{simula\_turing.py} es un programa en Python tal y como lo hemos definido (SISO, sin errores, etc.).
+Es posible probar con cualquier entrada y con otras máquinas de Turing de la carpeta \linebreak\texttt{codigo/maquinas\_turing}. Algunos de los archivos corresponden a codificaciones incorrectas, para poder ver cómo \texttt{simula\_turing.py} es un programa en Python tal y como lo hemos definido (SISO, sin errores, etc.).
 
 Una vez hemos probado la secuencia de simulaciones de la \cref{fig:cadena-simulaciones}, el teorema siguiente queda demostrado.
 
@@ -854,7 +806,7 @@ En el \cref{ch:historia} ya expusimos la \emph{tesis de Church-Turing}. Por conv
     \textbf{Tesis de Church-Turing.} \emph{Toda función calculable (algoritmo) puede calcularse mediante una máquina de Turing}
 \end{adjustwidth}
 
-Como hemos dicho, se trata de una tesis, es decir, es una afirmación que se supone pero que no se demuestra. Probar este resultado es prácticamente imposible, pero hay evidencias que lo refuerzan, como lo que acabamos de hacer: hemos visto cómo un modelo de computación, en apariencia, mucho más complejo que la máquina de Turing, resulta ser equivalente a ella.
+Como hemos dicho, se trata de una tesis, es decir, es una afirmación que se supone pero que no se demuestra. Probar este resultado es prácticamente imposible, pero hay evidencias que lo refuerzan, como lo que acabamos de probar: hemos visto cómo un modelo de computación, en apariencia, mucho más complejo que la máquina de Turing, resulta ser equivalente a ella.
 
 Sin embargo, siempre existe la posibilidad de que avances en la comprensión de cómo se comporta el universo nos abran las puertas a nuevos y más potentes modelos de cálculo. Este no es el caso de la computación cuántica, que puede acelerar la resolución de algunos problemas, pero no amplía la gama de funciones calculables. \cite{Kaye2007}
 
@@ -866,22 +818,6 @@ Esta tesis tiene profundas implicaciones. Concluiremos este capítulo con alguna
     \item En caso de que esto no sea así, ¿es posible crear una máquina más poderosa que la de Turing?
 \end{enumerate}
 
-Respecto a la primera pregunta, es importante realizar una puntualización histórica: Turing afirmaba que la respuesta era afirmativa, es decirm que la mente humana podría simularse en un ordenador. Esta tesis fue central en sus trabajos de Inteligencia Artificial \cite{Turing1950}, en los que defendía que el desarrollo de esta disciplina solo era cuestión de tiempo.
-%De este modo, podemos entender que este capítulo puede servir, de forma secundaria, como un
-
-%: poder definir programas en este modelo es complejo y tedioso. Comprobaremos a partir de un sencillo ejemplo (\cref{ej:mt-1})
-
-%En este capítulo la definiremos con precisión y profundizaremos, a través de modelos equivalentes, que la capacidad de computación
-
-%Una de las tesis más fundamentales de las ciencias de la computación es la \emph{tesis de Church-Turing}, que es la noción intuitiva de que todo algoritmo o procedimiento es equivalente a una máquina de Turing.
-
-%Nombrada por su inventor, Alan Turing, la máquina de Turing es un modelo matemático sencillo que pretende representar la noción de qué puede ser computado. En este capítulo, la definiremos con precisión y veremos, a través de modelos equivalentes, que la capacidad de computació
-
-%Esta afirmación nos conduce directamente al corazón de los fundamentos teóricos de la computación, inicialmente expresada por Alonzo Church en el 1936
-
-%Una de las herramientas más usadas actualmente en las ciencias de la computación son las máquinas de Turing, pues permiten describir de forma matemática y sencilla el concepto de \emph{computar}. Estas máquinas permiten demostrar múltiples resultados.
-
-%En este capítulo, seguiremos el orden inverso al histórico, y no es por casualidad: tal y como comentamos en el \cref{ch:historia}
-
+Respecto a la primera pregunta, es importante realizar una puntualización histórica: Turing afirmaba que la respuesta era afirmativa, es decir, que la mente humana podría simularse en un ordenador. Esta tesis fue central en sus trabajos de Inteligencia Artificial \cite{Turing1950}, en los que defendía que el desarrollo de esta disciplina solo era cuestión de tiempo.
 
 \endinput

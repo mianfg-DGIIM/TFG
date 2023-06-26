@@ -133,7 +133,6 @@ El sistema lógico \normalfont{\textbf{SumaBinariaLógico}} es consistente.
 Para probar que el sistema es consistente, veremos que todas las reglas de inferencia mapean fórmulas verdaderas a fórmulas verdaderas. En primer lugar, vemos que el axioma \texttt{1=1} es verdadero, pues es cierto que $1=1$.
 
 Ahora, comprobemos cada regla:
-
 $$
     \begin{matrix}
     \text{(R1)} & A\texttt{=}B & \mapsto & \texttt{1+}A\texttt{=}\texttt{1+}B 
@@ -141,7 +140,6 @@ $$
 $$
 
 En este caso, si $A$ y $B$ son números binarios y asumimos que la fórmula $A\texttt{=}B$ es verdadera, entonces tenemos que $A=B$. Por tanto, la fórmula $\texttt{1+}A\texttt{=1+}B$ es verdadera, ya que es cierto que $1+A=1+B$.
-
 $$
     \begin{matrix}
     \text{(R2)} & A\underline{N}\texttt{+}\underline{N}B & \mapsto & AN\texttt{0}B
@@ -217,6 +215,3 @@ Donde en $(1)$ aplicamos $m$ veces la regla (R1) y en $(2)$ aplicamos $p$ veces 
 \end{proof}
 
 \endinput
-%------------------------------------------------------------------------------------
-% FIN DEL APÉNDICE. 
-%------------------------------------------------------------------------------------

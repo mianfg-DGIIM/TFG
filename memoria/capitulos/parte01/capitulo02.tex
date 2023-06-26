@@ -12,21 +12,21 @@
 
 \chapter{Breve reseña histórica}\label{ch:historia}
 
-La historia de este trabajo mezcla dos campos de las matemáticas: la lógica y las ciencias de la computación.
+La historia de este trabajo mezcla dos campos de la filosofía y las matemáticas: la lógica y las ciencias de la computación.
 
-La \emph{lógica} es una de las ramas más antiguas de la filosofía, desarrollada en China, India, Grecia y en el mundo islámico. Las teorías de Aristóteles fueron incluyentes durante milenios, mientras que estoicos como Crisipo de Solos comenzaron el desarrollo de la lógica de predicados. No es hasta la Europa del siglo \textsc{xviii} que se intentan formalizar las operaciones de la lógica mediante los trabajos de Leibniz y Lambert, que permanecen aislados y desconocidos. \cite{Katz2009}
+La \emph{lógica} es una de las ramas más antiguas de la filosofía, desarrollada en China, India, Grecia y en el mundo islámico. Las teorías de Aristóteles fueron influyentes durante milenios, mientras que estoicos como Crisipo de Solos comenzaron el desarrollo de la lógica de predicados. No es hasta la Europa del siglo \textsc{xviii} que se intentan formalizar las operaciones de la lógica mediante los trabajos de Leibniz y Lambert, que permanecen aislados y desconocidos. \cite{Katz2009}
 
 Las \emph{ciencias de la computación} no surgirán hasta más tarde. Aunque una aproximación a la noción de algoritmo ya había sido estudiada por milenios, no fue hasta mediados del siglo \textsc{xix} cuando se diseñaron las primeras formas de dispositivos de computación, con los trabajos de Charles Babbage y Ada Lovelace. \cite {Fuegi2003}
 
 Paralelamente, George Boole y Agusutus De Morgan presentan tratados sistemáticos de lógica, extendiendo la doctrina lógica aristotélica para formar un nuevo campo de estudio de las matemáticas.
 
-Poco más tarde, se descubren fallos en los axiomas de la geometría de Euclides. Además de la independencia del postulado de las paralelas, establecido por Nikolai Lobachevsky en 1826 \cite{Bonola1955}, se descubre que algunos de los teoremas considerados demostrados por Euclides no eran, de hecho, probables a partir de los axiomas. Entre estos teoremas encontramos resultados como que una línea contiene al menos dos puntos, o que dos círculos del mismo radio cuyos centros están a ese radio de distancia deben intersecar. A finales de siglo, Hilbert \cite{Katz2009} publica en \emph{Grundlagen der Geometrie} \textit{(``los fundamentos de la geometría'')} un conjunto de axiomas completos para la geometría, basados en el trabajo previo de Moritz Pasch.
+Poco más tarde, se descubren fallos en los axiomas de la geometría de Euclides. Además de la independencia del postulado de las paralelas, establecido por Nikolai Lobachevsky en 1826 \cite{Bonola1955}, se descubre que algunos de los teoremas considerados demostrados por Euclides no eran, de hecho, probables a partir de los axiomas. Entre estos teoremas encontramos resultados como que una línea contiene al menos dos puntos, o que dos círculos del mismo radio cuyos centros están a ese radio de distancia deben intersecar. A finales de siglo, Hilbert \cite{Katz2009} publica en \emph{Grundlagen der Geometrie} \textit{(``Los Fundamentos de la Geometría'')} un conjunto de axiomas completos para la geometría, basados en el trabajo previo de Moritz Pasch.
 
 Es en estos momentos cuando Giuseppe Peano publica un conjunto de axiomas para la aritmética (que veremos en el \cref{ch:sistemas-logicos}).\index{aritmética de Peano}
 
 El éxito de Hilbert le lleva motiva a buscar axiomatizaciones completas de otras áreas de las matemáticas, como la teoría de números. Este será el germen de una de las áreas de investigación más populares a principios del siglo \textsc{xx}.
 
-En 1900, este mismo matemático publica su famosa lista de 23 problemas para el nuevo siglo (ahora conocidos como los \emph{problemas de Hilbert}) en el II Congreso Internacional de Matemáticos de París. El segundo de esta lista se pregunta sobre si los axiomas de la aritmética son consistentes. \cite{Hilbert1902}
+En 1900, este mismo matemático publica su famosa lista de 23 problemas para el nuevo siglo (conocidos en la actualidad como los \emph{problemas de Hilbert}) en el II Congreso Internacional de Matemáticas de París. El segundo de éstos se pregunta sobre la consistencia de los axiomas de la aritmética. \cite{Hilbert1902}
 
 En el año 1910 Bertrand Russell y Alfred Whitehead publican el primer volumen de \emph{Principia Mathematica} \cite{Whitehead1927}, considerado uno de los trabajos más influyentes del siglo \textsc{xx}.
 
@@ -40,7 +40,7 @@ En 1928, Hilbert reformula su segundo problema en el Congreso Internacional de B
 
 Exploramos los conceptos de completitud, consistencia y decidibilidad en el \cref{ch:sistemas-logicos}. El objetivo de Hilbert era encontrar un sistema matemático completo y consistente en el que las afirmaciones puedan plantearse con precisión, y donde puedan ser demostradas de forma automática.
 
-En 1931, Kurt Gödel destruye los sueños de Hilbert publicando \emph{Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I} \textit{(``sobre proposiciones formalmente indecidibles de Principia Mathematica y sistemas relacionados'')} \cite{Godel1931}. En este artículo, Gödel prueba la incompletitud de unos ciertos sistemas.\index{teorema de incompletitud} Este resultado establece severas limitaciones en las fundaciones axiomáticas de las matemáticas. Hilbert, sin embargo, no reconoce la importancia de este resultado hasta pasado un tiempo. Poco más tarde, Gödel introduce una de las primeras nociones de definiciones recursivas (las hoy llamadas $\mu$-recursivas).
+En 1931, Kurt Gödel destruye los sueños de Hilbert publicando \emph{Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I} \textit{(``Sobre proposiciones formalmente indecidibles de Principia Mathematica y sistemas relacionados'')} \cite{Godel1931}. En este artículo, Gödel prueba la incompletitud de unos ciertos sistemas.\index{teorema de incompletitud} Este resultado establece severas limitaciones en las fundaciones axiomáticas de las matemáticas. Hilbert, sin embargo, no reconoce la importancia de este resultado hasta pasado un tiempo. Poco más tarde, Gödel introduce una de las primeras nociones de definiciones recursivas (las hoy llamadas $\mu$-recursivas).
 
 La primera prueba de la no decidibilidad del \emph{Entscheidungsproblem} la da Alonzo Church en 1936 \cite{Church1936}, usando la noción de función $\lambda$-calculable. En él, Church demuestra la equivalencia con las funciones $\mu$-recursivas de Gödel, y aventura que estas funciones serán las únicas calculables mediante una tesis, que lleva su nombre: la \emph{tesis de Church}.\index{tesis de Church-Turing!tesis de Church}
 

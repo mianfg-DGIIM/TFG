@@ -17,8 +17,6 @@
 
 ## Información
 
-> ⚠️ Este TFG se encuentra actualmente **en desarrollo**.
-
 Este es el repositorio de mi **Trabajo de Fin de Grado** titulado ***"Una perspectiva algorítmica a la incompletitud de las Matemáticas"***.
 
 ## Contenidos

@@ -16,15 +16,15 @@ En el capítulo anterior, mencionamos que las máquinas de Turing y los programa
 
 A continuación, procederemos a introducir la máquina universal (\cref{sec:universalidad}), un concepto que introdujo Turing al presentar su modelo de computación \cite{Turing1937}. Esta máquina nos servirá para encontrar problemas no decidibles (\cref{sec:problemas-no-decidibles}). Finalmente, introduciremos el concepto de reducción (\cref{sec:reducciones}), que nos permitirá encontrar aun más problemas no decidibles.
 
-Haremos todo esto para deducir el resultado principal de este capítulo: la no decidibilidad del problema de la parada (\cref{sec:problema-parada}). Este problema es extremadamente relevante, no solo a nivel histórico, sino será uno de los pilares de la demostración prinicipal de este trabajo, que haremos en el \cref{ch:teorema-incompletitud}.
+Haremos todo esto para deducir el resultado principal de este capítulo: la no decidibilidad del problema de la parada (\cref{sec:problema-parada}). Este problema es extremadamente relevante, no solo a nivel histórico, sino porque será uno de los pilares de la demostración principal de este trabajo, que haremos en el \cref{ch:teorema-incompletitud}.
 
 \section{Problemas decidibles}\label{sec:problemas-decidibles}
 
-Comenzamos, como hemos prometido, definiendo de forma precisa qué es un problema. \cite{MacCormick2018,Sipser2012}
+Comenzamos, como anticipamos, definiendo de forma precisa qué es un problema. \cite{MacCormick2018,Sipser2012}
 
 % ====================
 \begin{definicion}[Problema computacional]\label{def:problema-computacional}
-Un \emph{problema computacional} (o \emph{problema}\index{problema}\index{problema!computacional}) $F$\footnote{Llamamos a los problemas computacionales $F$ y no $P$ para distinguirlos de los programas en Python.} es una función $F:X \longrightarrow Y$, donde:
+Un \emph{problema computacional} (o \emph{problema}\index{problema}\index{problema!computacional}) $F$\footnote{Llamamos a los problemas computacionales $F$ y no $P$ para distinguirlos de los programas en Python, y para reforzar la noción de que un problema computacional es una función.} es una función $F:X \longrightarrow Y$, donde:
 \begin{itemize}
     \item $X$ es el conjunto de \emph{entradas}. Un elemento $x\in X$ se llama una \emph{entrada}.\index{entrada!de un problema}
     \item $Y$ es el conjunto de \emph{soluciones}. Un elemento $y\in Y$ se llama una \emph{solución}.\index{solución}
@@ -89,7 +89,7 @@ $$\text{\textsc{HayCicloHamiltoniano}}$$
 \end{problema}
 % ====================
 
-Este problema es de decisión, pues no pregunta explícitamente por \emph{cuáles} son los ciclos hamiltonianos presentes en un determinado grado, sino por si \emph{existe} un ciclo hamiltoniano en él. Evidentemente, este tipos de problemas son más restrictivos que los problemas computacionales generales, pero tienen mucho más interés a la hora de hablar de decidibilidad, como veremos más adelante.
+Este problema es de decisión, pues no pregunta explícitamente por \emph{cuáles} son los ciclos hamiltonianos presentes en un determinado grafo, sino por si \emph{existe} un ciclo hamiltoniano en él. Evidentemente, estos problemas son más restrictivos que los problemas computacionales generales, pero tienen mucho más interés a la hora de hablar de qué problemas pueden computarse, como veremos más adelante.
 
 % ====================
 \begin{figure}[H]
@@ -123,7 +123,7 @@ donde $S$ es el conjunto de todos los \emph{strings} posibles en Python. Dependi
 
 Para que un ordenador pueda resolver un problema, necesitaremos codificar las entradas y las soluciones del problema mediante un formato que pueda entender: las cadenas de caracteres (\emph{strings}). Tal y como se demuestra en la \cref{prop:f-s}, para cualquier problema podremos suponer que las entradas y soluciones están codificadas\index{codificación} mediante \emph{strings}.\index{codificación!de entradas y soluciones}
 
-Esto no supone una restricción: las entradas y las soluciones pueden ser codificadas como cadenas de caracteres. Deberemos, sin embargo, tener en cuenta que es posible que haya entradas que no sean una codificación correcta de una entrada del problema original. En tal caso, asignaremos la salida \palabra{no} a tal entrada.
+Esto no supone una restricción: las entradas y las soluciones pueden ser codificadas como cadenas de caracteres. Deberemos, sin embargo, tener en cuenta que es posible que haya entradas que no sean una codificación correcta de una entrada del problema original. En tal caso, asignaremos la solución \palabra{no} a tal entrada.
 
 Vemos un ejemplo de esto en el \cref{prob:ciclo-hamiltoniano-codificacion}. Este problema tendrá asociada una cierta codificación para las entradas y las soluciones. Observa que este problema es idéntico al \cref{prob:ciclo-hamiltoniano}, y que podemos traducir las entradas y las soluciones de uno y otro conociendo la codificación elegida.
 
@@ -158,12 +158,12 @@ Un problema computacional describe lo que queremos resolver. Un programa describ
 
 Es muy importante destacar que, en la definición anterior, es necesario que $P$ \emph{pare} para todas las entradas. O, lo que es lo mismo, si $P$ cicla para alguna entrada, no resuelve $F$. Esta condición puede relajarse dando lugar a problemas \emph{semidecidibles} (véase la \cref{sec:problemas-semidecidibles}).
 
-Esta característica de ``resolver'' es realmente una propiedad del problema, y no del programa. En el caso de los problemas de decisión, esto nos conduce a la definición de \emph{computabilidad}.
+En el caso de los problemas de decisión, esta característica de ``resolver'' nos conduce a la definición de \emph{computabilidad}.
 
 \begin{definicion}[Problema computable y problema decidible]\label{def:decidible}
 Sea $F$ un problema computacional. Si existe un programa $P$ que lo resuelve, decimos que el problema es \emph{computable}.\index{problema!computable}
 
-En el caso en el que $D$ sea un problema de decisión, si existe un programa $P$ que lo decida decimos que el problema es \emph{decidible}.\index{problema!decidible}
+En el caso en el que $F$ sea un problema de decisión, si existe un programa $P$ que lo decide decimos que el problema es \emph{decidible}.\index{problema!decidible}
 \end{definicion}
 
 Veamos un problema más sencillo que el \cref{prob:ciclo-hamiltoniano}. El \cref{prob:mas-a-que-b}, \textsc{MásAQueB}, tiene como entrada una palabra del alfabeto $\{\palabra{a}, \palabra{b}\}$, y como solución \palabra{sí} en caso de que la palabra tenga más \palabra{a} que \palabra{b}, y \palabra{no} en caso contrario o en el caso de que la codificación sea incorrecta. Para este problema, la codificación es incorrecta si la entrada es una cadena de caracteres que no conforma una palabra del alfabeto $\{\palabra{a}, \palabra{b}\}$.
@@ -238,7 +238,7 @@ El \cref{lst:mas-a-que-b} decide \textsc{MásAQueB}. En efecto, vemos que el pro
     \item Si $I \in \{\palabra{a}, \palabra{b}\}$:
     \begin{itemize}
         \item Si $I$ tiene más \palabra{a} que \palabra{b}, es $P(I)=\textsc{MásAQueB}(I)=\palabra{sí}$.
-        \item Si $I$ no tiene más \palabra{a} que \palabra{b}, es $P(I)=\textsc{MásAQueB}(I)=\palabra{no}$.
+        \item Si $I$ no tiene más \palabra{a} que \palabra{b}, es $P(I)=\textsc{MásAQueB}(I)=\palabra{no}$. \vspace*{-0.8cm}
     \end{itemize}
 \end{itemize}
 \end{proof}
@@ -251,7 +251,7 @@ En la \cref{sec:equivalencia} vimos cómo podemos simular una máquina de Turing
 
 Por ejemplo, al ejecutar un programa en Python cualquiera, estamos ejecutando el intérprete de Python, que es un programa en sí mismo.
 
-Esta idea de ``programas que ejecutan programas'' puede parecer obvia, pero realmente fue revolucionaria en su tiempo, y es el motivo por el que los ordenadores personales son hoy la norma, llegando a encontrarse hasta en nuestros bolsillos. Quizás la cosa más increíble que puede hacer un ordenador es ejecutar \emph{cualquier cosa} -- no simplemente un conjunto de programas fijos preinstalados por el fabricante.
+Esta idea de ``programas que ejecutan programas'' puede parecer obvia, pero fue realmente revolucionaria, y es el motivo por el que los ordenadores personales son hoy la norma, llegando a encontrarse hasta en nuestros bolsillos. Quizás la cosa más increíble que puede hacer un ordenador es ejecutar \emph{cualquier cosa} -- no simplemente un conjunto de programas fijos preinstalados por el fabricante.\footnote{Véase la cita de Howard Aiken que comienza el \cref{ch:programas-python-maquinas-turing}.}
 
 Para entender cómo esto puede ser posible en el caso de un programa en Python, deberemos de entender el funcionamiento de la función nativa \texttt{exec} \cite{Lutz2013}. Si probamos en el intérprete:
 \begin{lstlisting}[numbers=none,frame=none]
@@ -289,9 +289,9 @@ def maquina_universal(programa, entrada):|\label{line:maquina-universal-main}|
 
 Veamos qué es lo que hace el \cref{lst:maquina-universal}. En primer lugar, vemos en la \cref{line:maquina-universal-main} que la función \emph{main} admite dos parámetros: un programa y una entrada, ambos \emph{string}. En la \cref{line:universal-exec} ejecutamos el programa definido en \texttt{programa}, tal y como explicamos anteriormente. Esta línea está dentro de un bloque \texttt{try-except} dado que es posible que el programa esté mal definido, en cuyo caso se lanza una excepción. Esta excepción la cazamos, dado que según la \cref{def:programa-siso}, el programa no debe lanzar ninguna excepción. En la \cref{line:maquina-universal-except} vemos que, de haber una excepción, entraremos a la \cref{line:maquina-universal-except-return}, que devuelve un \emph{string} con los detalles del error.
 
-Si no hay error, la \cref{line:universal-exec} se ejecutará satisfactoriamente, y las funciones que se definan en \texttt{programa} serán accesibles desde la función \texttt{universal} (\cref{line:maquina-universal-main}). En concreto, todas las definiciones de \texttt{programa} serán accesibles desde \texttt{locals()}. Aprovechamos esto en la \cref{line:maquina-universal-main-ref}, donde extraemos una referencia a la función \emph{main} de \texttt{programa}, que finalmente ejecutamos con la entrada \texttt{entrada} en la \cref{line:maquina-universal-return}.
+Si no hay error, la \cref{line:universal-exec} se ejecutará satisfactoriamente, y las funciones que se definan en \texttt{programa} serán accesibles desde la función \texttt{maquina\_universal} (\cref{line:maquina-universal-main}). En concreto, todas las definiciones de \texttt{programa} serán accesibles desde \texttt{locals()}. Aprovechamos esto en la \cref{line:maquina-universal-main-ref}, donde extraemos una referencia a la función \emph{main} de \texttt{programa}, que finalmente ejecutamos con la entrada \texttt{entrada} en la \cref{line:maquina-universal-return}.
 
-Hemos logrado crear un programa en Python que es capaz de ejecutar otro programa. Esto nos permitirá ejecutar cualquiera de los problemas que hemos creado, sin más que pasar el programa a un \emph{string}. En la librería \texttt{utilidades} se encuentra la función \texttt{leer}, que dada una ruta a un archivo devuelve el archivo en \emph{string}.
+Hemos logrado crear un programa en Python que es capaz de ejecutar otro programa. Esto nos permitirá ejecutar cualquiera de los problemas que hemos creado, sin más que pasar el programa a un \emph{string}. En la librería \texttt{utilidades} se encuentra la función \texttt{leer}, que dada una ruta a un archivo devuelve sus contenidos como un único \emph{string}.
 
 Algunos ejemplos de ejecución de \texttt{maquina\_universal.py} se especifican en la tabla siguiente.
 
@@ -316,9 +316,9 @@ Comando  & Salida \\ \midrule
 \label{tab:maquina-universal-io}
 \end{tabla}
 % ====================
-En la primera fila, podemos ver que, al insertar un programa inválido como entrada, la salida de \texttt{maquina\_universal.py} será de error. En la segunda fila, ejecutamos el programa \texttt{mas\_a\_que\_b.py} con la entrada \palabra{aaba}. El resultado es exactamente el esperado (observa la primera fila de la \cref{tab:masaqueb-io}).
+En la primera fila podemos ver que, al insertar un programa inválido como entrada, la salida de \texttt{maquina\_universal.py} será de error. En la segunda fila, ejecutamos el programa \texttt{mas\_a\_que\_b.py} con la entrada \palabra{aaba}. El resultado es exactamente el esperado (observa la primera fila de la \cref{tab:masaqueb-io}).
 
-En la tercera fila, usamos el propio código de \texttt{mas\_a\_que\_b.py} como entrada para sí mismo. Esto tiene sentido, dado que un programa, como hemos comentado, no es más que un \emph{string}. Recuerda que el \cref{lst:mas-a-que-b} trata entradas fuera del alfabeto $\{\palabra{a}, \palabra{b}\}$ como una entrada incorrecta, y es por ello por lo que la salida es \palabra{no}. Modificamos esto en el \cref{lst:mas-a-que-b-v2}, en el que acpetamos cualquier entrada y contamos su número de \palabra{a} y \palabra{b}. Vemos cómo, en la cuarta fila, la salida es \palabra{sí}, dado que en este caso la codificación es correcta.
+En la tercera fila, usamos el propio código de \texttt{mas\_a\_que\_b.py} como entrada para sí mismo. Esto tiene sentido, dado que un programa, como hemos comentado, no es más que un \emph{string}. Recuerda que el \cref{lst:mas-a-que-b} trata entradas fuera del alfabeto $\{\palabra{a}, \palabra{b}\}$ como una entrada incorrecta, y es por ello por lo que la salida es \palabra{no}. Modificamos esto en el \cref{lst:mas-a-que-b-v2}, en el que aceptamos cualquier entrada y contamos su número de \palabra{a} y \palabra{b}. Vemos cómo, en la cuarta fila, la salida es \palabra{sí}, dado que en este caso la codificación es correcta.
 
 \vspace{8pt}
 % ====================
@@ -357,23 +357,8 @@ $$\text{\textsc{Sí}}$$
 En la sexta y última fila vemos cómo \texttt{maquina\_universal.py} puede ejecutar cualquier programa en Python, incluso el \cref{lst:simula-turing}, que simula máquinas de Turing. Como entrada al programa pasamos la codificación de una máquina de Turing y la entrada. En efecto, la salida sigue siendo \palabra{sí}.
 
 Esta capacidad de los programas de ejecutarse a sí mismos es extremadamente interesante y es una característica que nos causará muchos problemas, como veremos en la \cref{sec:problemas-no-decidibles}.
-%Lo que hemos hecho, realmente es resolver el problema \textsc{Universal}. Es fácil comprobar que el \cref{lst:universal} resuelve el \cref{prob:universal}. WIP NO DECIDE
-\vspace{8pt}
 
-% ====================
-%\begin{problema}
-%\begin{framed}
-%$$\text{\textsc{Universal}}$$
-%
-%\begin{itemize}
-%    \item \textbf{Entrada:} un programa $P$ y una entrada $I$.
-%    \item \textbf{Salida:} $P(I)$, el resultado de ejecutar $P$ con entrada $I$.
-%\end{itemize}
-%\end{framed}
-%\caption{\textsc{Universal}}
-%\label{prob:universal}
-%\end{problema}
-% ====================
+\vspace{8pt}
 
 Llamamos a una máquina \emph{universal}\index{máquina universal} si es capaz de simular una máquina de Turing, dado que este concepto lo introdujo Turing en su famosa publicación \cite{Turing1937}. Por el resultado de equivalencia (\cref{teo:equivalencia}), vemos que \cref{lst:maquina-universal} es, en efecto, una máquina universal (algo que podíamos intuir con el nombre del programa).
 
@@ -428,7 +413,7 @@ $$\text{\textsc{Diagonal}}$$
 
 \begin{itemize}
     \item \textbf{Entrada:} un programa $P$.
-    \item \textbf{Salida:} \palabra{sí} si $P(P)$ está bien definido y $P(I)=\text{\palabra{sí}}$, \palabra{no} en caso contrario.
+    \item \textbf{Salida:} \palabra{sí} si $P(P)$ está bien definido y $P(P)=\text{\palabra{sí}}$, \palabra{no} en caso contrario.
 \end{itemize}
 \end{framed}
 \caption{\textsc{Diagonal}}
@@ -467,7 +452,7 @@ $$\text{\textsc{C-Diagonal}}$$
 
 \begin{itemize}
     \item \textbf{Entrada:} un programa $P$.
-    \item \textbf{Salida:} \palabra{no} si $P(P)$ está bien definido y $P(I)=\text{\palabra{sí}}$, \palabra{sí} en caso contrario.
+    \item \textbf{Salida:} \palabra{no} si $P(P)$ está bien definido y $P(P)=\text{\palabra{sí}}$, \palabra{sí} en caso contrario.
 \end{itemize}
 \end{framed}
 \caption{\textsc{C-Diagonal}}
@@ -633,11 +618,9 @@ La afirmación \textit{a)} se deduce de la definición de reducción de Turing: 
 La afirmación \textit{b)} es inmediata a partir de \textit{a)}.
 \end{proof}
 
-Esta proposición nos permite probar que un problema es decidible (o no) a partir de otro. Esto nos permite proceder por varias vías. En primer lugar, si queremos saber que un problema $F$ es fácil, nos baste tener un problema decidible $G$ que reduzca a $F$, $F\leq_TG$. Entonces, $F$ será decidible.
+Esta proposición nos permite probar que un problema es decidible (o no) a partir de otro. Esto nos permite proceder por varias vías. En primer lugar, si queremos saber que un problema $F$ es fácil, nos basta encontrar un problema decidible $G$ que reduzca a $F$, $F\leq_TG$. Entonces, $F$ será decidible.
 
 Por otra parte, podemos probar que un problema $G$ es difícil. Basta tener un problema $F$ no decidible tal que $F\leq_TG$. Entonces, $G$ tampoco será decidible.
-
-%Esta última estrategia es la que queremos usar, ya que por lo general, es más directo escribir programas que decidan problemas que encontrar reducciones a otros problemas.
 
 Veamos un primer ejemplo de reducción. En la \cref{sec:problemas-no-decidibles} ya vimos que \textsc{Diagonal} (\cref{prob:diagonal}) y \textsc{Universal} (\cref{prob:universal}) son ambos no decidibles. Supongamos que únicamente conocemos que \textsc{Diagonal} es no decidible. Entonces, podremos probar la no decidibilidad de \textsc{Universal} mediante una sencilla reducción.\footnote{Recuerda que en la \cpageref{lab:diagonal-a-universal} ya dijimos que podíamos obtener \textsc{Diagonal} a partir de \textsc{Universal}.} Observa el programa siguiente.
 \vspace{8pt}
@@ -656,7 +639,7 @@ Es sencillo que ver que \texttt{diagonal\_a\_universal.py} es una reducción de 
 
 \section{El problema de la parada}\label{sec:problema-parada}
 
-Dado un programa $P$ y una entrada $I$, nos hemos preguntado por cuál es la salida de tal programa. Ahora, vamos a preguntar si el programa \emph{para}.
+Dado un programa $P$ y una entrada $I$, nos hemos preguntado por cuál es la salida de tal programa. Ahora, vamos a preguntarnos por si el programa \emph{para}.
 
 Este problema, de reconocer si un programa para dada una entrada, es el conocido como \emph{problema de la parada}.\index{problema!de la parada} Los motivos por los que lo estudiamos son varios: en primer lugar, este problema tiene aplicación práctica. En caso de ser decidible, podríamos escribir un algoritmo que, para cualquier programa, nos comprobara si es capaz de terminar. Evidentemente, no todos los programas paran: algunos de ellos están diseñados para ejecutarse de forma indefinida, como es el caso de los servidores web o de un sistema operativo.
 
@@ -666,7 +649,7 @@ En nuestro caso, sin embargo, estudiar este problema nos permitirá deducir el r
 
 Antes de hablar sobre este problema, debemos recordar que la noción de \emph{parada} que definió Turing está relacionada con las máquinas de su mismo nombre: una máquina de Turing, dada una entrada, puede parar y aceptar, parar y rechazar, o ciclar.
 
-En nuestro caso, diremos que un programa en Python $P$ para dada una entrada $I$ si la salida $P(I)$ está definida, de acuerdo a la \cref{def:salida-programa}. Un programa podría, de este modo, no parar por muchas razones: podría entrar en un bucle infinito, lanzar una excepción o devolver un objeto que no sea un \emph{string}. En los dos últimos casos, puede parecer contraintuitivo decir que el programa no ha parado: al fin y al cabo, el programa para al lanzar una excepción o devolver un objeto que no sea un \emph{string}. En estos casos, es mejor pensar que el programa se ha ``congelado'': no está ejecutando más código, pero no puede terminar satisfactoriamente. En este sentido, el programa ``no ha parado''.
+En nuestro caso, diremos que un programa en Python $P$ \emph{para} dada una entrada $I$ si la salida $P(I)$ está definida, de acuerdo a la \cref{def:salida-programa}. Un programa podría, de este modo, no parar por muchas razones: podría entrar en un bucle infinito, lanzar una excepción o devolver un objeto que no sea un \emph{string}. En los dos últimos casos, puede parecer contraintuitivo decir que el programa no ha parado: al fin y al cabo, el programa para al lanzar una excepción o devolver un objeto que no sea un \emph{string}. En estos casos, es mejor pensar que el programa se ha ``congelado'': no está ejecutando más código, pero no puede terminar satisfactoriamente. En este sentido, el programa ``no ha parado''.
 
 Ahora estamos en condiciones de presentar la formulación del problema.
 \vspace{8pt}
@@ -730,7 +713,7 @@ def universal_a_parada(programa, entrada):|\label{line:universal-a-parada-main}|
 
 En la demostración anterior hemos usado una técnica nueva: crear un programa nuevo a partir de otro. En concreto, modificamos \texttt{maquina\_universal.py} (\cref{lst:maquina-universal}), la máquina universal en Python que introdujimos en la \cref{sec:universalidad}, para crear una máquina universal que para para las salidas positivas y cicla para cualquier otra salida.
 
-A continuación, introduciremos un nuevo problema de la parada, más sencillo que \textsc{Parada}.\footnote{En algunos libros, se enuncia este problema como el propio problema de la parada.}
+A continuación, introduciremos un nuevo problema de la parada, más sencillo que el problema \textsc{Parada} ya enunciado.\footnote{En algunos libros, se enuncia este problema como el propio problema de la parada.}
 
 \vspace{8pt}
 % ====================
@@ -748,7 +731,7 @@ $$\text{\textsc{ParadaEnVacío}}$$
 \end{problema}
 % ====================
 
-Por tratarse de un problema ``más sencillo'', inicialmente no tiene por qué ser no decidible. Para probarlo, en este caso deberemos realizar un truco: ignorar la entrada.
+Por tratarse de un problema ``más sencillo'', inicialmente no tiene por qué ser no decidible. Para probarlo, deberemos realizar un ``truco'': ignorar la entrada.
 \vspace{8pt}
 \begin{lstlisting}[language=Python, caption=\lstinline{ignora_entrada.py},label={lst:ignora-entrada}]
 import utilidades
@@ -769,7 +752,7 @@ def ignora_entrada(entrada_ignorada):
 \end{figure}
 % ====================
 
-Para ello, usamos el \cref{lst:ignora-entrada}. Este programa, en lugar de ejecutar la entrada \linebreak\texttt{entrada\_ignorada}, ejecuta la máquina universal sobre un programa y una entrada almacenada en disco. Concretamente, usa como programa el almacenado en \texttt{disco/programa.txt}, y como entrada la almacenada en \texttt{disco/entrada.txt}.
+Para ello, usamos el \cref{lst:ignora-entrada}. Este programa, en lugar de ejecutar la entrada \linebreak\texttt{entrada\_ignorada}, ejecuta la máquina universal sobre un programa y una entrada almacenadas en disco. Concretamente, usa como programa el almacenado en \texttt{disco/programa.txt}, y como entrada la almacenada en \texttt{disco/entrada.txt}.
 
 Una vez conocemos el funcionamiento de \texttt{ignora\_entrada.py}, es sencillo encontrar una reducción de \textsc{Parada} a \textsc{ParadaEnVacío}.
 
@@ -886,4 +869,3 @@ Los problemas \textsc{ParadaEnVacío} y \textsc{AdivinaConsistente} serán centr
 \end{tabla}
 % ====================
 \endinput
-

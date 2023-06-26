@@ -217,24 +217,8 @@
 \renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
 
 \usepackage{newfloat}
-%\DeclareCaptionType[fileext=ext, listname={Lista de problemas}, name=Problema, placement=tbph!]{problema}
-%\captionsetup[scheme]{labelsep=period, font={small, bf}, skip=8pt}
-%\newfloat{problema}{H}{flt}[chapter]
-%\floatname{problema}{Problema}
 \DeclareFloatingEnvironment[listname={Índice de problemas},placement=H]{problema}
-
-%\newfloat{tabla}{H}{flt}[chapter]
-%\floatname{tabla}{Tabla}
 \DeclareFloatingEnvironment[listname={Índice de tablas},placement=H]{tabla}
-
-
-%\DeclareFloatingEnvironment[
-%    fileext=los,
-%    listname={Lista de problemas},
-%    name=Problema,
-%    placement=tbhp!,
-%    within=chapter,
-%]{problema}
 
 % CABECERAS
 % ---------------------------------------------------------------------
@@ -282,24 +266,6 @@
       \renewcommand*{\makelabel}[1]{\hss##1}}
   {\endlist}
   {\item}
-
-
-% ÍNDICE 
-% Para generar el índice hay que compilar el documento con MakeIndex. Generalmente los editores se encargan de ello automáticamente.
-% ----------------------------------------------------------------------
-% \index{} para añadir un elemento
-% \index{main!sub} para añadir un elementos "sub" bajo la categoría "main".
-% \index{termino|textbf} para dar formato al número de página (negrita).
-% \index{termino|see{termino relacionado}} para crear una referencia cruzada
-
-% Ejemplo: \index{espacio homogéneo}, \index{superficie!mínima}, \index{esfera|see{espacio homogéneo}}
-
-% Activar los siguientes comandos para generar el índice terminológico. Ver también comandos al final de este documento para incluir dicho índice en el pdf final.
-% \usepackage{makeidx}
-% \makeindex
-
-% Para revisar las entradas al índice conforme las incluimos en el documento es útil el siguiente paquete. Conviene observar que mientras esté cargado no se generará el índice.
-%\usepackage{showidx} % Muestra en el margen del documento las entradas añadidas al índice. Útil para revisar el documento. Si está activo el índice no se genera
 
 % ---------------------------------------------------------------------
 % COMANDOS Y ENTORNOS
@@ -458,14 +424,10 @@
 \usepackage{makeidx}
 \makeindex
 
-\usepackage[firstpageonly=true, angle=58]{draftwatermark}
-\SetWatermarkText{\sffamily \miBorrador}
-\SetWatermarkScale{0.7}
-
-
 \hypersetup{
  pdfauthor={Fernández Gutiérrez, Miguel Ángel},
- pdftitle={[\miBorrador] — \miTitulo},
+% pdftitle={[\miBorrador] — \miTitulo},
+ pdftitle={\miTitulo},
  pdfsubject={Trabajo de Fin de Grado — \miGrado — Curso \miCurso},
  pdfkeywords={incompletitud, informática, matemáticas, TFG},
  pdfproducer=mianfg,
@@ -485,10 +447,8 @@
 \input{preliminares/portada}
 \input{preliminares/titulo}
 \input{preliminares/declaracion-originalidad}
-%\input{preliminares/dedicatoria}                % Opcional
+\input{preliminares/dedicatoria}                % Opcional
 \input{preliminares/tablacontenidos}
-
-%\input{preliminares/agradecimientos}            % Opcional
 
 % \pagestyle{scrheadings} % A partir de ahora sí imprime cabeceras
 
@@ -520,19 +480,17 @@
 
 \setpartpreamble[c][0.75\linewidth]{%
 	\bigskip % Deja un espacio vertical en la parte superior
-  A partir de la decidibilidad del problema de parada, probaremos que la aritmética de Peano es incompleta, bajo unas ciertas condiciones. Veremos que la elección de la aritmética de Peano no restringe sacar conclusiones de otros sistemas lógicos. A continuación, compraremos la demostración de este trabajo con la original de Gödel. Finalmente, veremos las limitaciones de nuestro teorema, y aprenderemos un truco que nos permitirá relajar las condiciones del primer teorema.
+  Introduciremos una formalización matemática de los conceptos de \emph{verdad} y \emph{demostración}, y estudiaremos las propiedades de los sistemas en los que están definidos, para hablar finalmente de la aritmética de Peano. A partir de la decidibilidad del problema de parada, probaremos que la aritmética de Peano es incompleta, bajo unas ciertas condiciones. Generalizaremos este resultado para obtener dos versiones del Primer Teorema de Incompletitud. Finalmente, compararemos estas dos versiones junto con la versión original de Gödel y analizaremos importantes consecuencias de estos resultados.
 }
 \cleardoublepage\part{Incompletitud}
 \input{capitulos/parte03/capitulo01}
 \input{capitulos/parte03/capitulo02}
-%\input{capitulos/parte03/capitulo03}
-%\input{capitulos/parte03/capitulo04}
 
 \setpartpreamble[c][0.75\linewidth]{%
 	\bigskip % Deja un espacio vertical en la parte superior
-  Concluimos el trabajo revisando los objetivos iniciales y asentando las posibles vías de investigación y desarrollo en un futuro
+  Concluiremos el trabajo revisando los objetivos iniciales y asentando las posibles vías de investigación y desarrollo en un futuro
 }
-\cleardoublepage\part{Conclusión}\label{part:conclusion}
+\cleardoublepage\part{Conclusiones}\label{part:conclusion}
 \input{capitulos/parte04/capitulo01}
 \input{capitulos/parte04/capitulo02}
 
@@ -566,27 +524,13 @@
 \cleardoublepage
 \phantomsection
 
-%\addcontentsline{toc}{chapter}{Índice alfabético}
-%\cleardoublepage\part{Referencias e Índices}
-%\pdfbookmark[-1]{Referencias e Índices}{BM-Referencias}
-
-%\printindex
-
-% BIBLIOGRAFÍA
-%-------------------------------------------------------------------
-
-%\setbibpreamble{References are listed in alphabetical order, by author. The references with more than one author are ordered according to the first author.\par\bigskip}
-%\bibliographystyle{apalike} 
-%\nocite{*}
-%\
 \begin{small} % Normalmente la bibliografía se imprime en un tamaño de letra más pequeño.
 
 \cleardoublepage
 \phantomsection
-%\addcontentsline{toc}{part}{Bibliografía}
-%\printbibliography[heading=subbibliography,title={Bibliografía básica},segment=1]
-\part*{Referencias e Índices}
-\addcontentsline{toc}{part}{Referencias e Índices}
+
+\part*{Referencias e índices}
+\addcontentsline{toc}{part}{Referencias e índices}
 
 \phantomsection
 \vspace*{1.5cm}
@@ -599,8 +543,6 @@
 
 {\normalsize El contenido de este trabajo sigue el orden expuesto en \cite{MacCormick2018}, profundizando en los conceptos explicados en tal obra.}\\
 
-%\pdfbookmark[-1]{Bibliografía}{Bibliografia}
-
 \printbibliography[heading=subbibliography,keyword={basica},heading=none]
 \vspace{18pt}
 \printbibliography[heading=subbibliography,notkeyword={basica},heading=none]
@@ -610,27 +552,15 @@
 \printindex
 \markboth{Índice alfabético}{Índice alfabético}
 
-
-%\printbibliography
-
-%\bibliography{library.bib}
-
 \phantomsection 
 \listoffigures
 \markboth{Lista de figuras}{Lista de figuras}
-
 
 \phantomsection 
 \listoftablas
 
 \phantomsection 
 \listofproblemas
-
-%\cleardoublepage
-%\phantomsection
-%\listoftheorems[ignoreall,show={definicion},title={Índice de definiciones}]
-%\addcontentsline{toc}{chapter}{Índice de definiciones}
-%\clearpage
 
 \cleardoublepage
 \phantomsection
