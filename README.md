@@ -24,7 +24,7 @@ Este es el repositorio de mi **Trabajo de Fin de Grado** titulado ***"Una perspe
 | Carpeta | Descripción |
 | --- | --- |
 | [`codigo`](./codigo) | Todo el código del trabajo |
-| [`memoria`](./memoria) | Memoria del trabajo |
+| [`memoria`](./memoria) | Memoria del trabajo (LaTeX) |
 
 ## Summary
 
