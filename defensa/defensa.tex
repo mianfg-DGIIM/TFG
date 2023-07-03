@@ -1,0 +1,2513 @@
+\documentclass[10pt,xcolor=dvipsnames,aspectratio=169,spanish]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{adjustbox}
+\usepackage{fontspec}
+\usepackage{ wasysym }
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\usepackage{pdfpages}
+\pgfdeclareimage[width=\paperwidth]{mybackground}{img/portada-ugr-169.pdf}
+
+\usepackage{babel}          % Automatic translations
+\usepackage{amssymb}        % Mathematical symbols
+\usepackage{mathtools}      % Mathematical symbols
+\usepackage{soul}
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+
+\usepackage{framed}
+
+\usepackage{listings} % Para la inclusión de trozos de código
+\lstset{
+     literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+         {ý}{{\'y}}1
+         {ú}{{\'u}}1
+         {ó}{{\'o}}1
+         {ě}{{\v{e}}}1
+         {š}{{\v{s}}}1
+         {č}{{\v{c}}}1
+         {ř}{{\v{r}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1    
+}
+\usepackage{lstautogobble}  % Fix relative indenting
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\def\req{\rotatebox{90}{$\scriptstyle=$}}
+
+
+\lstset{
+    autogobble,
+    columns=fullflexible,
+    showspaces=false,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{greencomments},
+    keywordstyle=\color{bluekeywords},
+    stringstyle=\color{redstrings},
+    numberstyle=\color{graynumbers},
+    %basicstyle=\ttfamily\footnotesize,
+    frame=l,
+    framesep=30pt,
+    xleftmargin=30pt,
+    tabsize=4,
+    captionpos=b,
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\footnotesize\color{graynumbers},
+    numbersep=10pt,
+    %escapechar=|,
+    numberblanklines=false,
+    columns=flexible
+}
+
+
+
+\setbeamercolor{section title}{fg=Maroon,bg=Maroon}
+\setbeamercolor*{structure}{bg=Maroon!20,fg=Maroon}
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{progress bar}{fg=gray, bg=gray}
+
+\setbeamerfont{itemize/enumerate body}{}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+\setbeamercovered{transparent}
+
+\newcommand{\hle}[1]{\hl{\emph{#1}}}
+\newcommand\Vtextvisiblespace[1][.3em]{%
+\mbox{\kern.06em\vrule height.3ex}%
+\vbox{\hrule width#1}%
+\hbox{\vrule height.3ex}}
+\newcommand{\palabra}[1]{\texttt{\textquotesingle{}{#1}\textquotesingle{}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Una perspectiva algorítmica a la incompletitud de las Matemáticas}
+\subtitle{Defensa TFG}
+\date{\today}
+\author{Miguel Ángel Fernández Gutiérrez}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{title page}{
+
+        \begin{picture}(0,0)
+
+            \put(-10mm,-45mm){%
+                \pgfuseimage{mybackground}
+            }
+
+            \put(20mm,-5mm){%
+                \begin{minipage}[b][45mm][t]{226mm}
+                \hspace{-22mm}\includegraphics[width=60mm]{img/logo-ugr.pdf}
+                
+                    \usebeamerfont{title}{
+{\large\textsc{trabajo de fin de grado}}
+
+    \begin{flushleft}
+      \LARGE
+      Una perspectiva algorítmica a la \\incompletitud de las Matemáticas\\[18pt]
+      \large
+      Miguel Ángel Fernández Gutiérrez\\
+      Tutor: Serafín Moral Callejón\\
+      \normalsize
+      \textrmlf{3 de julio, 2023}
+    \end{flushleft}
+                    
+                    }
+                \end{minipage}
+            }
+
+            \end{picture}
+
+    }
+
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Agenda}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents%[hideallsubsections]
+\end{frame}
+
+\section[Introducción]{Introducción}
+
+\begin{frame}[fragile]{Introducción}
+\begin{adjustbox}{max height={.75\textheight},center}
+\input{fig/resumen}
+\end{adjustbox}
+
+\end{frame}
+
+\section[Programas en Python y\\máquinas de Turing]{Programas en Python y máquinas de Turing}
+
+\begin{frame}<presentation:0>{Programas en Python}
+
+\textbf{Definición 3.1} (Función SISO)\textbf{.}
+
+Definimos una \hle{función SISO} como una función de Python que acepta un único parámetro de tipo \emph{string} como entrada, y que devuelve un \emph{string}.
+
+\vspace{5mm}
+
+\textbf{Definición 3.2} (Programa en Python de tipo SISO)\textbf{.}
+
+Respecto a un sistema informático de referencia $C$, definimos un \hle{programa en Python de tipo SISO} como una cadena de caracteres $P$, de modo que:
+
+\begin{itemize}
+    \item $P$ es código en Python sintácticamente correcto;
+    \item $P$ define al menos una función, y la primera de ellas es de \hle{tipo SISO}. A esta función la llamaremos \hle{función main}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Programas en Python}
+
+\textbf{Definición 3.3} (Salida de un programa)\textbf{.}
+
+Sea $P$ un programa en Python respecto a un sistema informático $C$. Sea $M$ la función \emph{main} de $P$, e $I$ la \hle{entrada} de $P$, una cadena de caracteres. La \hle{salida de $P$ respecto a la entrada $I$}, $P(I)$, se produce usando $C$ para ejecutar $P$ con entrada $I$, y se define como:
+
+\begin{itemize}
+    \item Si $M$ devuelve una \ul{cadena de caracteres $O$}, entonces \ul{$P(I)=O$}.
+    \item Si $M$ devuelve \ul{cualquier otro objeto} en Python, entonces \ul{$P(I)$ no está definido}.
+    \item Si $M$ lanza una \ul{excepción}, entonces \ul{$P(I)$ no está definido}.
+    \item Si $M$ \ul{no termina}, entonces \ul{$P(I)$ no está definido}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Máquinas de Turing}
+
+\textbf{Definición 3.5} (Máquina de Turing)\textbf{.}
+
+Una \hle{máquina de Turing} es una séptupla $M=(Q, A, B, \delta, q_0, \Vtextvisiblespace\:, F)$, en la que:
+
+\begin{itemize}
+    \item $Q = \{q_0, ...\}$ es un conjunto (finito) de \hle{estados}.
+    \item $A$ es un \hle{alfabeto de entrada}.
+    \item $B$ es un \emph{alfabeto de símbolos de la cinta} (o \hle{alfabeto de trabajo}), con \ul{$B\subset A$}.
+    \item $\delta : Q \times B \longrightarrow (Q \times B \times \{I, D, S\}) \cup \emptyset$ es la \hle{función de transición} que asigna a cada estado $q\in Q$ y símbolo $b\in B$, el valor $\delta(q, b)$ que puede ser:
+    \begin{itemize}
+        \item $\emptyset$ en caso de no estar definido, o
+        \item una tripleta $(p, c, M)$, donde $p\in Q$, $c\in B$, $M \in \{I, D, S\}$.
+    \end{itemize}
+    \item $q_0\in Q$ es el \hle{estado inicial}.
+    \item $\Vtextvisiblespace\in B \setminus A$ es el \hle{símbolo blanco}.
+    \item $F \subseteq Q$ es el conjunto de \hle{estados finales}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\vspace{5mm}
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing}
+\end{adjustbox}
+
+\begin{center}
+{\small Figura 3.1.: Configuración inicial de una máquina de Turing para la entrada $010$}
+\end{center}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Máquinas de Turing}
+
+\textbf{Definición 3.6} (Configuración de una máquina de Turing)\textbf{.}
+
+Especificaremos la \hle{configuración} de una máquina de Turing mediante dos parámetros:
+
+\begin{itemize}
+    \item El estado $q\in Q$ en el que se encuentra la máquina.
+    \item La palabra $w \in B^*$ presente en la \emph{cinta} y la posición del \emph{cabezal de lectura}, que representaremos recuadrando el símbolo donde se encuentra el cabezal. Dado que el cabezal se extiende infinitamente a ambos lados, eliminamos los caracteres blancos a la izquierda y a la derecha hasta llegar a la posición del cabezal.
+\end{itemize}
+
+Representaremos una configuración mediante $$q\;:\;w$$ con uno de los símbolos de $w$ debidamente recuadrado.
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Máquinas de Turing}
+
+\vspace{5mm}
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-configuracion}
+\end{adjustbox}
+
+\begin{center}
+{\small Figura 3.1.: Configuración inicial de una máquina de Turing para la entrada $010$}
+\end{center}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Máquinas de Turing}
+
+\textbf{Definición 3.7} (Proceso de cálculo de una máquina de Turing)\textbf{.}
+
+$M=(Q, A, B, \delta, q_0, \Vtextvisiblespace\:, F)$ y \hle{entrada inicial} $u = u_1\:u_2\:...\:u_n\in A^*$
+
+\begin{itemize}
+    \item \hle{Configuración inicial:} $$q_0\;:\;\fbox{$u_1$}\:u_2\:...\:u_n$$
+    \item \hle{Paso de cálculo:} $$q\;:\;b_{-n}\:...\:b_{-2}\:b_{-1}\:\fbox{$b_0$}\:b_1\:b_2\:...\:b_m$$
+
+    \begin{itemize}
+        \item Si $\delta(q,b_0)=\emptyset$, \ul{parar}.
+        \item Si $\delta(q,b_0)=(p,c,M)$, \ul{continuar}:
+        $$
+        \begin{matrix}
+            M=I&\Rightarrow&p\;:\;b_{-n}\:...\:b_{-2}\:\fbox{$b_{-1}$}\:c\:b_1\:b_2\:...\:b_m\\
+            M=D&\Rightarrow&p\;:\;b_{-n}\:...\:b_{-2}\:b_{-1}\:c\:\fbox{$b_1$}\:b_2\:...\:b_m\\
+            M=S&\Rightarrow&p\;:\;b_{-n}\:...\:b_{-2}\:b_{-1}\:\fbox{$c$}\:b_1\:b_2\:...\:b_m
+        \end{matrix}
+    $$
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-0}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \underline{\delta(q_0, \text{a}) = (q_\text{a},\text{X},D)} & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-0}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-1}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \underline{\delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I)} & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-1}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-2}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \underline{\delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I)} & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-2}
+\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-3}
+\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \underline{\delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D)} \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-3}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-4}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \underline{\delta(q_0, \text{X}) = (q_0,\text{X},D)} &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-4}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-5}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \underline{\delta(q_0, \text{X}) = (q_0,\text{X},D)} &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-5}
+\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-6}
+\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \underline{\delta(q_0, \text{a}) = (q_\text{a},\text{X},D)} & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-6}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-7}
+\end{adjustbox}
+
+\end{frame}
+
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \underline{\delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S)} \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-7}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{q_\text{F}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-8}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}{Máquinas de Turing}
+
+\textbf{Ejemplo 3.1}\textbf{.}
+$$
+    M_{\#\text{a}>\#\text{b}}=(\{q_0, q_\text{a}, q_\text{b}, q_\text{R}, q_\text{F}\}, \{\text{a}, \text{b}\}, \{\text{a}, \text{b}, \text{X}, \Vtextvisiblespace\}, \delta, q_0, \Vtextvisiblespace\:,\{\underline{q_\text{F}}\})
+$$
+$$
+    \begin{matrix}
+        \delta(q_0, \text{a}) = (q_\text{a},\text{X},D) & \delta(q_0, \text{b}) = (q_\text{b},\text{X},D) & \delta(q_0, \text{X}) = (q_0,\text{X},D) &  \\
+        \delta(q_\text{a}, \text{a}) = (q_\text{a},\text{a},D) & \delta(q_\text{a}, \text{b}) = (q_\text{R},\text{X},I) & \delta(q_\text{a}, \text{X}) = (q_\text{a},\text{X},D) & \delta(q_\text{a}, \Vtextvisiblespace) = (q_\text{F},\Vtextvisiblespace,S) \\
+        \delta(q_\text{b}, \text{a}) = (q_\text{R},\text{X},I) & \delta(q_\text{b}, \text{b}) = (q_\text{b},\text{b},D) & \delta(q_\text{b}, \text{X}) = (q_\text{b},\text{X},D) &  \\
+        \delta(q_\text{R}, \text{a}) = (q_\text{R},\text{a},I) & \delta(q_\text{R}, \text{b}) = (q_\text{R},\text{b},I) & \delta(q_\text{R}, \text{X}) = (q_\text{R},\text{X},I) & \delta(q_\text{R}, \Vtextvisiblespace) = (q_0,\Vtextvisiblespace,D) \\
+    \end{matrix}
+$$
+
+\vspace{5mm}
+
+\begin{adjustbox}{max height={.67\textheight},center}
+\input{fig/maquina-turing-aba/paso-8-hl}
+\end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Programas en Python}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+def mas_a_que_b(palabra):
+    # comprobamos si la codificación es correcta, es decir (si es del alfabeto {'a', 'b'}), si no es correcta devolvemos 'no'
+    if not utilidades.en_alfabeto(palabra, {'a', 'b'}):
+        return 'no'
+
+    if palabra.count('a') > palabra.count('b'):
+        return 'sí'
+
+    return 'no'
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.1.: \texttt{mas\_a\_que\_b.py}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Programas en Python}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lc@{}}
+\toprule
+Comando  & Salida \\ \midrule
+\texttt{mas\_a\_que\_b(\palabra{abaab})} & \palabra{sí} \\
+\texttt{mas\_a\_que\_b(\palabra{abbab})} & \palabra{no} \\
+\texttt{mas\_a\_que\_b(\palabra{})} & \palabra{no} \\
+\texttt{mas\_a\_que\_b(\palabra{abaabc})} & \palabra{no} \\ \bottomrule
+\end{tabular}
+\end{table}
+\begin{center}
+{\small Tabla 4.1.: Ejemplos de salidas de \texttt{mas\_a\_que\_b.py}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Equivalencia}
+
+
+\begin{itemize}
+    \item Tratamos con programas en Python que tienen como entrada y como salida \emph{strings} (\hle{programas SISO}).
+    \item Sería idóneo poder usar programas en Python como la representación matemática de un algoritmo.
+\end{itemize}
+
+\vspace{5mm}
+\pause
+
+\textbf{Teorema 3.1} (Equivalencia entre programas en Python y máquinas de Turing)\textbf{.}
+
+\emph{Dado un programa en Python $P$, existe una máquina de Turing (de una sola cinta) $M$ que \hle{computa la misma función} que $P$.}
+
+\emph{Dada una máquina de Turing (de una sola cinta) $M$, existe un programa en Python $P$ que \hle{computa la misma función} que $M$.}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Equivalencia}
+
+\vspace{5mm}
+\begin{adjustbox}{max width={.9\textwidth},center}
+\input{fig/cadena-simulaciones}
+\end{adjustbox}
+
+\begin{center}
+{\small Figura 3.3.: Cadena de simulaciones}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Equivalencia}
+
+\textbf{Consecuencias.}
+
+\begin{itemize}
+    \item Las máquinas de Turing son \hl{muy potentes} computacionalmente.
+
+    \pause
+    \item \hl{\textbf{Tesis de Church-Turing.}} \emph{Toda función calculable (algoritmo) puede calcularse mediante una máquina de Turing}.
+    
+\end{itemize}
+
+\end{frame}
+
+
+\section{El problema de la parada}
+
+\begin{frame}{Problemas decidibles}
+
+\textbf{Definición 4.1} (Problema computacional)\textbf{.}
+$${ \Large
+\begin{matrix}
+    F & : & \;\;\; X  \;\;\; & \longrightarrow & \;\;\; Y \;\;\; \\
+\end{matrix}
+}$$
+\begin{center}
+\vspace*{-2mm}
+    \hspace{11mm} entradas \hspace{9mm} soluciones
+\end{center}
+\vspace{5mm}
+\textbf{Definición 4.2} (Problema de decisión)\textbf{.}
+$${ \Large
+\begin{matrix}
+    F & : & \;\;\; X  \;\;\; & \longrightarrow & \;\;\; \{\text{\emph{`sí'}}, \text{\emph{`no'}}\} \;\;\; \\
+\end{matrix}
+}$$
+\vspace{2mm}
+
+\pause
+
+\textbf{Proposición B.2.} \emph{Para cada problema} $F:X\longrightarrow Y$\emph{, existe un problema equivalente} $\widehat{F}:S\longrightarrow S$.
+
+\end{frame}
+
+\begin{frame}{Problemas decidibles}
+
+\begin{framed}
+$$\text{\large \textsc{MásAQueB}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} una cadena de caracteres del alfabeto $\{\palabra{a}, \palabra{b}\}$.
+    \item \textbf{Solución:} si la cadena de caracteres tiene más \palabra{a} que \palabra{b}.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 4.4.: \textsc{MásAQueB}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Problemas decidibles}
+
+\textbf{Definición 4.4} (Resolver y decidir)\textbf{.}
+
+Dados problema $F:S\longrightarrow S$, programa $P$, $P$ \hle{resuelve} $F$ si para cada entrada $I\in S$:
+
+\begin{itemize}
+    \item $P$ \hl{para}.
+    \item $P$ devuelve un \emph{string} tal que \hl{$P(I)=F(I)$}.
+\end{itemize}
+
+Si $F$ es de decisión, $P$ \hle{decide} $F$.
+
+\vspace{5mm}
+
+\pause
+
+\textbf{Definición 4.6} (Problema computable y problema decidible)\textbf{.}
+
+\begin{itemize}
+    \item $F$ es \hle{computable} si existe $P$ que lo resuelve.
+    \item $D$ es \hle{decidible} si existe $P$ que lo decide.
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}<1-3>[label=masaqueb-decidible]{Problemas decidibles}
+
+\textbf{Proposición 4.1.} \emph{El problema} \textsc{MásAQueB} \emph{es decidible.}
+
+\vspace{5mm}
+
+\pause
+
+\textbf{\emph{Demostración.}} El programa \texttt{mas\_a\_que\_b.py} decide \textsc{MásAQueB}, puesto que para para todas las entradas $I\in S$ y:
+
+\begin{itemize}
+    \pause
+    \item Si $I \notin \{\palabra{a}, \palabra{b}\}$, es $P(I)=\textsc{MásAQueB}(I)=\palabra{no}$ (entrada con codif. incorrecta).
+
+    \pause
+    \item Si $I \in \{\palabra{a}, \palabra{b}\}$:
+    
+    \begin{itemize}
+        \item Si $I$ tiene más \palabra{a} que \palabra{b}, es $P(I)=\textsc{MásAQueB}(I)=\palabra{sí}$.
+        \pause
+        \item Si $I$ no tiene más \palabra{a} que \palabra{b}, es $P(I)=\textsc{MásAQueB}(I)=\palabra{no}$.\vspace{-8mm}
+    \end{itemize}
+\end{itemize}
+\pause[5]{\hfill\square}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Problemas decidibles}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+def mas_a_que_b(palabra):
+    # comprobamos si la codificación es correcta, es decir (si es del alfabeto {'a', 'b'}), si no es correcta devolvemos 'no'
+    (*@\hl{if not utilidades.en\_alfabeto(palabra, \{\textquotesingle{}a\textquotesingle{}, \textquotesingle{}b\textquotesingle{}\}):}@*)
+        (*@\hl{return 'no'}@*)
+
+    if palabra.count('a') > palabra.count('b'):
+        return 'sí'
+
+    return 'no'
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.1.: \texttt{mas\_a\_que\_b.py}}
+\end{center}
+
+\end{frame}
+
+
+\againframe<4>{masaqueb-decidible}
+
+\begin{frame}[fragile]{Problemas decidibles}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+def mas_a_que_b(palabra):
+    # comprobamos si la codificación es correcta, es decir (si es del alfabeto {'a', 'b'}), si no es correcta devolvemos 'no'
+    if not utilidades.en_alfabeto(palabra, {'a', 'b'}):
+        return 'no'
+
+    (*@\hl{if palabra.count(\textquotesingle{}a\textquotesingle{}) > palabra.count(\textquotesingle{}b\textquotesingle{}): }@*)
+        (*@\hl{return 'sí'}@*)
+
+    return 'no'
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.1.: \texttt{mas\_a\_que\_b.py}}
+\end{center}
+
+\end{frame}
+
+\againframe<5>{masaqueb-decidible}
+
+
+\begin{frame}[fragile]{Problemas decidibles}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+def mas_a_que_b(palabra):
+    # comprobamos si la codificación es correcta, es decir (si es del alfabeto {'a', 'b'}), si no es correcta devolvemos 'no'
+    if not utilidades.en_alfabeto(palabra, {'a', 'b'}):
+        return 'no'
+
+    if palabra.count('a') > palabra.count('b'):
+        return 'sí'
+
+    (*@\hl{return 'no'}  @*)
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.1.: \texttt{mas\_a\_que\_b.py}}
+\end{center}
+
+\end{frame}
+
+\againframe<5>{masaqueb-decidible}
+
+
+\begin{frame}{Problemas semidecidibles}
+
+\textbf{Definición 4.4} (Semidecidir)\textbf{.}
+
+Dados problema de decisión $D:S\longrightarrow S$, programa $P$, $P$ \hle{semidecide} $F$ si para cada entrada $I\in S$:
+
+\begin{itemize}
+    \item si $D(I)=\palabra{sí}$, $P$ \hl{para} y $P(I)=\palabra{sí}$.
+    \item si $D(I)=\palabra{no}$, $P(I)$ es \hl{indefinido} o $P(I)=\palabra{no}$.
+\end{itemize}
+
+\vspace{5mm}
+
+\textbf{Definición 4.6} (Problema semidecidible)\textbf{.}
+
+$D$ es \hle{semidecidible} si existe $P$ que lo semidecide.
+
+\end{frame}
+
+
+\begin{frame}{Máquina universal}
+
+\textbf{Existencia de máquina universal.}
+
+Existe una \hle{máquina universal} en Python, un programa \texttt{maquina\_universal.py} con:
+
+\begin{itemize}
+    \item \textbf{Entrada:} programa \texttt{programa}, entrada \texttt{entrada}.
+    \item \textbf{Salida:} resultado de ejecutar programa \texttt{programa} con entrada \texttt{entrada}.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Máquina universal}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lc@{}}
+\toprule
+Comando  & Salida \\ \midrule
+\texttt{maquina\_universal(} & \texttt{\textquotesingle}\texttt{error}$...$\texttt{\textquotesingle} \\
+\hspace{16pt}\texttt{\palabra{no es un programa},}\\
+\hspace{16pt}\texttt{\palabra{una entrada cualquiera})} \\[3mm]
+\texttt{maquina\_universal(} & \palabra{sí} \\
+\hspace{16pt}\texttt{leer(\palabra{./mas\_a\_que\_b.py}), \palabra{abaab})}\\[3mm]
+\texttt{maquina\_universal(} & \palabra{no} \\
+\hspace{16pt}\texttt{leer(\palabra{./mas\_a\_que\_b.py}),}\\
+\hspace{16pt}\texttt{leer(\palabra{./mas\_a\_que\_b.py}))} \\ \bottomrule
+\end{tabular}
+\end{table}
+\begin{center}
+{\small Tabla 4.1.: Ejemplos de salidas de \texttt{maquina\_universal.py}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Problemas no decidibles}
+
+\begin{framed}
+$$\text{\large \textsc{C-Diagonal}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} un programa $P$.
+    \item \textbf{Solución:} \palabra{no} si $P(P)$ está bien definido y $P(P)=\text{\palabra{sí}}$, \palabra{sí} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 4.8.: \textsc{C-Diagonal}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Problemas no decidibles}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lc@{}}
+\toprule
+Comando  & Salida \\ \midrule
+\texttt{c\_diagonal(\palabra{no es un programa})} & \palabra{sí} \\
+\texttt{c\_diagonal(\texttt{leer}(\palabra{./mas\_a\_que\_b.py}))} & \palabra{no} \\
+\texttt{c\_diagonal(\texttt{leer}(\palabra{./si.py}))} & \palabra{no} \\
+\texttt{c\_diagonal(\texttt{leer}(\palabra{./c\_diagonal.py}))} & \textbf{¿}\palabra{sí} o \palabra{no}\textbf{?}\\ \bottomrule
+\end{tabular}
+\end{table}
+\begin{center}
+{\small Tabla 4.5.: Ejemplos de salidas de \texttt{c\_diagonal.py}}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}<presentation:0>{Problemas no decidibles}
+
+\textbf{Proposición 4.2.} \emph{El problema} \textsc{C-Diagonal} \emph{es no decidible.}
+
+\textbf{Demostración.} Si el problema es decidible, existe un programa \texttt{c\_diagonal.py} que lo decide, pero:
+
+\begin{center}
+    \texttt{c\_diagonal(\texttt{leer}(\palabra{./c\_diagonal.py}))}
+
+    $\updownarrow$
+
+    ¿Es cierto que \texttt{c\_diagonal.py} \emph{no} devuelve \palabra{sí} cuando se ejecuta a sí mismo?
+\end{center}
+
+Pero la respuesta a esta pregunta no puede ser ni afirmativa ni negativa. \vspace{-6.5mm}
+
+\hfill\square
+
+\end{frame}
+
+
+\begin{frame}{Problemas no decidibles}
+
+\begin{framed}
+$$\text{\large \textsc{Universal}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} un programa $P$ y una entrada $I$.
+    \item \textbf{Solución:} \palabra{sí} si $P$ está bien definido y $P(I)=\text{\palabra{sí}}$, \palabra{no} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 4.6.: \textsc{Universal}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Problemas no decidibles}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lc@{}}
+\toprule
+Comando  & Salida \\ \midrule
+\texttt{universal(} & \palabra{no} \\
+\hspace{16pt}\texttt{\palabra{no es un programa},}\\
+\hspace{16pt}\texttt{\palabra{una entrada cualquiera})} \\[3mm]
+\texttt{universal(} & \palabra{sí} \\
+\hspace{16pt}\texttt{leer(\palabra{./mas\_a\_que\_b.py}), \palabra{aaba})} \\[3mm]
+\pause[2]{\texttt{universal(}} & \pause[3]{\textbf{¿}\palabra{sí} o \palabra{no}\textbf{?}} \\
+\pause[2]{\hspace{16pt}\texttt{leer(\palabra{./universal.py}), leer(\palabra{./universal.py}))}} \\ \bottomrule
+\end{tabular}
+\end{table}
+\begin{center}
+{\small Tabla 4.3. (modificada): Ejemplos de salidas de \texttt{universal.py}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Problemas no decidibles}
+
+\textbf{Proposición 4.3.} \emph{El problema} \textsc{Universal} \emph{es no decidible.}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>[fragile]{Problemas no decidibles}
+
+\textbf{Proposición 4.3.} \emph{El problema} \textsc{Universal} \emph{es no decidible.}
+
+\textbf{Demostración.} Si \textsc{Universal} fuese decidible, podríamos escribir un programa \texttt{c\_diagonal.py} que decidiese \textsc{C-Diagonal}:
+
+\begin{lstlisting}[language=Python]
+from universal import universal
+
+def c_diagonal(programa):
+    salida = universal(programa, programa)
+
+    if salida == 'sí':
+        return 'no'
+    else:
+        return 'sí'
+\end{lstlisting}
+ \vspace{-8.5mm}
+
+\hfill\square
+
+\end{frame}
+
+\begin{frame}{Reducciones}
+
+\textbf{Definición 4.7} (Reducción de Turing)\textbf{.}
+
+Sean problemas $F:S\longrightarrow S$ y $G:S\longrightarrow S$.
+{\Large $$F \;\;\; \leq_T \;\;\; G$$}
+\begin{center}
+\vspace*{-2mm}
+    $F$ se \hle{reduce} a $G$
+\end{center}
+Si asumiendo $\exists P_G$ resuelve $G$ $\rightarrow$ $\exists P_F$ resuelve $F$.
+
+\vspace{5mm}
+
+\pause
+
+\textbf{Proposición 4.5.} {\itshape Sean $F$ y $G$ problemas, y sea $F\leq_T G$. Entonces:
+\begin{itemize}
+    \item[a)] $G$ decidible $\Rightarrow$ $F$ decidible
+    \item[b)] $F$ no decidible $\Rightarrow$ $G$ no decidible
+\end{itemize}}
+
+\end{frame}
+
+\begin{frame}{El problema de la parada}
+
+\begin{framed}
+$$\text{\large \textsc{Parada}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} un programa $P$ y una entrada $I$.
+    \item \textbf{Solución:} si el programa $P$ para con entrada $I$.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 4.9.: \textsc{Parada}}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{El problema de la parada}
+
+\textbf{Proposición 4.6.} \emph{El problema} \textsc{Parada} \emph{es no decidible.}
+
+\vspace{5mm}
+
+\pause
+
+\textbf{Demostración.} Hacemos la reducción $\textsc{Universal}\leq_T\textsc{Parada}$.
+
+\pause
+
+\emph{Idea.} Transformar un programa $P$ en otro $P'$ de modo que:
+$$\begin{matrix}
+    $P$\text{ devuelve \palabra{sí}} & \rightarrow & $P'$\text{ para}\\
+    $P$\text{ no devuelve \palabra{sí}} & \rightarrow & $P'$\text{ no para}\\
+\end{matrix}$$
+
+\end{frame}
+
+
+
+\begin{frame}<presentation:0>{El problema de la parada}
+
+\begin{center}
+    \large{$\textsc{Universal}\leq_T\textsc{Parada}$}
+\end{center}
+
+$$\begin{matrix}
+    $P$\text{ devuelve \palabra{sí}} & \rightarrow & $P'$\text{ para}\\
+    $P$\text{ no devuelve \palabra{sí}} & \rightarrow & $P'$\text{ no para}\\
+\end{matrix}$$
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{framed}
+$$\text{\large \textsc{Universal}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} programa $P$ y entrada $I$.
+    \item \textbf{Solución:} \palabra{sí} si $P$ está bien definido y $P(I)=\text{\palabra{sí}}$, \palabra{no} en otro caso.
+\end{itemize}
+\end{framed}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+\begin{framed}
+$$\text{\large \textsc{Parada}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} programa $P$ y entrada $I$.
+    \item \textbf{Solución:} \palabra{si} el programa $P$ para con entrada $I$, \palabra{no} en otro caso.
+\end{itemize}
+\end{framed}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{El problema de la parada}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from maquina_universal import maquina_universal
+
+def maquina_universal_parada(entrada_codificada):
+    (programa, entrada) = entrada_codificada.split(SEP)
+    salida = maquina_universal(programa, entrada)
+
+    if salida == 'sí':
+        return 'para'
+    else:
+        utilidades.ciclar()
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.9.: \texttt{maquina\_universal\_parada.py}}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[label=maquina-universal-parada]{El problema de la parada}
+
+$$\begin{matrix}
+\begin{matrix}P = \texttt{programa}\text{ }\text{\underline{devuelve \palabra{sí}}}\\\text{con entrada }\texttt{entrada}\end{matrix}
+& \stackrel{(1)}{\longrightarrow} &
+\begin{matrix}P' = \texttt{maquina\_universal\_parada}\\\text{\underline{para} con entrada}\\ \texttt{programa + SEP + entrada}\end{matrix} \\
+\\
+\\
+\begin{matrix}P = \texttt{programa}\text{ }\text{\underline{no devuelve \palabra{sí}}}\\\text{con entrada }\texttt{entrada}\end{matrix}
+& \stackrel{(2)}{\longrightarrow} &
+\begin{matrix}P' = \texttt{maquina\_universal\_parada}\\\text{\underline{no para} con entrada}\\ \texttt{programa + SEP + entrada}\end{matrix}
+\end{matrix}$$
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{El problema de la parada}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from maquina_universal import maquina_universal
+
+def maquina_universal_parada(entrada_codificada):
+    (programa, entrada) = entrada_codificada.split(SEP)
+    salida = maquina_universal(programa, entrada)
+
+    (*@\hl{if salida == \textquotesingle{}sí\textquotesingle{}:}  @*)
+        (*@\hl{return \textquotesingle{}para\textquotesingle{}}  @*)
+    else:
+        utilidades.ciclar()
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.9.: \texttt{maquina\_universal\_parada.py}}
+\end{center}
+
+\end{frame}
+
+\againframe{maquina-universal-parada}
+
+\begin{frame}[fragile]{El problema de la parada}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from maquina_universal import maquina_universal
+
+def maquina_universal_parada(entrada_codificada):
+    (programa, entrada) = entrada_codificada.split(SEP)
+    salida = maquina_universal(programa, entrada)
+
+    if salida == 'sí':
+        return 'para'
+    (*@\hl{else:}  @*)
+        (*@\hl{utilidades.ciclar()}  @*)
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.9.: \texttt{maquina\_universal\_parada.py}}
+\end{center}
+
+\end{frame}
+
+\againframe{maquina-universal-parada}
+
+
+\begin{frame}{El problema de la parada}
+
+\begin{center}
+    \large{$\textsc{Universal}(\texttt{programa}, \texttt{entrada})$}
+    
+    \large{$|\:|$}
+    
+    \large{$\textsc{Parada(\texttt{maquina\_universal\_parada}, \texttt{programa + SEP + entrada})}$}
+\end{center}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{framed}
+$$\text{\large \textsc{Universal}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} programa $P$ y entrada $I$.
+    \item \textbf{Solución:} \palabra{sí} si $P$ está bien definido y $P(I)=\text{\palabra{sí}}$, \palabra{no} en otro caso.
+\end{itemize}
+\end{framed}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+\begin{framed}
+$$\text{\large \textsc{Parada}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} programa $P$ y entrada $I$.
+    \item \textbf{Solución:} \palabra{si} el programa $P$ para con entrada $I$, \palabra{no} en otro caso.
+\end{itemize}
+\end{framed}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{El problema de la parada}
+
+La reducción $\textsc{Universal}\leq_T\textsc{Parada}$ es:
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from parada import parada # oráculo
+
+def universal_a_parada(programa, entrada):
+    entrada_codificada = programa + SEP + entrada
+    maquina_universal_parada = utilidades.leer('maquina_universal_parada.py')
+
+    return parada(maquina_universal_parada, entrada_codificada)
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 4.10.: \texttt{universal\_a\_parada.py}}
+\end{center}
+
+\vspace*{-8.5mm}
+
+\hfill\square
+
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{El problema de la parada}
+
+Ya tenemos la reducción: \texttt{universal\_a\_parada.py}, dados como entrada un programa $P=\texttt{programa}$ y una entrada $I=\texttt{entrada}$:
+
+\pause
+
+\begin{itemize}
+    \item Si $P(I)$ está bien definido y es $P(I)=\palabra{sí}$, entonces, aplicando (1), devolverá \palabra{sí}.
+    \item En caso contrario, si $P(I)$ no está bien definido o no es $P(I)=\palabra{sí}$, entonces, aplicando (2), devolverá \palabra{no}.\vspace{-8mm}
+\end{itemize}
+
+\hfill\square
+
+\end{frame}
+
+\begin{frame}<presentation:0>{El problema \textsc{AdivinaConsistente}}
+
+\begin{framed}
+$$\text{\large \textsc{AdivinaConsistente}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} un programa $P$.
+    \item \textbf{Solución:} $\palabra{sí}$ si $P$ devuelve \palabra{sí} con entrada vacía (acepta), \palabra{no} en caso contrario (rechaza o cicla).
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 4.11.: \textsc{AdivinaConsistente}}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{Proposición 4.8.} \textsc{AdivinaConsistente} \emph{es no decidible.}
+
+\end{frame}
+
+\begin{frame}{Resumen}
+
+\begin{table}[H]
+\hspace*{-2.5mm}
+\centering
+\begin{tabular}{@{}llll@{}}
+\cmidrule[0.7pt]{2-4}
+ & Entrada & Salida & Decidible$\;\;$ \\ \midrule
+\textsc{MásAQueB} & $u\in\{\palabra{a}, \palabra{b}\}^*$ & -- \palabra{sí}, si $\#(u,a)>\#(u,b)$ & sí \\
+ && -- \palabra{no}, en caso contrario & \\[4pt]
+\textsc{Universal} & $P$, $I$ & -- \palabra{sí}, si $P(I)=\palabra{sí}$ & no \\
+ & & -- \palabra{no}, en caso contrario &  \\[4pt]
+\textsc{Parada} & $P$, $I$ & -- \palabra{sí}, si $P$ para con entrada $I$ & no \\
+& & -- \palabra{no}, en caso contrario& \\\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\section{Sistemas lógicos}
+
+\begin{frame}{Sistemas formales}
+
+\textbf{Definición 5.1} (Sistema formal)\textbf{.}
+{\Large $$\mathcal{S} = (\mathcal{L}, \mathcal{A}, \mathcal{R})$$}
+\vspace*{-5mm}
+\begin{itemize}
+    \item $\mathcal{L}$: \hle{lenguaje formal} sobre alfabeto $A$. Sus elementos son \hle{fórmulas} (\emph{bien formadas}).
+    \item $\mathcal{A}$: \hle{axiomas}, fórmulas de $\mathcal{L}$.
+    \item $\mathcal{R}$: \hle{reglas de inferencia},\footnote{Todas deben ser computables.} \emph{premisas} \hl{$\mapsto$} \emph{derivaciones}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sistemas formales}
+
+\textbf{Sistema formal 5.1} (\textbf{SumaBinaria})\textbf{.}
+
+$\textbf{SumaBinaria}=(\mathcal{L}, \mathcal{A}, \mathcal{R})$, con:
+
+\begin{itemize}
+    \item Lenguaje $\mathcal{L}$: reconocido por expresión regular sobre $\{\texttt{0}, \texttt{1}, \texttt{+}, \texttt{=}\}^*$:
+    $$
+        N(\texttt{+}N)^*=N(\texttt{+}N)^*,\;\;\text{con}\;\;N\text{ regex. }\texttt{1}(\texttt{0}|\texttt{1})^*
+    $$
+    \item Conjunto de axiomas $\mathcal{A}$:
+    $$
+        \mathcal{A} = \{\texttt{1=1}\}
+    $$
+    \item Conjunto de reglas de inferencia $\mathcal{R}$:
+    $$
+    \begin{matrix}
+    \text{(R1)} & A\texttt{=}B & \mapsto & \texttt{1+}A\texttt{=}\texttt{1+}B \\
+    \text{(R2)} & A\underline{N}\texttt{+}\underline{N}B & \mapsto & AN\texttt{0}B \\
+    \text{(R3)} & A\texttt{\underline{1}+}\underline{N\texttt{0}}B & \mapsto & AN\texttt{1}B
+    \end{matrix}
+    $$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sistemas formales}
+
+\textbf{Definición 5.2} (Teorema y demostración)\textbf{.}
+{\large $$\phi\text{ \hle{teorema}} \;\;\; \stackrel{def.}{\iff} \;\;\; \psi \xmapsto{*} \phi,\text{ con }\psi\text{ axioma}$$}
+\vspace*{-5mm}
+\begin{itemize}
+    \item \hle{Demostración:} secuencia de derivaciones.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sistemas formales}
+
+\textbf{Ejemplo 5.1.}
+
+\begin{center}
+    \texttt{1+1+1=11} es un teorema de \textbf{SumaBinaria}
+\end{center}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrcl}
+& (F1) & \texttt{1=1} & (axioma) \\
+$\mapsto$ & (F2) & \texttt{1+1=1+1} & (aplicar R1 a F1) \\
+$\mapsto$ & (F3) & \texttt{1+1=10} & (aplicar R2 a F2) \\
+$\mapsto$ & (F4) & \texttt{1+1+1=1+10} & (aplicar R1 a F3) \\
+$\mapsto$ & (F5) & \texttt{1+1+1=11} & (aplicar R3 a F4) \\
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}{Sistemas lógicos}
+
+
+\textbf{Definición 5.3} (Sistema lógico)\textbf{.}
+{\Large $$\mathcal{G} = (\mathcal{S}, \mathcal{I})$$}
+\vspace*{-5mm}
+\begin{itemize}
+    \item $\mathcal{S}$: sistema formal.
+    \item $\mathcal{I}$: \hle{semántica} o \emph{asignación de verdad},\footnote{No necesariamente computable, y no necesariamente definida para todas las fórmulas.} $\mathcal{I}:\mathcal{L}\longrightarrow\{\text{verdadero}, \text{falso}\}$.
+\end{itemize}
+
+\vspace{5mm}
+
+\textbf{Definición 5.4} (Fórmula verdadera y fórmula falsa)\textbf{.}
+
+\begin{itemize}
+    \item $\mathcal{I}(\phi)=\text{verdadero}$ $\;\stackrel{def.}{\iff}\;$ $\phi$ es \hle{verdadera}.
+    \item $\mathcal{I}(\phi)=\text{falso}$ $\;\stackrel{def.}{\iff}\;$ $\phi$ es \hle{falsa}.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Sistemas lógicos}
+
+\textbf{Sistema lógico 5.2} (\textbf{SumaBinariaLógico})\textbf{.}
+
+Definimos \textbf{SumaBinariaLógico} con:
+
+\begin{itemize}
+    \item Sintaxis: la de \textbf{SumaBinaria}.
+    \item Semántica: $\phi$ verdadero $\iff$ lo es visto como una fórmula de aritmética binaria.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Sistemas lógicos}
+
+\textbf{Ejemplo 5.2.}
+
+\begin{center}
+    \texttt{1+1+1=11} es una fórmula verdadera de \textbf{SumaBinariaLógico}
+\end{center}
+
+En efecto, la siguiente operación aritmética en binario es cierta:
+$$1+1+1=11$$
+
+\end{frame}
+
+\begin{frame}{Sistemas lógicos}
+
+\begin{columns}
+\begin{column}{0.35\textwidth}
+\begin{center}
+    \Large
+    \textbf{sistema formal}
+
+    sintaxis
+\end{center}
+\end{column}
+\begin{column}{0.35\textwidth}  %%<--- here
+\begin{center}
+    \Large
+    \textbf{sistema lógico}
+
+    sintaxis + semántica
+\end{center}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Solidez, completitud y decidibilidad}
+
+\textbf{Definición 5.5} (Solidez)\textbf{.}
+{\large $$\mathcal{G}\text{ \hle{sólido}} \;\;\; \stackrel{def.}{\iff} \;\;\; \underset{\forall \phi \text{ fórmula de }\mathcal{G}}{\phi \text{ teorema} \Rightarrow \phi\text{ verdadero}}$$}
+
+\textbf{Definición 5.6} (Completitud)\textbf{.}
+{\large $$\mathcal{G}\text{ \hle{(sintácticamente) completo}} \;\;\; \stackrel{def.}{\iff} \;\;\; \underset{\forall \phi \text{ fórmula de }\mathcal{G}}{\phi \text{ verdadero} \Rightarrow \phi\text{ teorema}}$$}
+
+\end{frame}
+
+\begin{frame}{Solidez, completitud y decidibilidad}
+
+\textbf{Proposición 4.8.} \emph{El sistema lógico} \textbf{SumaBinariaLógico} \emph{es sólido y completo.}
+\pause
+{\large $$\text{verdadero}\iff\text{teorema}$$}
+
+\end{frame}
+
+\begin{frame}{Solidez, completitud y decidibilidad}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Sistema lógico 5.3}
+
+(\textbf{SumaBinariaLógicoRoto})\textbf{.}\\[3mm]
+
+Añadir a \textbf{SumaBinarioLógico} la regla (R1b).
+
+$$
+    \begin{matrix}
+    \text{(R1)} & A\texttt{=}B & \mapsto & \texttt{1+}A\texttt{=}\texttt{1+}B \\
+    \text{(R1b)} & A\texttt{=}B & \mapsto & \texttt{1+}A\texttt{=}B \\
+    \text{(R2)} & A\underline{N}\texttt{+}\underline{N}B & \mapsto & AN\texttt{0}B \\
+    \text{(R3)} & A\texttt{\underline{1}+}\underline{N\texttt{0}}B & \mapsto & AN\texttt{1}B
+    \end{matrix}
+$$
+
+\vspace{3mm}
+
+\textbf{Proposición 5.2.} \emph{El sistema lógico} \textbf{SumaBinariaLógico} \emph{es completo y no sólido.}
+{\large $$\text{verdadero}\Rightarrow\text{teorema}$$}
+
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+\textbf{Sistema lógico 5.4}
+
+(\textbf{SumaBinariaLógicoRestringido})\textbf{.}\\[3mm]
+
+Eliminar de \textbf{SumaBinarioLógico} la regla (R3).
+
+$$
+    \begin{matrix}
+    \text{(R1)} & A\texttt{=}B & \mapsto & \texttt{1+}A\texttt{=}\texttt{1+}B \\
+     \\
+    \text{(R2)} & A\underline{N}\texttt{+}\underline{N}B & \mapsto & AN\texttt{0}B \\
+    \\
+    \end{matrix}
+$$
+
+\vspace{3mm}
+
+\textbf{Proposición 5.3.} \emph{El sistema lógico} \textbf{Suma-} \textbf{BinariaRestringido} \emph{es incompleto y sólido.}
+{\large $$\text{verdadero}\Leftarrow\text{teorema}$$}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Solidez, completitud y decidibilidad}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{center}
+    $\mathcal{G} \text{ sistema lógico}$
+\end{center}
+
+\begin{framed}
+$$\text{\textsc{EsVerdadero}}_\mathcal{G}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} una fórmula $\phi$ de $\mathcal{G}$.
+    \item \textbf{Solución:} \palabra{sí} si $\mathcal{I}(\phi)$ está bien definido y $\mathcal{I}(\phi)=\text{verdadero}$, y \palabra{no} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 5.1.: $\text{\textsc{EsVerdadero}}_\mathcal{G}$}
+\end{center}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{center}
+    $\mathcal{S} \text{ sistema formal}$
+\end{center}
+
+\begin{framed}
+$$\text{\textsc{EsTeorema}}_\mathcal{S}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} una fórmula $\phi$ de $\mathcal{S}$.
+    \item \textbf{Solución:} \palabra{sí} si $\phi$ es un teorema de $\mathcal{S}$, y \palabra{no} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 5.2.: $\text{\textsc{EsTeorema}}_\mathcal{S}$}
+\end{center}
+\end{column}
+\end{columns}
+
+\vspace{5mm}
+\textbf{Definición 5.7} (Decidibilidad de un sistema lógico)\textbf{.}
+
+Decimos que un sistema lógico $\mathcal{G}$ es \hle{decidible} si $\text{\textsc{EsVerdadero}}_\mathcal{G}$ es decidible.
+\vspace{10mm}
+\end{frame}
+
+
+\begin{frame}{El sueño de Hilbert}
+
+\textbf{Segundo problema de Hilbert.}
+
+¿Son completas las matemáticas? \\ Esto es, ¿puede probarse o no cada sentencia matemática?
+
+\vspace{5mm}
+
+\pause
+
+Spoiler: \textbf{no} (gracias a Gödel).
+
+\end{frame}
+
+
+\begin{frame}{La aritmética de Peano}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ccl@{}}
+\toprule
+Símbolo & Codificación & Descripción \\ \midrule
+$\neg(p)$ & \texttt{NO (p)} & Negación \\
+$(p) \vee (q)$ & \texttt{(p) Ó (q)} & Disyunción \\
+$\forall x : p$ & \texttt{PARA TODO (x) : (p)} & Cuantificador universal \\
+$S(a)$ & \texttt{S(a)} & Sucesor \\
+$\exists x : p$ & \texttt{EXISTE (x) : (p)} & Cuantificador existencial \\
+$(p) \Rightarrow (q)$ & \texttt{(p)}\texttt{ }\texttt{=>}\texttt{ }\texttt{(q)} & Implicación \\
+$(p) \iff (q)$ & \texttt{(p)}\texttt{ }\texttt{<=>}\texttt{ }\texttt{(q)} & Coimplicación \\
+$(p)=(q)$ & \texttt{(p) = (q)} & Igualdad \\\bottomrule
+\end{tabular}
+\end{table}
+\begin{center}
+{\small Tabla 5.2.: Una forma de traducir los símbolos de la aritmética de Peano a \emph{strings}}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{La aritmética de Peano}
+
+\textbf{Podemos traducir fórmulas de la aritmética de Peano a \emph{strings}.}
+
+\begin{itemize}
+    \item[(PF2)] Para todo entero $x$, es $x^2+1>0$.
+
+    \texttt{PARA TODO x : x{\^{}}2 + 1 > 0}
+
+    \item[(PF6)] Si $n>3$, no existen $x,y,z$ enteros tal que $x^n+y^n=z^n$ (el \emph{último teorema de Fermat}).
+
+    \texttt{n > 3 Y NO EXISTE x, y, z : x{\^{}}n + y{\^{}}n = z{\^{}}n}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}<2>{La aritmética de Peano}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\pause[2]{
+\begin{framed}
+$$\text{\textsc{EsVerdaderoPeano}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} una fórmula $\phi$ de \textbf{Peano}.
+    \item \textbf{Solución:} \palabra{sí} si $\phi$ es una fórmula bien formada, cerrada y verdadera en \textbf{Peano}; \palabra{no} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 5.4.: $\text{\textsc{EsVerdaderoPeano}}$}
+\end{center}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{framed}
+$$\text{\textsc{EsTeoremaPeano}}$$
+\vspace{-5mm}
+\begin{itemize}
+    \pause[1]{
+    \item \textbf{Entrada:} una fórmula $\phi$ de \textbf{Peano}.
+    \item \textbf{Solución:} \palabra{sí} si $\phi$ es una fórmula bien formada y cerrada en \textbf{Peano}, y se trata de un teorema de \textbf{Peano}; \palabra{no} en caso contrario.
+    }
+\end{itemize}
+
+\end{framed}
+\begin{center}
+{\small Problema 5.3.: $\text{\textsc{EsTeoremaPeano}}$}
+\end{center}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\section{Incompletitud}
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\textbf{Afirmación.} \textbf{Peano} \emph{es sólido.}
+
+\pause
+
+\begin{itemize}
+    \item Es razonable pensar que todos los teoremas son verdaderos.
+    \item Es algo demostrable (fuera del trabajo).
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}<1>{Incompletitud de la aritmética de Peano}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\pause[2]{
+\begin{framed}
+$$\text{\textsc{EsVerdaderoPeano}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} una fórmula $\phi$ de \textbf{Peano}.
+    \item \textbf{Solución:} \palabra{sí} si $\phi$ es una fórmula bien formada, cerrada y verdadera en \textbf{Peano}; \palabra{no} en caso contrario.
+\end{itemize}
+\end{framed}
+\begin{center}
+{\small Problema 5.4.: $\text{\textsc{EsVerdaderoPeano}}$}
+\end{center}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{framed}
+$$\text{\textsc{EsTeoremaPeano}}$$
+\vspace{-5mm}
+\pause[1]{
+\begin{itemize}
+    \item \textbf{Entrada:} una fórmula $\phi$ de \textbf{Peano}.
+    \item \textbf{Solución:} \palabra{sí} si $\phi$ es una fórmula bien formada y cerrada en \textbf{Peano}, y se trata de un teorema de \textbf{Peano}; \palabra{no} en caso contrario.
+\end{itemize}
+}
+\end{framed}
+\begin{center}
+{\small Problema 5.3.: $\text{\textsc{EsTeoremaPeano}}$}
+\end{center}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\begin{enumerate}
+    \item Encontrar una forma de traducir \textsc{Parada} a \textbf{Peano}.
+    \item Ver cómo demostrar automáticamente teoremas de \textbf{Peano}.
+    \item Encontrar una fórmula verdadera de \textbf{Peano} no demostrable.
+\end{enumerate}
+
+\end{frame}
+
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\begin{center}
+    \textbf{Paso 1.} Traducir \textbf{Parada} a \textsc{Peano}
+
+    \line(1,0){50}
+    %\rule{20mm}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{Proposición 5.5.} {\itshape
+Sea $P$ un programa de ordenador (o una máquina de Turing). La afirmación $H$ dada por
+\begin{center}
+    ``$P$ para con entrada vacía''
+\end{center}
+puede ser traducida en una fórmula $\phi_H$ equivalente en \normalfont{\textbf{Peano}}.} {\itshape (En este caso, con ``equivalente'' nos referimos a que $H$ es verdadera si y solo si $\phi_H$ es verdadera.)}
+
+\vspace{5mm}
+
+\pause
+
+\textbf{\emph{Demostración.}}
+$\phi_H=\;$``Existe un natural $n$ de modo que $Parado(Paso^n(c_0))=1$''\hfill\square
+
+\end{frame}
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\textbf{Definición 6.1} (Sistema de tipo Turing)\textbf{.}
+
+Un sistema (lógico o formal) es de \hle{tipo Turing} si puede expresar, dado un programa $P$, que
+\begin{center}
+    ``$P$ para con entrada vacía''
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Incompletitud de la aritmética de Peano}
+
+\textbf{\emph{Demostración.}} Usamos máquinas de Turing.
+
+\begin{itemize}
+    \pause
+    \item Podemos codificar una configuración dada mediante \emph{strings}:
+    $$
+    q_R\;:\;X\:\fbox{$X$}\:X\:a \;\;\;\; \longrightarrow \;\;\;\; \texttt{q\_R : X \^{}X X a}
+    $$
+    \vspace*{-5mm}
+    \pause
+    \item A su vez los codificamos mediante números binarios en \emph{strings} (palabras del alfabeto $\{\texttt{0}, \texttt{1}\}$).
+\end{itemize}
+
+
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Incompletitud de la aritmética de Peano}
+
+\begin{itemize}
+    \item Función de transición: $Paso$ (de enteros a enteros).
+    \pause
+    \item Configuración inicial: $c_0$ (entero).
+    \pause
+    \item Proceso de cálculo: $n$ pasos la configuración será $Paso^n(c_0)$
+    $$
+    c_0 \rightarrow Paso(c_0) \rightarrow Paso(Paso(c_0)) = Paso^2(c_0) \rightarrow ...
+    $$
+    \pause
+    \vspace*{-5mm}
+    \item Condición de parada: $Parado$
+    $$
+    Parado(m) =
+    \begin{cases} 
+      0, & \text{si }m\text{ no es configuración de parada} \\
+      1, & \text{si }m\text{ es configuración de parada}
+   \end{cases}
+    $$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}<presentation:0>{Incompletitud de la aritmética de Peano}
+
+\begin{center}
+    ``$P$ para con entrada vacía''
+
+    \pause
+    $\updownarrow$
+
+    ``Existe un natural $n$ de modo que $Paso^n(c_0)$ es una configuración de parada''
+
+    \pause
+    $\updownarrow$
+
+    ``Existe un natural $n$ de modo que $Parado(Paso^n(c_0))=1$''
+\end{center}
+
+\pause
+La última afirmación puede traducirse a una fórmula de \textbf{Peano} $\phi_H$.\hfill\square
+
+\end{frame}
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\begin{center}
+    \textbf{Paso 2.} Demostrar automáticamente teoremas de \textsc{Peano}
+
+    \line(1,0){50}
+    %\rule{20mm}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{Proposición 5.8.} \textsc{EsTeoremaPeano} \emph{es semidecidible.}
+
+\pause
+\begin{itemize}
+    \item Si la entrada es un teorema, para y devuelve \palabra{sí}.
+    \item Si no, cicla.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Incompletitud de la aritmética de Peano}
+
+\textbf{Demostración.}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from es_prueba_peano import es_prueba_peano # NO oráculo
+
+def es_teorema_peano(fórmula):
+    demostración = ''
+
+    while True:
+        if es_prueba_peano(demostración, fórmula) == 'sí':
+            return 'sí'
+        demostración = utilidades.siguiente_string(demostración)
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 5.2.: \texttt{es\_teorema\_peano.py}}
+\end{center}
+
+\vspace*{-9.5mm}
+
+\hfill\square
+
+\end{frame}
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+\textbf{Definición 5.8} (Recursivamente axiomatizable)\textbf{.}
+
+Un sistema formal $\mathcal{S}$ es \hle{recursivamente axiomatizable} si $\textsc{EsTeorema}_\mathcal{S}$ es semidecidible.
+\end{frame}
+
+\begin{frame}[fragile]{Incompletitud de la aritmética de Peano}
+
+\begin{center}
+    \textbf{Paso 3.} Encontrar una fórmula verdadera y no demostrable de \textsc{Peano}
+
+    \line(1,0){50}
+    %\rule{20mm}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Incompletitud de la aritmética de Peano}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+from parada_a_peano import parada_a_peano     # paso 1
+from es_teorema_peano import es_teorema_peano # paso 2
+
+def godel_peano(entrada):
+    programa_godel = utilidades.leer('godel_peano.py')
+    para_en_peano = parada_a_peano(programa_godel)
+    no_para_en_peano = 'NO (' + para_en_peano + ')'
+
+    if es_teorema_peano(no_para_en_peano) == 'sí':
+        return 'para'
+    else:
+        utilidades.ciclar()
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 6.1.: \texttt{godel\_peano.py}}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}<1-3>[label=godel-peano]{Incompletitud de la aritmética de Peano}
+
+\textbf{Proposición 6.1.} \texttt{godel\_peano.py} \emph{no para con entrada vacía.}
+
+\pause
+\vspace{5mm}
+
+\textbf{Demostración.} Asumimos el contrario, y entramos en contradicción.
+
+\begin{center}
+\pause
+\texttt{godel\_peano.py} para con entrada vacía
+\vspace*{-2mm}
+\pause
+$$\downarrow$$
+
+\vspace*{-2mm}
+\texttt{es\_teorema\_peano(no\_para\_en\_peano) == \palabra{sí}}
+\vspace*{-2mm}
+\pause
+$$\downarrow$$
+
+\vspace*{-2mm}
+``\texttt{godel\_peano.py} no para con entrada vacía'' es un teorema
+\vspace*{-2mm}
+\pause
+$$\begin{matrix}
+    \hspace{22mm} & \downarrow & \text{\small \textbf{Peano} es sólido}
+\end{matrix}$$
+
+\vspace*{-2mm}
+\texttt{godel\_peano.py} no para con entrada vacía \hspace{2mm} {\large\lightning}
+\end{center}
+
+\vspace*{-9.5mm}
+
+\pause[6]{\hfill\square}
+
+\end{frame}
+
+\begin{frame}[fragile]{Incompletitud de la aritmética de Peano}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+from parada_a_peano import parada_a_peano     # paso 1
+from es_teorema_peano import es_teorema_peano # paso 2
+
+def godel_peano(entrada):
+    programa_godel = utilidades.leer('godel_peano.py')
+    para_en_peano = parada_a_peano(programa_godel)
+    no_para_en_peano = 'NO (' + para_en_peano + ')'
+
+    (*@\hl{if es\_teorema\_peano(no\_para\_en\_peano) == \textquotesingle{}sí\textquotesingle{}:}  @*)
+        (*@\hl{return \textquotesingle{}para\textquotesingle{}}  @*)
+    else:
+        utilidades.ciclar()
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 6.1.: \texttt{godel\_peano.py}}
+\end{center}
+
+\end{frame}
+
+\againframe<4->{godel-peano}
+
+
+\begin{frame}<1-5>[label=incompletitud-peano]{Incompletitud de la aritmética de Peano}
+
+\textbf{Teorema 6.1.} \emph{La aritmética de Peano} (\textbf{Peano}) \emph{es incompleta.}
+
+\vspace{5mm}
+
+\pause
+
+\textbf{Demostración.} \texttt{no\_para\_en\_peano} es verdadero y no es un teorema.
+
+\begin{itemize}
+
+    \pause
+    \item Es verdadero: por la proposición anterior.
+
+    \pause
+    \item No es un teorema:
+
+    \begin{center}
+    \pause
+\texttt{godel\_peano.py} no para con entrada vacía
+\vspace*{-2mm}
+\pause
+$$\downarrow$$
+
+\vspace*{-2mm}
+no puede ser \texttt{es\_teorema\_peano(no\_para\_en\_peano) == \palabra{sí}}
+\vspace*{-2mm}
+\pause
+$$\downarrow$$
+
+\vspace*{-2mm}
+\texttt{no\_para\_en\_peano} no es un teorema
+\end{center}
+
+\vspace*{-5.5mm}
+
+\pause[7]{\hfill\square}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Incompletitud de la aritmética de Peano}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+
+from parada_a_peano import parada_a_peano     # paso 1
+from es_teorema_peano import es_teorema_peano # paso 2
+
+def godel_peano(entrada):
+    programa_godel = utilidades.leer('godel_peano.py')
+    para_en_peano = parada_a_peano(programa_godel)
+    no_para_en_peano = 'NO (' + para_en_peano + ')'
+
+    if es_teorema_peano(no_para_en_peano) == 'sí':
+        return 'para'
+    (*@\hl{else:}  @*)
+        (*@\hl{utilidades.ciclar()}  @*)
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 6.1.: \texttt{godel\_peano.py}}
+\end{center}
+
+\end{frame}
+
+
+\againframe<6->{incompletitud-peano}
+
+
+
+\begin{frame}{Incompletitud de la aritmética de Peano}
+
+{\Large
+$$\begin{matrix}
+    \begin{matrix}
+        \textbf{Peano} \\
+        \text{rec. axiom.} \\
+        \text{tipo Turing} \\
+        \text{\ul{sólido}} \\
+        $\;$
+    \end{matrix}
+    & \;\;\;\;\;\;\Longrightarrow\;\;\;\;\;\;
+    \begin{matrix}
+        \textbf{Peano} \\
+        \text{\ul{incompleto}} \\
+        $\;$
+    \end{matrix}
+\end{matrix}$$
+}
+
+\end{frame}
+
+
+\begin{frame}{Versión semántica del Primer Teorema de Incompletitud}
+
+{\Large
+$$\begin{matrix}
+    \begin{matrix}
+        \text{rec. axiom.} \\
+        \text{tipo Turing} \\
+        \text{\ul{sólido}} \\
+    \end{matrix}
+    & \;\;\;\;\;\;\Longrightarrow\;\;\;\;\;\;
+    \begin{matrix}
+        \text{\ul{incompleto}} \\
+    \end{matrix}
+\end{matrix}$$
+}
+
+\end{frame}
+
+
+
+\begin{frame}{Versión semántica del Primer Teorema de Incompletitud}
+
+\textbf{Teorema 6.2.} {\itshape
+Sea $\mathcal{G}$ un sistema lógico que verifique las siguientes condiciones:
+\begin{itemize}
+    \item[(1)] $\mathcal{G}$ es sólido
+    
+    (todo teorema es verdadero).
+    \item[(2)] $\mathcal{G}$ es recursivamente axiomatizable.
+    \item[(3)] $\mathcal{G}$ es de tipo Turing.
+\end{itemize}
+Entonces, \hl{$\mathcal{G}$ es (semánticamente) incompleto}\\
+(existen fórmulas verdaderas de $\mathcal{G}$ que no son teoremas).
+}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Versión sintáctica del Primer Teorema de Incompletitud}
+
+\textbf{Proposición 6.2.} {\itshape
+Sea $\mathcal{S}$ un sistema formal recursivamente axiomatizable y sintácticamente completo. Entonces, $\textsc{EsTeorema}_\mathcal{S}$ es decidible.
+}
+
+\end{frame}
+
+
+\begin{frame}{Versión sintáctica del Primer Teorema de Incompletitud}
+
+\textbf{Teorema 6.3.} {\itshape
+Sea $\mathcal{S}$ un sistema formal que verifique las siguientes condiciones:
+\begin{itemize}
+    \item[(1)] $\mathcal{S}$ es sintácticamente consistente.
+
+    (no es posible que $\phi$ y $\neg\phi$ sean teoremas).
+    \item[(2)] $\mathcal{S}$ es recursivamente axiomatizable.
+    \item[(2)] $\mathcal{S}$ es de tipo Turing.
+\end{itemize}
+Entonces, \hl{$\mathcal{S}$ es sintácticamente incompleto} \\
+(existen fórmulas $\phi$ de $\mathcal{S}$ tal que ni $\phi$ ni $\neg\phi$ son teoremas).
+}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>{Versión sintáctica del Primer Teorema de Incompletitud}
+
+\textbf{Demostración.} Si $\mathcal{S}$ fuese sintácticamente completo, \textsc{AdivinaConsistente} sería decidible.
+
+\vspace{5mm}
+
+\begin{framed}
+$$\text{\large \textsc{AdivinaConsistente}}$$
+
+\begin{itemize}
+    \item \textbf{Entrada:} un programa $P$.
+    \item \textbf{Solución:} $\palabra{sí}$ si $P$ devuelve \palabra{sí} con entrada vacía (acepta), \palabra{no} en caso contrario (rechaza o cicla).
+\end{itemize}
+\end{framed}
+
+\end{frame}
+
+
+\begin{frame}<presentation:0>[fragile]{Versión sintáctica del Primer Teorema de Incompletitud}
+
+\begin{lstlisting}[language=Python]
+import utilidades
+from parada_a_S import parada_a_S # NO es un oráculo|\label{line:adivina-consistente-import-1}|
+from es_teorema_S import es_teorema_S # NO es un oráculo|\label{line:adivina-consistente-import-2}|
+
+def adivina_consistente(programa):|\label{line:adivina-consistente-main}|
+    programa_para = parada_a_S(programa)|\label{line:adivina-consistente-programa-para}|
+    es_teorema = es_teorema_S(programa_para)|\label{line:adivina-consistente-es-teorema}|
+    if es_teorema == 'sí':|\label{line:adivina-consistente-si}|
+        salida = maquina_universal(programa, '')|\label{line:adivina-consistente-universal}|
+        return salida  # es 'sí' o 'no'
+    else:|\label{line:adivina-consistente-no}|
+        return 'no'
+\end{lstlisting}
+\vspace*{-4mm}
+\begin{center}
+{\small Programa 6.4.: \texttt{adivina\_consistente.py}}
+\end{center}
+
+\vspace*{-9.5mm}
+
+\hfill\square
+
+\end{frame}
+
+
+\begin{frame}{Primer Teorema de Incompletitud}
+
+$$
+\begin{array}{ccc}
+    {
+        \begin{matrix}
+            \text{\textbf{versión semántica}} \\
+            \small{\;}
+        \end{matrix}
+    }
+    & \;\;\;\;\;\; &
+    {
+        \begin{matrix}
+            \text{\textbf{versión sintáctica}} \\
+            \small{\;}
+        \end{matrix}
+    }
+    \\
+    {
+        \begin{matrix}
+            \mathcal{G}\text{ sistema lógico}\\
+            \text{rec. axiom., de tipo Turing}\\
+            \text{y sólido} \\
+            \small{\phi \text{ teorema} \Rightarrow \phi\text{ verdadero}}\\
+            \tiny{\;}
+        \end{matrix}
+    }
+    &  & 
+    {
+        \begin{matrix}
+            \mathcal{S}\text{ sistema formal}\\
+            \text{rec. axiom., de tipo Turing}\\
+            \text{y sintácticamente consistente} \\
+            \small{\nexists \phi : \phi\text{ y }\neg\phi \text{ son teoremas}} \\
+            \tiny{\;}
+        \end{matrix}
+    } \\
+    \Huge{\Downarrow} & & \Huge{\Downarrow} \\
+    {
+        \begin{matrix}
+            \tiny{\;}\\
+            \mathcal{G}\text{ no (semánticamente) completo}\\
+            \small{\exists\phi:\phi\text{ es verdadero y no es teorema}}\\[2mm]
+        \end{matrix}
+    }
+    & &
+    {
+        \begin{matrix}
+            \tiny{\;}\\
+            \mathcal{S}\text{ no sintácticamente completo}\\
+            \small{\exists\phi:\text{ni }\phi\text{ ni }\neg\phi\text{ son teoremas}}\\[2mm]
+        \end{matrix}
+    }
+    \\
+\end{array}
+$$
+\end{frame}
+
+
+\begin{frame}{Primer Teorema de Incompletitud}
+
+\textbf{Teorema 6.4} (Primer Teorema de Incompletitud de Gödel-Rosser)\textbf{.}
+
+Sea $\mathcal{S}$ un sistema formal que verifique las siguientes condiciones:
+\begin{itemize}
+    \item[(1)] $\mathcal{S}$ es sintácticamente consistente.
+    \item[(2)] $\mathcal{S}$ es recursivamente axiomatizable.
+    \item[(3)] $\mathcal{S}$ contiene una cierta cantidad de aritmética elemental.
+\end{itemize}
+
+Entonces, $\mathcal{S}$ es \hl{sintácticamente incompleto}, es decir, hay fórmulas $\phi$ de $\mathcal{S}$ de modo que ni $\phi$ ni $\neg\phi$ son teoremas.
+\end{frame}
+
+
+\begin{frame}{Consecuencias}
+
+\begin{itemize}
+    \item Respuesta negativa al segundo problema de Hilbert.
+
+    ¡Y más! Hilbert pensaba en aritmética...
+    \vspace{5mm}
+    \pause
+    \item La mente humana no es algorítmica (Roger Penrose, John Lucas).
+    \item Los seres humanos pensamos de lo general a lo concreto, al contrario de las matemáticas, que lo hacen de lo concreto a lo general (Douglas Hofstadter).
+\end{itemize}
+
+\end{frame}
+
+\section{Conclusiones}
+
+\begin{frame}{Conclusiones}
+
+\begin{itemize}
+    \item Logramos probar Primer Teorema de Incompletitud mediante perspectiva computacional.
+    \item Usamos programas en Python como representación matemática de algoritmo.
+    \item Más allá de Gödel: resultado semántico.
+    \item Precisamos los conceptos de verdad y demostración.
+\end{itemize}
+
+\end{frame}
+
+\maketitle
+
+
+\end{document}
